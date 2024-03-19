@@ -33,7 +33,7 @@ Any variations in the cross section along the length would create variation in t
 \section{Casting Silicone}
 One of the goals of this project was to create an accessible fabrication method, to reduce the complexity of creating a single robot. To create a robot with a circular shape along the length and a uniform semi-circular cross section, we needed a way to cast the silicone around an arch-shaped inner piece, which would be removed to form the hollow chamber. We decided on the open angle of about 35$^\circ$, which determines the total length of the actuator based on the casting process of silicone. If the actuator were to extend further underneath itself, casting vertically would not have been possible. 
 
-First, a little background on silicone casting. The silicones chosen for this project were platinum cure, two part silicones from Smooth-On. We used four different silicones with Shore A Hardness ranging from 20--50: Dragon~Skin~20~(DS20), Dragon~Skin~30~(DS30), Smooth~Sil~940~(SS40), and Smooth~Sil~950~(SS50). The shore hardness of the actuator can be equated to the bending resistance, the harder the material, more stress is required to achieve a certain strain. Each of these silicones are well mixed, measured by weight, and degassed before pouring into any molds. We started with just using DS20 silicone since it has the fastest cure time, about 4 hours, and it is the easiest to mix of the four silicones. Its important that any materials used during the mixing process are compatible with the silicones and will not impact the curing process. We used popsicle sticks and metal spatulas for mixing within plastic cups. Figure \ref{fig:castingstation} contains an image of the casting station covered in paper as any drips of each part of silicone not mixed properly will never cure and can become quite sticky. 
+First, a little background on silicone casting. The silicones chosen for this project were platinum cure, two part silicones from Smooth-On. We used five different silicones with Shore A Hardness ranging from 20--50: Dragon~Skin~20~(DS20), Dragon~Skin~30~(DS30), Smooth~Sil~940~(SS40), Smooth~Sil~945~(SS45), and Smooth~Sil~950~(SS50). The shore hardness of the actuator can be equated to the bending resistance: the harder the material, more stress is required to achieve a certain strain. Each of these silicones are well mixed, measured by weight, and degassed before pouring into any molds. We started with just using DS20 silicone since it has the fastest cure time, about 4 hours, and it is the easiest to mix of the four silicones. Its important that any materials used during the mixing process are compatible with the silicones and will not impact the curing process. We used popsicle sticks and metal spatulas for mixing within plastic cups. Figure \ref{fig:castingstation} contains an image of the casting station covered in paper as any drips of each part of silicone not mixed properly will never cure and can become quite sticky. 
 
 \begin{figure}[h]
     \centering
@@ -60,4 +60,55 @@ We chose to 3D print the outer molds from PLA. The mold has an arch shape so tha
 \end{figure}
 
 One side of the mold had feet such that the other side of the mold would fit into it, the molds fit together like puzzle pieces, once again to maintain the constant cross section. Figure \ref{fig:firstmold} contains the first mold designed for casting the circular actuator, highlighting the large pour hole at the top, the slot for the insert to lock into, and the asymmetries at the bottom of the molds so that they fit together and no silicone was allowed to escape from the bottom. 
+
+\section{Dissolvable Inserts}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=6.5 in]{images4/pvainsert.jpg}
+    \caption{Fabrication of PVA inserts: A. PVA insert printed with PLA support material. B. DS20 actuators after removing from mold. C. DS20 and SS45 actuators after removing excess silicone. D. Hollow actuators post hot water bath.}
+    \label{fig:pvainsert}
+\end{figure}
+
+Commonly used as support material for PLA 3D prints, PVA (Polyvinyl Alcohol) is a filament material that is soluble in water and safe to dispose of. Figure \ref{fig:pvainsert} contains photos of actuators fabricated using a PVA insert.  After confirming that the silicone could cure around this material, we printed the first inserts out of PVA using an Ultimaker 3D printer. Since this material is rigid, only 5-10\% infill was required. The higher the infill on the insert, the more time consuming it would be to remove. For the support material, we used PLA filament. These inserts would be single use, and were removed from the silicone using a hot water bath. Even though there were no problems removing the insert from the silicone post cure, needing to print a new insert for every actuator used a lot of material, and was time consuming. The PLA molds could be used for dozens of actuators but a single-use insert did not align with the goal of simple mass production. To confirm the insert was removable for one of the harder silicones, we casted an SS45 actuator using a PVA insert.  
+
+\section{Flexible Inserts}
+
+At AACE Lab, we had access to TPU (Thermoplastic Polyurethane) filament, which is similar to rubber, its flexible and would be removable after the silicone cured without damage to the silicone. Based on the infill \% chosen, the TPU insert's stiffness could be tuned. The inserts were printed on the bed horizontally with no support material. The overhang created an inconsistent cross section, so we began printing with TPU as support material. The drawback of TPU inserts were that even though they could be used to cast multiple actuators, over time, they would begin to lose their shape. To combat the flexibility of the TPU insert, we used pins to hold the insert in place within the mold. Using 3 sets of pins, we could ensure the TPU insert would remain in the center of the mold so that the cross section of the silicone would be uniform. We used a FormLabs Resin Printer to fabricate the pins. Once again confirming the silicone could cure around the chosen resin, we began casting actuators using the TPU inserts. Figure \ref{fig:tpuinsert} contains photographs of the fabrication process for the first inserts. 
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=6.5 in]{images4/tpuinsertfab.jpg}
+    \caption{Fabrication of TPU inserts: A. Molds printed from PLA. B. Solid TPU inserts printed without support material. C. Comparison of different temperature settings on print quality of TPU. D. Resin printed pins of 2 materials. E. TPU insert with holes for the pins and the removed support material. F. TPU insert with pins inside of one half of the mold.}
+    \label{fig:tpuinsert}
+\end{figure}
+
+The pins created a new problem of needing to patch the holes left behind in the silicone. After casting the actuator with the TPU insert and Pins, a solid TPU insert was reinserted into the hollow silicone so the holes could be patched with more DS20 silicone. Mixing and casting more silicone to patch the holes was not ideal but it allowed us to seal the holes and create an airtight actuator. 
+
+\section{Casting with TPU insert}
+
+Using the TPU insert with the pins to maintain the cross section along the length of the actuator, we were successful at fabricating a few actuators. Photos of the fabrication process are in Figure \ref{fig:tpupinfab} The pour hole for the mold was not large enough for all of the air bubbles to escape the top of the mold, so we cut away a small section in the center of the mold. To fill the mold, we used 40~g of part A and 40~g of part B of the DS20 silicone. To hold the molds together, we used several clamps to minimize flashing of the silicone and ensure the uniform cross section. We poured the silicone in a small amount at a time, ensuring any air bubbles were able to rise to the top. When pouring silicone, if the ribbon of silicone gets too thin, more air is introduced as the silicone folds onto itself. Frequent tapping of the mold on the lab bench was required to ensure all of the air escaped. 
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=6.5 in]{images4/tpupincasting.jpg}
+    \caption{Fabrication of the hollow actuator using a TPU insert and pins. A. The pins placed in the insert. B. The clamps placed on the mold with the insert inside. C. Post silicone cure. D. Removing excess silicone. E. Removing the pins and insert. F. Silicone with solid insert. G. Post patching the holes from the pins. H. Completed hollow actuator body.}
+    \label{fig:tpupinfab}
+\end{figure}
+
+After the silicone cured, we used a sharp blade to cut away any flashing, the silicone at the bottom of each end, and the silicone that remained in the pour hole. After removing the pins and the TPU insert, using a small amount of IPA (isopropyl alcohol) as a lubricant, we inserted the solid TPU so that the holes left behind by the pins could be patched. After cleaning up the ends to make them flat, the hollow actuator is ready for the next steps of the fabrication process, sealing both ends and adding the interface for the pressurization equipment. 
+
+\section{Case Study: SS45 Silicone}
+
+The TPU insert with pins method was successful at creating an airtight actuator for the soft DS20 silicone, so to test if the fabrication procedure would work for stiffer silicones, we casted an actuator out of SS45 silicone. This silicone has a viscosity closer to peanut butter than honey and was laborious to mix and pour. Despite tapping the mold on the lab bench to remove the trapped air bubbles, large bubbles at the top of the mold remained. A bigger issue was that the TPU insert could not be removed. The silicone was too stiff for the end caps of the insert to slide through. We had to cut the silicone to remove the insert. Upon further inspection, a few air pockets remained inside of the silicone. Figure \ref{fig:ss45mess} contains photos of testing the TPU insert and pins fabrication method for SS45 silicone. 
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=6 in]{images4/ss45mess.jpg}
+    \caption{Images of failed SS45 actuator casting attempts. A. Overflow of mold during degassing. B. Samples of gaps created by air bubbles stuck in the mold. C. Un-patchable hole left from pin. D. Swiss-cheese actuator from over degassing}
+    \label{fig:ss45mess}
+\end{figure}
+
+To combat the air holes that remained in the silicone, we attempted to degas the entire mold after casting the actuator. The small air pockets expanded and left the actuator with a consistency of swiss cheese. Additionally, the pins left large holes and since the solid TPU insert could not be slid in to patch the holes, we had to look into alternate methods of restricting the flexible insert. 
+
 
