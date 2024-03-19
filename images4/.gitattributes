@@ -1,0 +1,4 @@
+castingstation.jpeg filter=lfs diff=lfs merge=lfs -text
+cross-section-drawing.jpg filter=lfs diff=lfs merge=lfs -text
+fabricationprocess_0.png filter=lfs diff=lfs merge=lfs -text
+firstmolddesign.jpg filter=lfs diff=lfs merge=lfs -text
