@@ -1,26 +1,63 @@
 \chapter{Fabrication}
-\section{Casting}
-\subsection{Problems of Casting Silicone}
-\subsection{Dissolvable PVA Inserts}
-\subsection{Flexible Inserts}
-\subsection{Flexible inserts with Pins}
-\subsection{Silicone Spacers}
-\subsection{Wax Inserts}
-\subsection{Separatable Rigid Insert}
-\subsection{Final: Separatable Rigid Insert with Parting Line at Edge}
 
-\section{Strain Limiting Layer}
-\subsection{Attaching}
-\subsection{Casting Skin}
-\subsection{Final: Painting on Skin}
+\section{Overview}
+The design of a soft pneumatic actuator is heavily tied to the fabrication process. There are several problems with creating a robot where the bending behavior is highly sensitive to fabrication tolerances. In this work, we were heavily inspired by the fiber reinforced actuators designed by Harvard \cite{galloway_mechanically_2013}. 
 
-\section{Interface to Pressure Control Rig}
-\subsection{Harvard Method}
-\subsection{Final: Machined Barb}
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=5 in]{images4/fabricationprocess_0.png}
+    \caption{Fabrication process from the Soft Robotics Toolkit}
+    \label{fig:toolkitfab}
+\end{figure}
+% https://softroboticstoolkit.com/book/fr-fabrication
 
-\section{Mass Production}
-% highlight benetfits of reusable molds, reusable inserts
-\subsection{Procedure}
-% final fabrication procedure
-\subsection{Multiple Silicones}
-% highight how works for all types of castable silicones
+As shown in Figure \ref{fig:toolkitfab}, the robot itself is a hollow tube cast from silicone, where strain limiting materials such as fiberglass and kevlar thread are added to \emph{program} or restrict the strain of the silicone as the we inflate the actuator. After adding the strain limiting materials, we seal the actuator on both ends to create an airtight chamber. Once airtight, we puncture one side to interface with the pressurization equipment that controls the air pressure within the actuator. 
+
+Upon actuation, there are three strains in the material that the fabrication method must keep in mind so that the strains create the desired bending motion. The largest strain is the axial strain. The axial strain is the strain along the length of the actuator. Following the same principles as the standard fiber-reinforced soft pneumatic actuator, using a semi-circular cross section, attaching the fiber glass fabric to the flat side is the easiest way to control axial strain. The fabric cannot strain. The slices of silicone away from the strain limiting fabric are allowed to axially strain, and the top of the semi-circular cross section has the most axial strain. 
+
+Strains in the other axes that also influence the bending behavior of the actuator are considered as losses. Since the bending behavior is primarily defined by the axial strain, any air pressure being converted into circumferential or radial strain is a loss. This is where the kevlar string comes in. To limit circumferential strain, fibers can be wrapped around the outside of the cross section. Based on the angle and amount of times we wrap the actuator with the thread, different types of circumferential strains are allowed. This allows the actuators to bend and coil in different directions upon actuation. 
+
+In the standard actuator, the silicone is cast around a metal rod, and the 3D printed mold has indents to create markers of where to wrap the thread. After wrapping, another thinner layer of silicone is cast over the threads to seal them in. 
+
+Since we wanted to create an actuator with inverted bending behavior, we made the actuator circular. The semi-circular cross section faces the inside such that the flat side is longer and on the exterior. With actuation, the semi-circular section would axially strain around the neutral bending axis of the fiberglass fabric to achieve the unbending behavior. 
+
+Any variations in the cross section along the length would create variation in the all three strains, so the first goal was to fabricate an actuator with a uniform cross section. The dimensions of the desired cross section are shown in Figure \ref{fig:crosssection}.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=5 in]{images4/cross-section-drawing.jpg}
+    \caption{Drawing of the cross section and circular shape of the actuator.}
+    \label{fig:crosssection}
+\end{figure}
+
+\section{Casting Silicone}
+One of the goals of this project was to create an accessible fabrication method, to reduce the complexity of creating a single robot. To create a robot with a circular shape along the length and a uniform semi-circular cross section, we needed a way to cast the silicone around an arch-shaped inner piece, which would be removed to form the hollow chamber. We decided on the open angle of about 35$^\circ$, which determines the total length of the actuator based on the casting process of silicone. If the actuator were to extend further underneath itself, casting vertically would not have been possible. 
+
+First, a little background on silicone casting. The silicones chosen for this project were platinum cure, two part silicones from Smooth-On. We used four different silicones with Shore A Hardness ranging from 20--50: Dragon~Skin~20~(DS20), Dragon~Skin~30~(DS30), Smooth~Sil~940~(SS40), and Smooth~Sil~950~(SS50). The shore hardness of the actuator can be equated to the bending resistance, the harder the material, more stress is required to achieve a certain strain. Each of these silicones are well mixed, measured by weight, and degassed before pouring into any molds. We started with just using DS20 silicone since it has the fastest cure time, about 4 hours, and it is the easiest to mix of the four silicones. Its important that any materials used during the mixing process are compatible with the silicones and will not impact the curing process. We used popsicle sticks and metal spatulas for mixing within plastic cups. Figure \ref{fig:castingstation} contains an image of the casting station covered in paper as any drips of each part of silicone not mixed properly will never cure and can become quite sticky. 
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=4 in]{images4/castingstation.jpeg}
+    \caption{Photo of the casting station featuring Dragon Skin 20 Silicone, the scale and plastic cup for weighting each part of the 2 part silicone.}
+    \label{fig:castingstation}
+\end{figure}
+
+Once the two parts are mixed together, we degassed in a vacuum chamber for about 2-3 minutes, or until all of the large bubbles of air have been removed. The mixed silicone has the viscosity similar to honey, it is easy to pour but sticks to everything. Its important to remove any air from the silicone as if the silicone cures around the air bubbles, the little pockets ruin the uniform cross section required for consistent bending behavior. 
+
+\section{Arch-Shaped Dies}
+
+When trying to cast this shaped actuator out of a single pour of silicone, the arch shape allows for silicone to be poured in from the top, and with the help of gravity, the silicone flows down to each end of the actuator. 
+
+With the guidance from Cooper's AACE Lab staff, Harrison Tyler and Judy Li, we had access to multiple different filaments and materials for creating the pieces required for casting. The first check with any mold piece not made from PLA, is to ensure that the material does not inhibit the silicone's curing process. Materials with high sulphur content, for example, completely inhibit the curing process. 
+
+We chose to 3D print the outer molds from PLA. The mold has an arch shape so that the actuator can be casted vertically through a large pour hole, and any air would be able to escape from the top of the mold. The insert would slot into the mold so that it would be in the center, creating the even semi-circular cross section. The top of the mold had a large pour hole, and the walls maintained the height of the actuator so that any material attached to the flat side of the actuator could be later removed after the silicone cured. 
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=5 in]{images4/firstmolddesign.jpg}
+    \caption{Design for the first mold, left is an isometric view of the 3 pieces, right is a front view of the insert inside one side of the mold.}
+    \label{fig:firstmold}
+\end{figure}
+
+One side of the mold had feet such that the other side of the mold would fit into it, the molds fit together like puzzle pieces, once again to maintain the constant cross section. Figure \ref{fig:firstmold} contains the first mold designed for casting the circular actuator, highlighting the large pour hole at the top, the slot for the insert to lock into, and the asymmetries at the bottom of the molds so that they fit together and no silicone was allowed to escape from the bottom. 
+
