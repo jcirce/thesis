@@ -5,3 +5,6 @@
 *.log
 *.pdf
 *.toc
+
+#mac
+.DS_Store
