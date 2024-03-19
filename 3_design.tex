@@ -1,3 +1,19 @@
 \chapter{Design}
+\section{\emph{Reverse} Actuation}
+
+When we started this project, the idea was to create a soft robot with \emph{reverse} the typical actuation. If the standard soft robot bends with actuation, this one would unbend or uncurl. We were inspired by butterfly proboscis, the robot would initially occupy a small area and with inflation could extend outwards. This actuation is the opposite of a standard soft pneumatic actuator which are fabricated straight and bend or curl in with actuation. Similar to a inflatable party horn, we wanted the soft robot to extend so that it could build a structure or hold something together. 
+
+Starting with this lofty goal, we looked into how to define bending behavior for a soft robot. If the robot is to start coiled onto itself and lose curvature with actuation, we needed a way to measure said curvature. Thanks to the guidance of Professor Smyth, we created a sketch for an actuator with linearly increasing curvature along its length, where the factor controlling the slope of curvature would change with actuation. Figure \ref{fig:smythmodel} contains samples from the sketch of an actuator with varying curvature. 
+
+\begin{figure}
+    \centering
+    \includegraphics[width=4 in]{images3/smythmodel.jpg}
+    \caption{A sketch of decreasing curvature for a line of linearly changing curvature}
+    \label{fig:smythmodel}
+\end{figure}
+
+
+Initially, we fabricated a few robots based on Harvard's Soft Robotics Toolkit. We found the fabrication process, requiring multiple pours of silicone to be rather tedious. 
+
 \section{Circular Design}
 % chosen size, dimensions, cross section
