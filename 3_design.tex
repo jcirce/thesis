@@ -1,19 +1,30 @@
 \chapter{Design}
-\section{\emph{Reverse} Actuation}
+\section{Defining Uncoiling}
 
 When we started this project, the idea was to create a soft robot with \emph{reverse} the typical actuation. If the standard soft robot bends with actuation, this one would unbend or uncurl. We were inspired by butterfly proboscis, the robot would initially occupy a small area and with inflation could extend outwards. This actuation is the opposite of a standard soft pneumatic actuator which are fabricated straight and bend or curl in with actuation. Similar to a inflatable party horn, we wanted the soft robot to extend so that it could build a structure or hold something together. 
 
 Starting with this lofty goal, we looked into how to define bending behavior for a soft robot. If the robot is to start coiled onto itself and lose curvature with actuation, we needed a way to measure said curvature. Thanks to the guidance of Professor Smyth, we created a sketch for an actuator with linearly increasing curvature along its length, where the factor controlling the slope of curvature would change with actuation. Figure \ref{fig:smythmodel} contains samples from the sketch of an actuator with varying curvature. 
 
-\begin{figure}
+\begin{figure}[h]
     \centering
     \includegraphics[width=4 in]{images3/smythmodel.jpg}
     \caption{A sketch of decreasing curvature for a line of linearly changing curvature}
     \label{fig:smythmodel}
 \end{figure}
 
+To take the initial curvature problem into 3 dimensions, we began modeling spiral shapes to better understand the parameters available. First, in an attempt to maximize the final length, the coil would wrap around itself as many times as possible. To increase the final length, similar to a butterfly, the cross section is reduced along the length to prevent self-intersection. The cross section reduction over the length for a butterfly is XX\%. We first modeled a 50\% decrease in a rectangular cross section area over length for a coil. Figure \ref{fig:butterflycoil} contains one of our initial models of the coil shape. 
 
-Initially, we fabricated a few robots based on Harvard's Soft Robotics Toolkit. We found the fabrication process, requiring multiple pours of silicone to be rather tedious. 
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=4.5 in]{images3/butterflycoil.png}
+    \caption{A sketch and 3D sweep of a coil of constant curvature with cross section reduction of 50\% over its length}
+    \label{fig:butterflycoil}
+\end{figure}
+
+The parameters involved with creating such an actuator and defining its bending behavior would require a well defined and feasible to fabricate cross section, the cross section reduction over length, the total length and number of turns the coil would make. Having all of these parameters at once to play with would make characterization difficult, if not impossible. We decided early that maintaining a constant cross section along the length would be ideal for fabrication and modeling. 
+
+Additionally, if we made actuators with changing curvature along its length, we would first have to understand how the curvature changes with actuation. We considered linearly increasing curvature or exponentially increasing curvature, and decided to first start with constant curvature, and build from there. Little did we know it would take two years of research to fully understand the circular actuator. 
 
 \section{Circular Design}
-% chosen size, dimensions, cross section
+
+Before going circular, to better understand the constraints of the silicone and the strain-limiting materials required for soft pneumatic actuators, we fabricated a few robots based on Harvard's Soft Robotics Toolkit. These robots have a semi-circular cross section for its small bending resistance \cite{polygerinos_modeling_2015}. These initially-straight robots are cast around a metal D-shaped rod, within 3D printed molds. We chose the same cross-section dimensions and wall thickness as we felt comfortable with this sized robot, we were able to make it airtight and use the same design for interfacing to the pressurized air supply. If the cross section matched, we could use the same hardware and acrylic pieces as the Toolkit robot. 
