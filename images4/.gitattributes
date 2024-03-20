@@ -14,5 +14,4 @@ twopartinsert.jpg filter=lfs diff=lfs merge=lfs -text
 barb.jpg filter=lfs diff=lfs merge=lfs -text
 endcaps.jpg filter=lfs diff=lfs merge=lfs -text
 fab.jpg filter=lfs diff=lfs merge=lfs -text
-f filter=lfs diff=lfs merge=lfs -text
 fiberglass.jpg filter=lfs diff=lfs merge=lfs -text
