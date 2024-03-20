@@ -1,19 +1,37 @@
 \chapter{Analytical Model}
-\section{Preliminary Models}
-\subsection{Using Ellipses}
-% ellipes of constant length, constant open angle, calculates various a,b that fit spec (this was soooo long ago lol)
-\subsection{Constant Curvature, Strain}
-% circles constant length, given open angle, calculate strain of innermost piece, relate strain to curvature, trying to understand how strains as curvature decreases
 
-\section{Negative Bending Angles}
-defining negative bending angles and how this was a breakthru in the model
-\subsection{Strain of Entire Cross Section}
-integrating strain across entire cross section assuming constant cross section
-\subsection{Stress vs Strain for Silicone}
-pain pain pain ~ many nonlinear models 
-\subsection{Relating Stress to Pressure}
-moments model for non-augmented cross section
-\subsection{Augmented Cross Section}
-accounting for hoop strain ~~ 
-\subsection{Pressure vs Bending Angle for 4 Materials}
-here have final model equations explained, analysis of concavity
+\section{Overview}
+To model the bending behavior of the actuators with varying input pressure, first we must define \emph{bending}. We define the bending angle of the actuator at any pressure based on the \emph{open} angle formed by the strain-limiting layer, the fiberglass fabric. For each bending angle, we calculate the strain throughout the actuator to maintain the angle formed by the fiberglass layer. Based on the material model for the hyperelastic silicone, we calculate the stress within the actuator. Once we know the stress in the material, we can calculate the pressure required to induce the stress. 
+
+In preliminary models, we focused on shapes the fiberglass fabric could form, assuming constant curvature and assuming the actuator could take an elliptical shape. The final model included the circumferential and radial strains within the actuator to calculate the pressure required for a bending angle assuming constant curvature along the length of the actuator. 
+
+\section{Preliminary Unbending Model \& Visualization}
+
+Starting with the length of the fiberglass fabric, the circular shape of the actuator, and the largest open angle we were able to fabricate, we developed a simple method of plotting the shape of the actuator and determining the maximum axial strain. In the very beginning of attempting to model the circular actuator's bending behavior we had not yet realized that the actuator was capable of bi-directional bending. Nor did we know that the actuator was unstable at the infinite curvature position. All we knew at the time was the length of the fiberglass fabric and that the actuator was a circle. 
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=3 in]{images5/lnot.jpg}
+    \caption{Drawing containing the initial bending angle, and length of the fiberglass fabric highlighting the length lost to the fabrication process.}
+    \label{fig:lnot}
+\end{figure}
+
+During fabrication, a non-significant amount of the actuator's length is lost to sealing the ends. Fig. \ref{fig:lnot} contains the variables and shows the length of the actuator lost to fabrication. The initial bending angle, $\varphi_{0}$, ranged between 215-230$^\circ$. The circle formed by the fiberglass layer has a radius, $r_{0}$, of 2.4~in or 6.1~cm. We can calculate the length of the fiberglass fabric, $l_{0}$, using $l_{0} = r_{0}*\varphi_{0}$, the arc length equation for a circle. 
+
+For a given $l_{0}$, we can visualize how reducing $\varphi$ increases the bending radius, $r$. As $\varphi$ approaches $0^\circ$, the bending radius approaches infinity. Fig. \ref{fig:unbending} displays the first visualization of the actuator's bending behavior as $\varphi$ approaches $0^\circ$. This model assumes that the actuator maintains a circular shape. 
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=3.5 in]{images5/unbending.jpg}
+    \caption{First visualization of the unbending behavior of the circular actuator assuming constant curvature of the fiberglass fabric.}
+    \label{fig:unbending}
+\end{figure}
+
+Assuming the actuator undergoes no circumferential or radial strain, a bold assumption, considering there are no strain limiting materials added around the cross section during fabrication, but for visualization, it is helpful to consider each line of silicone undergoing axial strain. If we assume the semi-circular cross section does not change during pressurization, we can visualize the strain of the innermost line of silicone. Plotting a few samples, the black lines represent the fiberglass layer and the colored lines represent the strained, innermost layer of silicone. Fig. \ref{fig:innermoststrain} contains samples to visualize each line of silicone and the axial strain it must undergo to maintain both the constant cross section, and the length and the bending angle set by the fiberglass layer. 
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=3.5 in]{images5/innermoststrain.jpg}
+    \caption{First visualization of the axial strain the innermost line of silicone must undergo to maintain the cross section and curvature set by the fiberglass layer.}
+    \label{fig:innermoststrain}
+\end{figure}
