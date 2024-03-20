@@ -6,3 +6,6 @@ pvainsert.jpg filter=lfs diff=lfs merge=lfs -text
 ss45mess.jpg filter=lfs diff=lfs merge=lfs -text
 tpuinsertfab.jpg filter=lfs diff=lfs merge=lfs -text
 tpupincasting.jpg filter=lfs diff=lfs merge=lfs -text
+newmolds.jpg filter=lfs diff=lfs merge=lfs -text
+pclinsert.jpg filter=lfs diff=lfs merge=lfs -text
+waxinserts.jpg filter=lfs diff=lfs merge=lfs -text

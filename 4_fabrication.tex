@@ -111,4 +111,47 @@ The TPU insert with pins method was successful at creating an airtight actuator 
 
 To combat the air holes that remained in the silicone, we attempted to degas the entire mold after casting the actuator. The small air pockets expanded and left the actuator with a consistency of swiss cheese. Additionally, the pins left large holes and since the solid TPU insert could not be slid in to patch the holes, we had to look into alternate methods of restricting the flexible insert. 
 
+\section{Case Study: DS20 Spacers}
 
+For DS20 silicone, patching the holes left behind by the pins was successful at creating an airtight seal. In an attempt to remove the need to patch the holes, we attempted casting actuators using rings of DS20 silicone to hold the TPU insert in place. We printed a mold to cast small semi-circular rings of DS20 silicone, then cut a piece away so while casting the actuator's body, the silicone would flow past the spacers and reach the ends. The placement of the spacers was somewhat arbitrary as we were unsure if this method would create an airtight seal. After casting the actuator and removing from the molds, simply pulling on the actuator would break the seal between the silicone pieces. Figure \ref{fig:ds20spacer} contains images of this attempt at centering the TPU insert inside of the mold. 
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=6 in]{images4/ds20spacer.jpg}
+    \caption{Images of failed attempts at using a spacer made from DS20 silicone to center the TPU insert. A. 3D printed mold for the spacers. B. casted spacers. C. Arbitrary placement of spacers. D. Casted actuators right after removing from the mold. E. After removing excess silicone. F. Failed attempt at creating a seal.}
+    \label{fig:ds20spacer}
+\end{figure}
+
+\section{Mold Improvements}
+The molds we 3D printed had served us well, but were beginning to buckle from the frequent clamping and tapping on the table to remove air from the actuators. The increase in flashing post each cast meant it was time to print new molds. The first upgrade was a larger pour hole with extra relief for the air bubbles that would get stuck at the top of the mold. Additionally, clamp placement needed to be on the parts where the two halves of the molds touch. If the clamp was tightened around an area meant to be filled with silicone, we noticed that the silicone walls would be uneven. Adding markings for safe places to apply the clamps improved wall thickness significantly. For the thinner silicones, extra clamps on the interior section were required to reduce leakage and flashing, as shown in Figure \ref{fig:newmolds}.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=6 in]{images4/newmolds.jpg}
+    \caption{Upgrades to the molds. A. Drawing of the larger pour hole. B. Drawing of the molds with markings for clamp placement. C. Photo of additional clamps required on the interior.}
+    \label{fig:newmolds}
+\end{figure}
+
+\section{Case Study: Wax Inserts}
+
+Creating an insert from wax was perhaps more trouble than it was worth, but it did lead us closer to the final fabrication method. We found three waxes compatible with curing silicone: Beeswax, paraffin wax, and microcrystalline wax. To cast the wax insert, we 3D printed a new mold and an insert out of PLA for casting a mold from silicone. We then casted the wax into the silicone mold. 
+
+All three waxes were able to be partially casted and removed from the silicone mold. However, we found that the creating the wax insert to have the perfect cross section shape to ensure a future uniform cross section for the actuator to be difficult and the waxes were not rigid enough to hold their shape inside of the mold during casting. We thought about combining waxes in different ratios to enhance the stiffness and ease of casting, but even if the wax inserts were able to create the perfect cross section when casting silicone, they would have to be melted and recast for fabricating each actuator. With mass production in mind, we decided to not further pursue wax inserts. Figure \ref{fig:waxinserts} contains images from experimenting with wax inserts. 
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=6 in]{images4/waxinserts.jpg}
+    \caption{Experimentation with wax inserts. A. 3D printed mold and insert for casting silicone mold for wax. B. Using popsicle sticks to hold insert above silicone while casting mold. C. Paraffin wax casted in silicone mold. D. Paraffin insert removed from mold. E. Beeswax and Microcrystalline wax cast in silicone molds. F. Beeswax and Microcrystalline wax removed from silicone molds}
+    \label{fig:waxinserts}
+\end{figure}
+
+\section{Case Study: PCL Inserts}
+
+PCL (Polycaprolactone) is a plastic that has a low melting temperature and is moldable with the use of warm water. Using the same silicone mold made for the wax inserts we used warm water to melt the PCL pellets into blobs which were pressed into the silicone mold. The DS20 mold was far too flexible to accurately shape the PCL. Also, as the pieces of PCL cooled and solidified, they would not fully bond with the other pieces, leaving air gaps in the insert. After tuning the timing between the pieces cooling down and adding more PCL pieces we were successful at creating an insert, and cast a DS20 actuator around the PCL insert. Unfortunately, the walls of the silicone were uneven and the PCL insert has the same single use problem as the wax inserts. Figure \ref{fig:pclinsert} contains photographs of experimenting with PCL as an insert and the DS20 actuator we casted using the PCL insert. 
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=6 in]{images4/pclinsert.jpg}
+    \caption{Experimentation with PCL inserts. A. Silicone mold. B. An attempt. C. Melting PCL in warm water. D. PCL insert inside PLA mold. E. Casted around PCL insert. F. Removed from mold. G. Extra silicone removed. H. Final actuator.}
+    \label{fig:pclinsert}
+\end{figure}
