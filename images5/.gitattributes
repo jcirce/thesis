@@ -1,3 +1,4 @@
 innermoststrain.jpg filter=lfs diff=lfs merge=lfs -text
 lnot.jpg filter=lfs diff=lfs merge=lfs -text
 unbending.jpg filter=lfs diff=lfs merge=lfs -text
+modelall.jpg filter=lfs diff=lfs merge=lfs -text

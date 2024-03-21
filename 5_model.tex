@@ -1,11 +1,11 @@
-\chapter{Analytical Model}
+\chapter{Analytical Modeling}
 
 \section{Overview}
 To model the bending behavior of the actuators with varying input pressure, first we must define \emph{bending}. We define the bending angle of the actuator at any pressure based on the \emph{open} angle formed by the strain-limiting layer, the fiberglass fabric. For each bending angle, we calculate the strain throughout the actuator to maintain the angle formed by the fiberglass layer. Based on the material model for the hyperelastic silicone, we calculate the stress within the actuator. Once we know the stress in the material, we can calculate the pressure required to induce the stress. 
 
 In preliminary models, we focused on shapes the fiberglass fabric could form, assuming constant curvature and assuming the actuator could take an elliptical shape. The final model included the circumferential and radial strains within the actuator to calculate the pressure required for a bending angle assuming constant curvature along the length of the actuator. 
 
-\section{Preliminary Unbending Model \& Visualization}
+\section{Preliminary Model \& Visualization}
 
 Starting with the length of the fiberglass fabric, the circular shape of the actuator, and the largest open angle we were able to fabricate, we developed a simple method of plotting the shape of the actuator and determining the maximum axial strain. In the very beginning of attempting to model the circular actuator's bending behavior we had not yet realized that the actuator was capable of bi-directional bending. Nor did we know that the actuator was unstable at the infinite curvature position. All we knew at the time was the length of the fiberglass fabric and that the actuator was a circle. 
 
@@ -35,3 +35,140 @@ Assuming the actuator undergoes no circumferential or radial strain, a bold assu
     \caption{First visualization of the axial strain the innermost line of silicone must undergo to maintain the cross section and curvature set by the fiberglass layer.}
     \label{fig:innermoststrain}
 \end{figure}
+
+\section{A Discovery}
+
+While inflating the actuators during initial testing, we discovered that adding more air pressure past the limit where $\varphi$ approaches 0$^\circ$ caused the actuator to continue bending. The silicone of the semi-circular section continued expanding and the additional axial strain added curvature back to the fiberglass fabric. In an accident where we added too much pressure to the actuator, we discovered the circular actuator's bi-directional bending capabilities. We accidentally created a fiber-reinforced actuator capable of two directions of bending with a single positive pressure source. After making this discovery, we had to alter the definition of a bending angle to build a continuous model over the entire range of motion. Introducing negative bending angles to define the curling behavior did the trick. The next section will fully define the analytical model for the circular actuators entire range of bending behavior. 
+
+\section{Analytical Model for Bending Angle}
+
+To characterize the actuator's bending behavior as a function of input pressure and material properties, we developed an analytical model for curling and uncurling based on those found in \cite{polygerinos_modeling_2015, connolly_automatic_2017, hu_precurved_2022}. We calculate the input pressure $P$ required to reach a given bending angle $\psi$ using the geometry of the actuator, the length of the inextensible layer $l_0$, and the non-linear hyperelastic material properties of each silicone, including non-axial deformation. To account for circumferential deformation, we transform the cross-section at each pressure based on material stretches. As the pressure increases, the actuator uncurls (decreasing $\psi$) from its initial bending angle $\psi_0$ to an angle $\psi=0$, where the actuator is straight. Further increasing pressure causes $\psi$ to become negative, corresponding to curling behavior, thus generating a bi-directional range of motion. Fig. \ref{fig:modelall} contains all of the variables used in the analytical model. 
+
+\begin{figure}[h]
+    \centering
+     \includegraphics[width=6 in]{images5/modelall.jpg}
+    \caption{Geometric variables defined for the analytical model. The thicker line represents the inextensible layer. A. Definition of positive and negative bending angles. B. Undeformed cross-sectional geometry of the actuator. C. Axial stretch ratios and corresponding stress in response to applied pressure. D. Deformed cross-sectional geometry to account for circumferential and radial deformation.}
+    \label{fig:modelall}
+\end{figure}
+
+\clearpage
+\subsection{Stretch Ratios}
+
+As the actuator bends, the silicone stretches in the axial direction to maintain the length $l_0$ of the inextensible layer. The model assumes that the actuator maintains a single, constant bending radius along its length at all pressures and that the cross-section remains orthogonal to the inextensible layer. We also assume incompressibility in the hyperelastic material, such that $\lambda_{1}\lambda_{2}\lambda_{3} = 1$ where $\lambda_i$ is the stretch ratio in each direction (axial, circumferential, and radial, respectively). This assumption requires that the cross-sectional area of the silicone remains constant, even as the shape deforms. Increasing pressure causes the semi-circular region to expand outwards into a circular shape, resulting in thinning of the actuator's walls to maintain a constant cross-sectional area (Fig. \ref{fig:modelall}D). We assume no geometric changes in the base layer because of the proximity to the inextensible layer.
+
+For the undeformed cross section, as shown in Fig.~\ref{fig:modelall}B, $\beta$ is the coordinate in the base layer away from the inextensible layer, and $\tau$ is the distance from the inner wall in the $\varphi$ direction. The base region has thickness $b$~=~0.38~cm, and the undeformed semi-circular cross-section wall has radius $a_0$~=~0.64~cm and thickness $t_0$~=~0.38~cm. In the deformed cross-section (Fig.~\ref{fig:modelall}D), we assume that the silicone forms a circular arc with offset from the base $q$, inner radius $a$, wall thickness $t$ and angle range $-\varphi_m$ to $\varphi_m$. $\tau'$ and $\varphi'$ are scaled coordinates with reference to the undeformed shape such that $\tau'=\tau\frac{t}{t_0}$ and $\varphi'=\varphi\frac{2\varphi_m}{\pi}$.
+
+For a given bending angle $\psi$, we calculate the axial stretch ratio $\lambda_1$ as $\lambda_{\beta}$ for material in the base and $\lambda_{\varphi,\tau}$ in the semi-circular region (Fig.~\ref{fig:modelall}C). When $\psi$ is negative, the axial stretch ratio remains positive as all lengths must exceed $l_0$. We also calculate the circumferential stretch ratio based on the deformed cross-section. These equations hold for the entire range of $\psi$ and deformation of the cross-section. 
+
+\begin{equation}
+    \lambda_1=\lambda_{\beta} = \frac{l_{0} - \beta \psi}{l_{0}-\beta\psi_0} 
+    \label{eq:stretchbeta}
+\end{equation}
+
+\begin{equation}
+    \lambda_1=\lambda_{\varphi,\tau} = \frac{l_{0} - (b+q+(a+\tau')\cos\varphi')\psi}{l_{0} - (b+(a_0+\tau)\cos\varphi)\psi_{0}}
+    \label{eq:stretchphitau}
+\end{equation}
+
+\begin{equation}
+    \lambda_2=\lambda_c = \frac{2(a+\tau')\varphi_m}{(a_0+\tau)\pi} 
+    \label{eq:stretchc}
+\end{equation}
+
+For the undeformed shape, the circumferential stretch ratio $\lambda_2$ is 1. The stretch ratio in the radial direction $\lambda_3=\lambda_r$ can be calculated as $\lambda_3=1/(\lambda_1 \lambda_2)$ from the incompressibility assumption. To find the wall thickness $t$ of the circular arc region of the deformed cross-section, we integrate the radial stretch of the undeformed shape over the thickness:
+
+\begin{equation}
+    t = \int_0^{t_0} \frac{1}{\lambda_{\varphi,\tau} \times 1} d\tau 
+    \label{eq:thicknessfromlambdar}
+\end{equation}
+
+To account for the inaccuracy of the material models and the compressibility of the DragonSkin materials, we scale the calculated thickness by $k_t(1-|\psi-\psi_0|/\psi_0)$ where $k_t = 0.3$ is a constant determined by best fit to the experimental expansion results. This scaling accounts for the non-zero radial stress, especially at negative bending angles. No scaling is necessary for the stiffer SmoothSil materials. 
+
+To transform the cross-section from the original semi-circle to the circular arc, we use the scaled thickness $t$ and the cross-sectional area $A_0$ to calculate the deformed inner radius $a$, angle range $2\varphi_m$, and vertical offset $q$:
+
+\begin{equation}
+    \frac{A_0}{2\sin{\varphi_m}t}-\frac{t}{2}=\frac{a_0}{\sin{\varphi_m}}
+    \label{eq:phi_m}
+\end{equation}
+
+\begin{equation}
+    a=\frac{A_0}{2t\varphi_m}-\frac{t}{2}
+    \label{eq:a_aug}
+\end{equation}
+
+\begin{equation}
+    q=-a\cos{\varphi_m}
+    \label{eq:q_aug}
+\end{equation}
+
+The axial and circumferential stretch ratios are then recalculated using the deformed cross section and Equations \ref{eq:stretchbeta}--\ref{eq:stretchc} before calculating stress with the material models.
+
+\subsection{Converting Strain to Stress}
+
+To describe the stress-strain relationship for each of the soft materials, multiple material models are available; they can vary significantly in accuracy depending on the amount of strain \cite{paterno_hybrid_2018}. We choose the Ogden hyperelastic material model because it is more accurate at higher stretches and for softer materials \cite{marechal_toward_2021}. The strain energy density function $W$ for the Ogden model is given by Eq. \ref{eq:strain-ogden}, where $\mu_{p}$ and $\alpha_{p}$ are experimentally determined material coefficients. We can use a given Neo-Hookean material model coefficient ($\mu$) in the Ogden model by setting $N=1$ and $\alpha_1=2$. 
+
+\begin{equation}
+    W=\sum_{p=1}^N \frac{\mu_p}{\alpha_p}(\lambda_1^{\alpha_p}+\lambda_2^{\alpha_p}+\lambda_3^{\alpha_p}-3)
+    \label{eq:strain-ogden}
+\end{equation}
+\\
+The Cauchy stresses in all three directions are given by $\sigma_j=-p+\lambda_j\frac{\partial W}{\partial\lambda_j}$, where $p$ is a Lagrange multiplier. The stresses in the radial direction are significantly smaller than those in the other directions, so we assume $\sigma_3=0$. We calculate the axial and circumferential stresses using Equations \ref{eq:s_1} - \ref{eq:multiplier-p} and the material properties found in Table \ref{table}. 
+
+\begin{equation}
+    \sigma_1 =-p+\mu_1\lambda_1^{\alpha_1}+\mu_2\lambda_1^{\alpha_2}+\mu_3\lambda_1^{\alpha_3}
+    \label{eq:s_1}
+\end{equation}
+
+\begin{equation}
+    \sigma_2 =-p+\mu_1\lambda_2^{\alpha_1}+\mu_2\lambda_2^{\alpha_2}+\mu_3\lambda_2^{\alpha_3}
+    \label{eq:s_2}
+\end{equation}
+
+\begin{equation}
+    p=\mu_1(\lambda_1\lambda_2)^{-\alpha_1}+\mu_2(\lambda_1\lambda_2)^{-\alpha_2}+\mu_3(\lambda_1\lambda_2)^{-\alpha_3}
+    \label{eq:multiplier-p}
+\end{equation}
+
+\begin{table}[h!]
+\caption{Material Properties Used in Analytical Model}
+\label{table}
+\centering
+\begin{tabular}{l r r l}
+\hline
+{} & \bfseries Variable & \bfseries Value & \bfseries Unit \\
+\hline\hline
+DS20 \cite{marechal_toward_2021} & $\mu_1$, $\mu_2$, $\mu_3$ & -0.9534, -1.4515, 2.4085 & MPa\\
+{} & $\alpha_1$, $\alpha_2$, $\alpha_3$ & 3.478, 3.181, 3.339 & {}\\
+\hline
+DS30 \cite{marechal_toward_2021} & $\mu_1$, $\mu_2$, $\mu_3$ & 0.03816, 0.02524, 0.04456 & MPa\\
+{} & $\alpha_p$ & 3.417 & {}\\
+\hline
+SS40 \cite{pagoli_review_2022} & $\mu_1$ & 0.24 & MPa\\
+{} & $\alpha_1$ & 2 & {}\\
+\hline
+SS50 \cite{xavier_finite_2021} & $\mu_1$ & 0.68 & MPa\\
+{} & $\alpha_1$ & 2 & {}\\
+\end{tabular}
+\label{table}
+\end{table}
+
+\clearpage
+\subsection{Pressure from Bending Moments}
+
+The bending moments $M_P$ and $M_\sigma$ about the \(O\) axis (Fig.~\ref{fig:modelall}C) result from pressure on the end of the actuator and axial stress, respectively. These moments must be equivalent for the actuator to achieve static equilibrium. We calculate the bending moment $M_\sigma$ as the integral of the force from axial stress in both the base ($\sigma_{\beta}$) and the circular arc ($\sigma_{\varphi, \tau}$) regions times the orthogonal distance from \(O\) for the entire length of the actuator. 
+
+\begin{equation}
+    M_{\sigma} = 2l_{0} \int_{0}^{b} \sigma_{\beta} (a_0+t_0) \beta  d\beta
+    + l_{0}\int_{0}^{t_0}\hspace{-2px}\int_{-\frac{\pi}{2}}^{\frac{\pi}{2}}\hspace{-2px}\sigma_{\varphi,\tau}((a+\tau')\cos{\varphi'}+b+q)(a+\tau') d\varphi d\tau
+    \label{eq:moment-axial}
+\end{equation}
+
+The bending moment $M_P$ resulting from a given input pressure \(P\) acting on the end of the actuator is a function of the deformed cross-sectional geometry: 
+
+\begin{align}
+    M_P & = P \int_{-\frac{\pi}{2}}^{\frac{\pi}{2}}\int_0^{a} a(b+q+a\cos{\varphi})d\varphi da \\ \nonumber \\
+    & = \frac{4 a^{3} + 3 \pi a^{2} (b+q)}{6} P 
+    \label{eq:moment-p}
+\end{align}
+
+We equate (\ref{eq:moment-axial}) and (\ref{eq:moment-p}) and solve for the required input pressure $P$ to induce the axial stresses for a given bending angle $\psi$. To account for the underestimation of $P$ due to uncertainty in the material models and non-uniformity in the actuator, we scale the calculated pressure by a constant $k_P$, determined by a best fit for each material. $k_P$ is 3.8 for DS20, 1.8 for DS30, and 2.2 for SS40 and SS50. 
