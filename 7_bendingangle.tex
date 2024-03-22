@@ -90,5 +90,28 @@ From here on in this work, kPa will be the unit of pressure. (1.0 psi = 6.89 kPa
 \end{figure}
 
 \clearpage
-\section{Orientation for Photographing Bending Angle}
+\section{Photographing Bending Angle}
+
+In order to remove the influence of gravity and friction on bending angle as we both increased and decreased the pressure in the circular actuator, we chose to photograph the actuator horizontally. The actuator was allowed to rest on the table, and if the fiberglass fabric was placed perpendicular to the table, using a camera mounted above the table pointing down, we could capture the bending angle at any pressure. Although laborious, we held the actuator above the table when changing the internal pressure to eliminate the effects of friction. Once the pressure and strain of the actuator reached a steady-state, we would place the actuator on the table so that it could be photographed. The bending behavior maintained hysteresis between increasing and decreasing pressure, but it can be associated with the non-linear nature of the hyperelastic material, not friction or gravity. Additionally, this orientation provided the closest behavior to the constant curvature we expected from the model. 
+
+\section{Calculating Bending Angle}
+
+Now that we have an effective method of photographing the circular actuators, we can use the photographs to calculate the bending angle at each pressure. Rearranging the arc-length equation, $l_{0} = r_{0}\varphi_{0}$, for the bending angle gives $\varphi = l_0/r$, where $l_0$ is the length of the inextensible fiberglass fabric, and $r$ is the bending radius of the actuator. For a circle, and specifically measuring the circle from a photograph, measuring the curvature, $\kappa$, of the fiberglass layer is the easiest approach to calculate the bending angle. Knowing $\kappa = 1/r$, we can calculate the bending angle from the curvature using $\varphi = l_{0}\kappa$. 
+
+\subsection{Curvature from 3 Points}
+
+Given three points in cartesian space, we can calculate the curvature of the circle formed by those three points using Eq. \ref{eq:CurvatureEq} \cite{ratliff_cartesian_2019}. 
+\begin{align} 
+    \kappa = \frac{2\cdot\lvert((x_2-x_1)\cdot(y_3-y_2)) - ((y_2-y_1)\cdot(x_3-x_2))\rvert}{\sqrt{[(x_2-x_1)^2+(y_2-y_1)^2] \cdot [(x_3-x_2)^2+(y_3-y_2)^2] \cdot [(x_1-x_3)^2+(y_1-y_3)^2]}} 
+    \label{eq:CurvatureEq} 
+\end{align}
+
+Before the automation of calculating the curvature was fully developed, we wanted to compare the model to the experimental results from the photographs. Possibly the quickest way we could think of was to import the photographs into OnShape and measure the radius of the circle formed by the actuator, since the software has built-in functionality for calculating the radius of a circle defined by 3 points. This method can be compared to using a ruler compared to using a micrometer, but even with large uncertainty, we were able to get some useful data to compare to the analytical model. Fig. \ref{fig:onshapecircles} contains four samples of sketches of circles created in OnShape. Note as $\varphi$ approaches $0^\circ$, the radius of the circle approaches infinity. 
+
+\begin{figure}[h]
+    \centering
+     \includegraphics[width=6 in]{images7/onshapecircles.jpg}
+    \caption{Four screenshots from OnShape showing one method of measuring the bending angle of the circular actuators at different pressures.}
+    \label{fig:onshapecircles}
+\end{figure}
 
