@@ -1,0 +1,7 @@
+d20againstgravity.jpg filter=lfs diff=lfs merge=lfs -text
+d30withgravity.jpg filter=lfs diff=lfs merge=lfs -text
+ds20h.jpg filter=lfs diff=lfs merge=lfs -text
+ds20sver.jpg filter=lfs diff=lfs merge=lfs -text
+firstdataset.jpg filter=lfs diff=lfs merge=lfs -text
+ss45fallsover.jpg filter=lfs diff=lfs merge=lfs -text
+withgravity.jpg filter=lfs diff=lfs merge=lfs -text
