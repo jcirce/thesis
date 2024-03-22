@@ -1,13 +1,13 @@
 \chapter{Analytical Modeling}
 
 \section{Overview}
-To model the bending behavior of the actuators with varying input pressure, first we must define \emph{bending}. We define the bending angle of the actuator at any pressure based on the \emph{open} angle formed by the strain-limiting layer, the fiberglass fabric. For each bending angle, we calculate the strain throughout the actuator to maintain the angle formed by the fiberglass layer. Based on the material model for the hyperelastic silicone, we calculate the stress within the actuator. Once we know the stress in the material, we can calculate the pressure required to induce the stress. 
+First, we must define \emph{bending} to model the actuators' bending behavior with varying input pressure. We define the bending angle of the actuator at any pressure based on the \emph{open} angle formed by the strain-limiting layer, the fiberglass fabric. For each bending angle, we calculate the strain throughout the actuator to maintain the angle formed by the fiberglass layer. We calculate the stress within the actuator based on the material model for the hyperelastic silicone. Once we know the stress in the material, we can calculate the pressure required to induce the stress. 
 
-In preliminary models, we focused on shapes the fiberglass fabric could form, assuming constant curvature and assuming the actuator could take an elliptical shape. The final model included the circumferential and radial strains within the actuator to calculate the pressure required for a bending angle assuming constant curvature along the length of the actuator. 
+In preliminary models, we focused on shapes the fiberglass fabric could form, assuming it maintains a constant curvature. The final model included the circumferential and radial strains within the actuator to calculate the pressure required for a bending angle assuming constant curvature along the length of the actuator. 
 
 \section{Preliminary Model \& Visualization}
 
-Starting with the length of the fiberglass fabric, the circular shape of the actuator, and the largest open angle we were able to fabricate, we developed a simple method of plotting the shape of the actuator and determining the maximum axial strain. In the very beginning of attempting to model the circular actuator's bending behavior we had not yet realized that the actuator was capable of bi-directional bending. Nor did we know that the actuator was unstable at the infinite curvature position. All we knew at the time was the length of the fiberglass fabric and that the actuator was a circle. 
+Starting with the length of the fiberglass fabric, the circular shape of the actuator, and the largest open angle we could fabricate, we developed a simple method of plotting the shape of the actuator and determining the maximum axial strain. While first attempting to model the circular actuator's bending behavior, we had yet to realize that the actuator was capable of bi-directional bending. Nor did we know that the actuator was unstable at the infinite curvature position. All we knew then was the length of the fiberglass fabric and that the actuator was a circle. 
 
 \begin{figure}[h]
     \centering
@@ -16,7 +16,7 @@ Starting with the length of the fiberglass fabric, the circular shape of the act
     \label{fig:lnot}
 \end{figure}
 
-During fabrication, a non-significant amount of the actuator's length is lost to sealing the ends. Fig. \ref{fig:lnot} contains the variables and shows the length of the actuator lost to fabrication. The initial bending angle, $\varphi_{0}$, ranged between 215-230$^\circ$. The circle formed by the fiberglass layer has a radius, $r_{0}$, of 2.4~in or 6.1~cm. We can calculate the length of the fiberglass fabric, $l_{0}$, using $l_{0} = r_{0}*\varphi_{0}$, the arc length equation for a circle. 
+During fabrication, we lose a non-significant amount of the actuator's length to seal the ends. Fig. \ref{fig:lnot} contains the variables and shows the length of the actuator lost to fabrication. The initial bending angle, $\varphi_{0}$, ranged between 215-230$^\circ$. The circle formed by the fiberglass layer has a radius, $r_{0}$, of 2.4~in or 6.1~cm. We can calculate the length of the fiberglass fabric, $l_{0}$, using $l_{0} = r_{0}*\varphi_{0}$, the arc length equation for a circle. 
 
 For a given $l_{0}$, we can visualize how reducing $\varphi$ increases the bending radius, $r$. As $\varphi$ approaches $0^\circ$, the bending radius approaches infinity. Fig. \ref{fig:unbending} displays the first visualization of the actuator's bending behavior as $\varphi$ approaches $0^\circ$. This model assumes that the actuator maintains a circular shape. 
 
@@ -27,7 +27,7 @@ For a given $l_{0}$, we can visualize how reducing $\varphi$ increases the bendi
     \label{fig:unbending}
 \end{figure}
 
-Assuming the actuator undergoes no circumferential or radial strain, a bold assumption, considering there are no strain limiting materials added around the cross section during fabrication, but for visualization, it is helpful to consider each line of silicone undergoing axial strain. If we assume the semi-circular cross section does not change during pressurization, we can visualize the strain of the innermost line of silicone. Plotting a few samples, the black lines represent the fiberglass layer and the colored lines represent the strained, innermost layer of silicone. Fig. \ref{fig:innermoststrain} contains samples to visualize each line of silicone and the axial strain it must undergo to maintain both the constant cross section, and the length and the bending angle set by the fiberglass layer. 
+Assuming the actuator undergoes no circumferential or radial strain is a bold assumption, considering we add no strain-limiting materials around the cross section during fabrication. However, it is helpful to consider each line of silicone undergoing axial strain. If we assume the semi-circular cross-section does not change during pressurization, we can visualize the strain of the innermost line of silicone. We plotted a few samples: the black lines represent the fiberglass layer, and the colored lines represent the strained, innermost silicone layer. Fig. \ref{fig:innermoststrain} contains samples to visualize each line of silicone and the axial strain it must undergo to maintain the constant cross-section, length, and bending angle set by the fiberglass layer. 
 
 \begin{figure}[h]
     \centering
@@ -38,7 +38,7 @@ Assuming the actuator undergoes no circumferential or radial strain, a bold assu
 
 \section{A Discovery}
 
-While inflating the actuators during initial testing, we discovered that adding more air pressure past the limit where $\varphi$ approaches 0$^\circ$ caused the actuator to continue bending. The silicone of the semi-circular section continued expanding and the additional axial strain added curvature back to the fiberglass fabric. In an accident where we added too much pressure to the actuator, we discovered the circular actuator's bi-directional bending capabilities. We accidentally created a fiber-reinforced actuator capable of two directions of bending with a single positive pressure source. After making this discovery, we had to alter the definition of a bending angle to build a continuous model over the entire range of motion. Introducing negative bending angles to define the curling behavior did the trick. The next section will fully define the analytical model for the circular actuators entire range of bending behavior. 
+While inflating the actuators during initial testing, we discovered that adding more air pressure past the limit where $\varphi$ approaches 0$^\circ$ caused the actuator to continue bending. The silicone of the semi-circular section continued expanding, and the additional axial strain added curvature back to the fiberglass fabric. In an accident where we added too much pressure to the actuator, we discovered the circular actuator's bi-directional bending capabilities. We accidentally created a fiber-reinforced actuator capable of two bending directions with a single positive pressure source. After making this discovery, we had to alter the definition of a bending angle to build a continuous model over the entire range of motion. Introducing negative bending angles to define the curling behavior did the trick. The following section will fully define the analytical model for the circular actuators' entire range of bending behavior. 
 
 \section{Analytical Model for Bending Angle}
 
