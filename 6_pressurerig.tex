@@ -1,12 +1,101 @@
 \chapter{Pressure Rig}
-\section{Version 1: Components}
-block diagram, arduino, computer, python script
-\subsection{Compressor Control}
-refills air tank 
-\subsection{Arduino Command Structure}
-serial comms explained
-\subsection{Problems with Potentiometer}
-non-linear relationship between voltage and output pressure 
 
-\section{Version 2: Upgraded Components}
-now using pico, DAC, potetiometer input to set pressure.
+\section*{Preface}
+
+Thank you to Michael Giglia and Isaiah Rivera, the design and construction of the pressure rig would not have been possible without their contributions. 
+
+\section{Overview}
+
+We designed the pressure rig to actuate and control the pressure inside the soft robots presented in this work. The rig contains an air tank reservoir that stores pressurized air generated from a compressor. The reservoir supplies air to a pressure regulator that controls the input pressure of the soft robot. A microcontroller ($\mu$C) controls both the regulator and compressor. The computer running the test script either takes a photograph or a force reading at each pressure increment. Fig \ref{fig:blockdiagram} contains a block diagram detailing the pressure rig and the sensors used to characterize the behavior of the circular actuators. This chapter details the mechanical components, the electrical components, firmware on the microcontroller through two iterations of the rig, and the testing scripts used to characterize bending angle and blocked force. 
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=5.5 in]{images6/blockdiagram.jpg}
+    \caption{Block diagram of the pressure rig showing the path of compressed air, the relevant control signals, and the sensors used for characterization of the circular actuator.}
+    \label{fig:blockdiagram}
+\end{figure}
+
+\section{Air Supply Components}
+
+The air tank reservoir (LYH-1004, Longyihong) has a half-gallon capacity rated for 200 PSI, well over any pressures used in this work. On each side of the tank, there is a 1/4" NPT port. One side of the tank is connected to the compressor (202, GSPSCN). On the other side of the tank, we use a 2-way, 5-port manifold block (ML-G, Baomain) to connect one of the pressure sensors, the supply of the pressure regulator, the 45 PSI pressure-relief valve (9889K19, McMaster) and the 0-50 PSI gauge (0-50PSI HF, Meanlin Measure). 
+
+The pressure regulator (ITV1031-21N2N4, SMC) requires a 12V power supply and an input signal of 0-5V for the pressure on the output. The display shows the pressure in PSI. Both the pressure regulator and the compressor are powered by a rechargeable 12V lead-acid battery (ML5-12, Mighty Max Battery). We charged the battery often to maintain its health. We placed an E-Stop button (B07NNZB41H, Twtade) between the battery and the regulator. Fig. \ref{fig:airsupply} contains a photograph of the pressure rig with labeled air supply components. 
+
+To ensure no air leaks occurred, we used Teflon Tape to secure the connections between the components. We used white 1/4" diameter tubing and 1/4" NPT to 1/4" OD tubing push-to-connect fittings (PC-1/4-N2, Tailonz Pneumatic) to connect the manifold block to the pressure regulator and pressure sensor. We used laser-cut acrylic pieces and standoffs to lift all of the components off the metal testing table. 
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=3.5 in]{images6/airsupply.jpg}
+    \caption{Photograph of the pressure rig with air supply components labeled.}
+    \label{fig:airsupply}
+\end{figure}
+
+\section{Pressure Sensor}
+
+The differential pressure sensor (MPX2200DP, Freescale Semiconductor) measures the pressure within the air tank to ensure the regulator has sufficient air supply. We used readings from this sensor to turn the compressor on or off. To connect the pressure sensor to the microcontroller, we used an instrumental amplifier (INA125P, Texas Instruments) and a 13-bit analog-to-digital converter with an SPI serial interface (MCP3301, Microchip). Both microcontrollers had SPI communication libraries written to interface with the pressure sensor. 
+
+\section{Compressor Control}
+
+We designed the compressor to be controlled by the microcontroller using a digital pin connected to an NMOS (IRF540N), which connects to a relay to connect the compressor to the battery. Using the pressure sensor reading of the air tank, we wrote a state machine that controls the pressure so that the tank remains full while testing the actuators. Fig \ref{fig:compressorsm} contains a diagram of the state machine that runs on either microcontroller to control the compressor. 
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=6 in]{images6/compressorsm.jpg}
+    \caption{State machine diagram for compressor control to fill the air tank.}
+    \label{fig:compressorsm}
+\end{figure}
+
+The state machine has 3 states, compressor OFF (state 0), compressor ON (state 1), and ESTOP (state 2). While in state 0, we check if the current pressure reading in the tank is less than the desired pressure minus some tolerance. If the pressure has dropped below this amount, switch to state 1, and the compressor turns on. In state 1, we check if the dP/dt (the change in pressure over time) is satisfactory, such that we know there is no air leak. We use timing functions in firmware to check the current pressure compared to the pressure reading each time increment before. If dP/dt is less than expected, we can assume there is a leak and the compressor is not filling up the tank; in this case, switch to state 2, the emergency stop state. If dP/dt increases as expected, check if the current pressure is above the desired pressure plus some tolerance. If so, switch to state 0 and turn the compressor off. 
+
+The allowable tolerance of the tank pressure provides a small buffer, ensuring the compressor does not turn on and off frequently, prolonging its life. We used 36~$\pm$~4~psi (250~$\pm$~35~kPa) as the desired tank pressure for experimentation. 
+
+\section{Input to Pressure Regulator}
+
+The regulator's output pressure range is programmable. To stay within the release valve's bounds, we set the output pressure to be between 0 and 40 PSI. 
+The analog input signal (0-5V) has a linear relationship between voltage and output pressure from the regulator. We used a digital potentiometer with an SPI serial interface (MCP4251-103E/P, Microchip) connected to the Arduino (ELEGOO UNO R3) in the first iteration. In the second iteration, we used a 12-bit digital-to-analog converter, also with an SPI interface, connected to the Pico microcontroller (Raspberry Pi). 
+
+\subsection{Sending Pressure Commands to Arduino}
+
+Using an Arduino microcontroller, we controlled the digital potentiometer, creating the analog voltage signal that controls the pressure output from the pressure regulator. The microcontroller and the digital potentiometer communicated over SPI. However, we wanted to be able to set the desired pressure using the computer running the test script. The computer connects to the camera and force sensors. We wrote the testing script in Python to step between pressure increments so that we could either take a photograph of the bending angle or record the blocked force using the load cell. In between taking a photograph or force reading, the computer sends pressure commands to the microcontroller to change the pressure inside the actuator. 
+
+We used a custom g-code-like serial protocol Michael Giglia had previously implemented and modified it to send the desired pressure commands. At the time, we were using the 8-bit signal to the digital potentiometer, so the message sent from the Python script to the $\mu$C was a number between 0-255. After determining the appropriate commands and the pressure output at those commands, we wrote a testing script that would iterate through each pressure command and take a photograph or force reading when the person taking the data indicated that the actuator had reached a steady state at that pressure. 
+
+\subsection{Problems with the Digital Potentiometer}
+
+The digital potentiometer used to create the analog voltage as the input signal to the pressure regulator was problematic due to the non-linear results of controlling it with the Arduino. 
+
+To set the pressure in the actuator, we sent an 8-bit command (0-255) from the computer running the test script to the Arduino. We attempted to characterize the non-linear relationship between the range set on the pressure regulator, the command sent to the digital potentiometer, and the output pressure. Fig. \ref{fig:bitpressuremap} contains the pressure readings based on the command sent to the digital potentiometer at 4 different ranges of the pressure regulator. Because the resolution at higher pressures was significantly lower, we increased the range on the pressure regulator to gain more resolution at higher pressures. The silicone actuators were highly sensitive to pressure changes, and we found worse hysteresis in the bending angle when the pressure increments were highly uneven. 
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=5 in]{images6/bitpressuremap.jpg}
+    \caption{Relationship between the range set on the pressure regulator, the command sent to the digital potentiometer and the output pressure in the actuator for four pressure ranges.}
+    \label{fig:bitpressuremap}
+\end{figure}
+
+\subsection{Digital to Analog Converter}
+
+It was critical to have linear control over the output pressure of the pressure regulator to increase or decrease the pressure in the actuator by an even amount. To achieve linear output pressure, we needed a way to create an analog 0-5V signal with linear input commands with the desired output pressure. We achieved linear control between the command and the output pressure by implementing a 13-bit digital-to-analog converter (MCP4921-E/P, Microchip) using an SPI interface with a Pico microcontroller. This upgrade allowed us to measure the circular actuator's bending and blocked force behavior with even pressure increments, critical to minimizing hysteresis during characterization. 
+
+\subsection{Problems with Switching to the Pico}
+
+Switching microcontrollers required a complete overhaul of the testing software and firmware. Isaiah Rivera rewrote and rebuilt the pressure rig to have the upgraded microcontroller driving it. Still, because we switched to the digital-to-analog converter to control the regulator's output, we had to write the SPI communications for the new device, and we wanted to move to the Pico. Hence, we decided to upgrade the entire rig. 
+
+Due to time constraints and an oversight of how much development would be required to change microcontrollers, we simplified the pressure rig. We used one Pico $\mu$C to control the compressor. The pressure sensor interface and compressor control state machine always ran while the rig was on. We used a second Pico $\mu$C to interface with the pressure regulator. Instead of waiting for the serial protocol implementation, we decided to use a potentiometer input, using the Pico's analog-to-digital converter to control the pressure output of the regulator. While this solution certainly requires several layers (a 3.3V analog signal is read by the Pico, converted to a digital value, and sent over SPI to a digital-to-analog converter, which creates a 0-5V analog signal to set the regulator's pressure), it did work. It allowed us to take both bending angle data and blocked force data at even pressure increments, which was the most important part of characterization. 
+
+We discretized the potentiometer readings into even increments to ensure the same pressure commands were sent for each actuator's test. The new setup using the digital-to-analog converter provided immense resolution on the pressure regulator's output, but we wanted to use 1 psi increments. Since now the relationship between the signal sent to the DAC and the pressure output on the regulator was linear, it was simple to discretize the values so that we had even increments of 1.0$\pm$0.1 psi. 
+
+Since we had lost the serial protocol between the $\mu$C and the computer, the testing script had to be modified to print the desired pressure to the terminal output. The person running the test would turn the potentiometer until the regulator received the desired pressure command. A photo or force reading could be taken once the actuator had reached a steady state. Despite taking slightly longer to run each test, the hysteresis caused by uneven pressure increments was greatly reduced, making the switch to the Pico worth it. 
+
+\section{Camera for Bending Angle}
+
+To experimentally measure the bending angle of the circular actuators, we used a camera to take photos of the actuator at each pressure. We entertained using a flexible resistor (SEN-08606, SparkFun), but this would not provide insight into variations in curvature or non-axial expansion along the length of the actuator. A photograph, although requiring post-processing, provides infinite insight into the actuator's bending behavior. 
+
+We used a web camera (C920 Hd Pro, Logitech) to take photographs of the actuator at each pressure. Our testing script used OpenCV \cite{opencv_library} to interface with the web camera and save the photographs in the appropriately named directory for later post-processing. 
+
+For each test, the person running the test would input the \emph{name} of the actuator and the number of the test. For example, DS20K3\textunderscore4 meant the actuator was made of DragonSkin 20 silicone, it was fabricated with the K method (the insert split in the center of the actuator), it was the third actuator made with this material and fabrication method, and this is the fourth time running the bending angle experiment. 
+
+Using the terminal output and keyboard of the computer, the person running the test would see the pressure about to be sent to the actuator and then press the space bar to confirm the pressure should be changed. Once the actuator had reached a steady state at that pressure, pressing the "m" key would take a photograph, name it with the name of the actuator and the current pressure, and save it to a directory with the name of the test. The script would continue through the list of pressures we wanted to test the actuator at until the peak pressure was reached. After documenting the bending angle at the maximum pressure, the pressure would reverse to capture hysteresis in the bending behavior. Each test took 5-10 minutes to take 30-35 photographs, depending on the achievable peak pressure in the actuator. Chapter \ref{chapter:bendingangle} fully details capturing the bending angle of the the circular actuator. 
+
+\section{Load Cell for Blocked Force}
+
