@@ -73,6 +73,7 @@ To set the pressure in the actuator, we sent an 8-bit command (0-255) from the c
     \label{fig:bitpressuremap}
 \end{figure}
 
+\clearpage
 \subsection{Digital to Analog Converter}
 
 It was critical to have linear control over the output pressure of the pressure regulator to increase or decrease the pressure in the actuator by an even amount. To achieve linear output pressure, we needed a way to create an analog 0-5V signal with linear input commands with the desired output pressure. We achieved linear control between the command and the output pressure by implementing a 13-bit digital-to-analog converter (MCP4921-E/P, Microchip) using an SPI interface with a Pico microcontroller. This upgrade allowed us to measure the circular actuator's bending and blocked force behavior with even pressure increments, critical to minimizing hysteresis during characterization. 
@@ -87,6 +88,7 @@ We discretized the potentiometer readings into even increments to ensure the sam
 
 Since we had lost the serial protocol between the $\mu$C and the computer, the testing script had to be modified to print the desired pressure to the terminal output. The person running the test would turn the potentiometer until the regulator received the desired pressure command. A photo or force reading could be taken once the actuator had reached a steady state. Despite taking slightly longer to run each test, the hysteresis caused by uneven pressure increments was greatly reduced, making the switch to the Pico worth it. 
 
+\clearpage
 \section{Camera for Bending Angle}
 
 To experimentally measure the bending angle of the circular actuators, we used a camera to take photos of the actuator at each pressure. We entertained using a flexible resistor (SEN-08606, SparkFun), but this would not provide insight into variations in curvature or non-axial expansion along the length of the actuator. A photograph, although requiring post-processing, provides infinite insight into the actuator's bending behavior. 
