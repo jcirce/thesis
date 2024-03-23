@@ -115,3 +115,24 @@ Before we automated the curvature calculation, we wanted to compare the model to
     \label{fig:onshapecircles}
 \end{figure}
 
+\section{Using OpenCV to Calculate Bending Angle}
+
+To provide much-needed automation, we wrote a Python script using OpenCV \cite{opencv_library}. For each photograph, the script would detect the fiberglass fabric layer as a contour and use points along the contour to calculate the average curvature of the circular actuator at that pressure. 
+
+While first developing the line-detection script, we wanted to detect both the actuator's outer and inner walls to measure the actuator's circumferential expansion. Additionally, we wanted to develop a method to measure the curvature over the length of the actuator for experimental setups where gravity or friction caused the actuator to have non-constant curvature. The first scripts utilized the black and blue checkerboard pattern to remove the distortion from the camera, and knowing the dimension of the checkerboard squares, we could convert pixels to a meaningful unit of distance for the calculation. Limitations of detecting the edge of the actuator included not necessarily knowing which coordinates on the contour line were from the inside, outside, or end caps of the actuator. The curvature calculation requires three $x$ and $y$ coordinates, and for a useful measurement, all three points must be from the fiberglass fabric layer. We successfully converted pixels to centimeters using two small checkerboard patterns on either side of the actuator. However, we needed a new method to detect the correct contour and measure the bending angle. 
+
+Measuring circumferential expansion using the photographs would provide some insight into the actuator's behavior, but ultimately, since the three strains are interconnected, measuring each strain separately provides less insight than we had hoped. After we concluded that measuring only the curvature of the fiberglass layer would provide enough information to compare to the model, we decided to use a dry-erase marker to draw a line on the silicone. We used a blue or black dry-erase marker and a white background behind the actuators to calculate the curvature with minimal post-processing. 
+
+To convert pixels to centimeters, we photographed a ruler at several positions within the camera frame and concluded that the camera's distortion is tolerable in the center of the frame. If the actuator remained in the center of the camera frame, we could use a linear mapping between pixels and centimeters. 
+
+Using OpenCV, we first converted the image to grayscale. Then, we applied a binary mask to isolate the line we drew on the actuator. Using the masked image, we found the contour line(s). Each contour is a list of $x$ and $y$ coordinates that compose the line. We add the coordinates to an array for curvature calculations for each detected contour. To calculate the average curvature, we first split the length of the contour into three sections. For each section, we used a random coordinate. For 100 iterations, we used the coordinates from each section to calculate the curvature. We averaged the 100 values to determine the mean curvature of the line drawn on the actuator. For each actuator, we measured the length of the fiberglass layer and converted curvature, $\kappa$, to bending angle using $\varphi = l_{0}\kappa$. Fig. \ref{fig:opencvbendingangle} showcases the procedure for an SS40 actuator at 160~kPa; using coordinates along the contour line, we measured a bending angle of 102$^\circ$. 
+
+\clearpage
+\begin{figure}[h]
+    \centering
+     \includegraphics[width=6 in]{images7/opencvbendingangle.jpg}
+    \caption{Samples from the OpenCV script used to measure bending angle of the circular actuators. A. Original image of a SS40 actuator at 160kPa. B. Grayscale. C. Color mask. D. Random coordinates chosen from the contour line split into three sections and the calculated bending angle of 102$^\circ$.}
+    \label{fig:opencvbendingangle}
+\end{figure}
+
+There are several drawbacks to this method of measuring bending angle. First, maintaining a white background was difficult, and white electric tape was often required to cover any markings created by the dry-erase markers. Also, we had to cover the brass barb and push-to-connect fitting with white electric tape. Additionally, we wanted to collect data from both sides of the actuator, so the dry-erase marker had to be cleaned off and redrawn on the other side after sufficient testing. The biggest drawback of this method of measuring bending angles is that the OpenCV script could not detect negative bending angles. Since the script reported the measured curvature, we had to manually indicate if the reported curvature corresponded to a positive or negative bending angle. 

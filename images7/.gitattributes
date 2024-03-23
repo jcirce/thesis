@@ -6,3 +6,4 @@ firstdataset.jpg filter=lfs diff=lfs merge=lfs -text
 ss45fallsover.jpg filter=lfs diff=lfs merge=lfs -text
 withgravity.jpg filter=lfs diff=lfs merge=lfs -text
 onshapecircles.jpg filter=lfs diff=lfs merge=lfs -text
+opencvbendingangle.jpg filter=lfs diff=lfs merge=lfs -text
