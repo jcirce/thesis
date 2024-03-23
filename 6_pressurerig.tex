@@ -68,7 +68,7 @@ To set the pressure in the actuator, we sent an 8-bit command (0-255) from the c
 
 \begin{figure}[ht]
     \centering
-    \includegraphics[width=5 in]{images6/bitpressuremap.jpg}
+    \includegraphics[width=6 in]{images6/bitpressuremap.jpg}
     \caption{Relationship between the range set on the pressure regulator, the command sent to the digital potentiometer and the output pressure in the actuator for four pressure ranges.}
     \label{fig:bitpressuremap}
 \end{figure}
@@ -84,7 +84,7 @@ Switching microcontrollers required a complete overhaul of the testing software 
 
 Due to time constraints and an oversight of how much development would be required to change microcontrollers, we simplified the pressure rig. We used one Pico $\mu$C to control the compressor. The pressure sensor interface and compressor control state machine always ran while the rig was on. We used a second Pico $\mu$C to interface with the pressure regulator. Instead of waiting for the serial protocol implementation, we decided to use a potentiometer input, using the Pico's analog-to-digital converter to control the pressure output of the regulator. While this solution certainly requires several layers (a 3.3V analog signal is read by the Pico, converted to a digital value, and sent over SPI to a digital-to-analog converter, which creates a 0-5V analog signal to set the regulator's pressure), it did work. It allowed us to take both bending angle data and blocked force data at even pressure increments, which was the most important part of characterization. 
 
-We discretized the potentiometer readings into even increments to ensure the same pressure commands were sent for each actuator's test. The new setup using the digital-to-analog converter provided immense resolution on the pressure regulator's output, but we wanted to use 1 psi increments. Since now the relationship between the signal sent to the DAC and the pressure output on the regulator was linear, it was simple to discretize the values so that we had even increments of 1.0$\pm$0.1 psi. 
+We discretized the potentiometer readings into even increments to ensure the same pressure commands were sent for each actuator's test. The new setup using the digital-to-analog converter provided immense resolution on the pressure regulator's output, but we wanted to use 1 psi increments. Since now the relationship between the signal sent to the DAC and the pressure output on the regulator was linear, it was simple to discretize the values so that we had even increments of 1.0~$\pm$~0.1 psi. 
 
 Since we had lost the serial protocol between the $\mu$C and the computer, the testing script had to be modified to print the desired pressure to the terminal output. The person running the test would turn the potentiometer until the regulator received the desired pressure command. A photo or force reading could be taken once the actuator had reached a steady state. Despite taking slightly longer to run each test, the hysteresis caused by uneven pressure increments was greatly reduced, making the switch to the Pico worth it. 
 
