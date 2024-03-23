@@ -5,7 +5,7 @@ When we started this project, the idea was to create a soft robot with \emph{rev
 
 Starting with this lofty goal, we looked into how to define bending behavior for a soft robot. If the robot is to start coiled onto itself and lose curvature with actuation, we needed a way to measure said curvature. Thanks to the guidance of Professor Smyth, we created a sketch for an actuator with linearly increasing curvature along its length, where the factor controlling the slope of curvature would change with actuation. Figure \ref{fig:smythmodel} contains samples from the sketch of an actuator with varying curvature. 
 
-\begin{figure}[h]
+\begin{figure}[ht]
     \centering
     \includegraphics[width=4 in]{images3/smythmodel.jpg}
     \caption{A sketch of decreasing curvature for a line of linearly changing curvature}
@@ -14,7 +14,7 @@ Starting with this lofty goal, we looked into how to define bending behavior for
 
 To take the initial curvature problem into 3 dimensions, we began modeling spiral shapes to better understand the parameters available. First, in an attempt to maximize the final length, the coil would wrap around itself as many times as possible. To increase the final length, similar to a butterfly, the cross section is reduced along the length to prevent self-intersection. The cross section reduction over the length for a butterfly is XX\%. We first modeled a 50\% decrease in a rectangular cross section area over length for a coil. Figure \ref{fig:butterflycoil} contains one of our initial models of the coil shape. 
 
-\begin{figure}[h]
+\begin{figure}[ht]
     \centering
     \includegraphics[width=4.5 in]{images3/butterflycoil.png}
     \caption{A sketch and 3D sweep of a coil of constant curvature with cross section reduction of 50\% over its length}

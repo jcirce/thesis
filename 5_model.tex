@@ -9,7 +9,7 @@ In preliminary models, we focused on shapes the fiberglass fabric could form, as
 
 Starting with the length of the fiberglass fabric, the circular shape of the actuator, and the largest open angle we could fabricate, we developed a simple method of plotting the shape of the actuator and determining the maximum axial strain. While first attempting to model the circular actuator's bending behavior, we had yet to realize that the actuator was capable of bi-directional bending. Nor did we know that the actuator was unstable at the infinite curvature position. All we knew then was the length of the fiberglass fabric and that the actuator was a circle. 
 
-\begin{figure}[h]
+\begin{figure}[ht]
     \centering
     \includegraphics[width=3 in]{images5/lnot.jpg}
     \caption{Drawing containing the initial bending angle, and length of the fiberglass fabric highlighting the length lost to the fabrication process.}
@@ -20,7 +20,7 @@ During fabrication, we lose a non-significant amount of the actuator's length to
 
 For a given $l_{0}$, we can visualize how reducing $\psi$ increases the bending radius, $r$. As $\psi$ approaches $0^\circ$, the bending radius approaches infinity. Fig. \ref{fig:unbending} displays the first visualization of the actuator's bending behavior as $\psi$ approaches $0^\circ$. This model assumes that the actuator maintains a circular shape. 
 
-\begin{figure}[h]
+\begin{figure}[ht]
     \centering
     \includegraphics[width=3.5 in]{images5/unbending.jpg}
     \caption{First visualization of the unbending behavior of the circular actuator assuming constant curvature of the fiberglass fabric.}
@@ -29,7 +29,7 @@ For a given $l_{0}$, we can visualize how reducing $\psi$ increases the bending 
 
 Assuming the actuator undergoes no circumferential or radial strain is a bold assumption, considering we add no strain-limiting materials around the cross section during fabrication. However, it is helpful to consider each line of silicone undergoing axial strain. If we assume the semi-circular cross-section does not change during pressurization, we can visualize the strain of the innermost line of silicone. We plotted a few samples: the black lines represent the fiberglass layer, and the colored lines represent the strained, innermost silicone layer. Fig. \ref{fig:innermoststrain} contains samples to visualize each line of silicone and the axial strain it must undergo to maintain the constant cross-section, length, and bending angle set by the fiberglass layer. 
 
-\begin{figure}[h]
+\begin{figure}[ht]
     \centering
     \includegraphics[width=3.5 in]{images5/innermoststrain.jpg}
     \caption{First visualization of the axial strain the innermost line of silicone must undergo to maintain the cross section and curvature set by the fiberglass layer.}
@@ -44,7 +44,7 @@ While inflating the actuators during initial testing, we discovered that adding 
 
 To characterize the actuator's bending behavior as a function of input pressure and material properties, we developed an analytical model for curling and uncurling based on those found in \cite{polygerinos_modeling_2015, connolly_automatic_2017, hu_precurved_2022}. We calculate the input pressure $P$ required to reach a given bending angle $\psi$ using the geometry of the actuator, the length of the inextensible layer $l_0$, and the non-linear hyperelastic material properties of each silicone, including non-axial deformation. To account for circumferential deformation, we transform the cross-section at each pressure based on material stretches. As the pressure increases, the actuator uncurls (decreasing $\psi$) from its initial bending angle $\psi_0$ to an angle $\psi=0$, where the actuator is straight. Further increasing pressure causes $\psi$ to become negative, corresponding to curling behavior, thus generating a bi-directional range of motion. Fig. \ref{fig:modelall} contains all of the variables used in the analytical model. 
 
-\begin{figure}[h]
+\begin{figure}[ht]
     \centering
      \includegraphics[width=6 in]{images5/modelall.jpg}
     \caption{Geometric variables defined for the analytical model. The thicker line represents the inextensible layer. A. Definition of positive and negative bending angles. B. Undeformed cross-sectional geometry of the actuator. C. Axial stretch ratios and corresponding stress in response to applied pressure. D. Deformed cross-sectional geometry to account for circumferential and radial deformation.}

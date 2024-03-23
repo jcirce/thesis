@@ -12,7 +12,7 @@ For the first test, the materials available were a scrap piece of matte black ac
 
 We identified several problems with capturing the bending angle using this orientation. Based on the model, we expected the actuator to have constant curvature at each pressure, and having the fiberglass side rest on the flat table introduced reductions in curvature; the portion of the silicone touching the table was flatter than the rest of the actuator. Additionally, the end of the actuator was pulled down by gravity, increasing the curvature and inducing a larger bending angle, $\psi$. 
 
-\begin{figure}[h]
+\begin{figure}[ht]
     \centering
      \includegraphics[width=6 in]{images7/firstdataset.jpg}
     \caption{First photos taken to observe the bending angle of the circular actuator. Pressure increments are $1.0~\pm~0.1$ from 2.0 to 12.0 psi.}
@@ -23,7 +23,7 @@ We identified several problems with capturing the bending angle using this orien
 
 The effects of gravity in this testing orientation were worse on the stiffer silicones. Fig. \ref{fig:ss45fallsover} contains 3 sample images at 2.0, 9.2, and 12.8 psi of an SS45 actuator photographed in the first testing configuration. Note that the actuator fell over while taking the middle photograph. Even though we did not fully model the SS45 silicone actuators, primarily due to lack of material properties for this material, we were able to capture the difference between 12 psi for a DS20 actuator compared to one with over double the shore hardness. 
 
-\begin{figure}[h]
+\begin{figure}[ht]
     \centering
      \includegraphics[width=6 in]{images7/ss45fallsover.jpg}
     \caption{Photos of a SS45 actuator at 2.0, 9.2, and 12.8 psi.}
@@ -36,7 +36,7 @@ Despite these photographs being unusable for capturing the bending behavior, we 
 
 In an attempt to remove the effects of gravity on the curvature of the actuator, we placed the camera pointing down at the table. This testing orientation did remove the inconsistencies created by having the actuator rest flat on the table and gravity pulling the end. However, friction now significantly impacts bending behavior. The bending angle varied significantly compared to vertical testing. Fig. \ref{fig:ds20h} contains images of a DS20 actuator with increasing psi. 
 
-\begin{figure}[h]
+\begin{figure}[ht]
     \centering
      \includegraphics[width=6 in]{images7/ds20h.jpg}
     \caption{Photos taken of a DS20 actuator at various psi pressures when placed horizontally on the lab bench.}
@@ -49,14 +49,14 @@ In an attempt to remove friction from restricting the decrease in bending angle 
 
 Comparing DS20 and DS30 at the same pressure values, DS20 has a lower bending angle, which we expected because the silicone requires more stress to achieve the same strain. Fig \ref{fig:d30withgravity} contains photographs of a DS30 actuator at the same pressure increments. This DS30 actuator displayed some twisting motion as the pressure increased. The twisting is likely due to the fibers of the fiberglass fabric not being aligned with the actuator, or the insert could have been slightly misaligned in the mold, causing uneven wall thickness, which would cause uneven strains, inducing the twisting behavior.
 
-\begin{figure}[h]
+\begin{figure}[ht]
     \centering
      \includegraphics[width=6 in]{images7/withgravity.jpg}
     \caption{Photos taken of a DS20 actuator at various psi pressures when held vertically.}
     \label{fig:withgravity}
 \end{figure}
 
-\begin{figure}[h]
+\begin{figure}[ht]
     \centering
      \includegraphics[width=6 in]{images7/d30withgravity.jpg}
     \caption{Photos taken of a DS30 actuator at various psi pressures when held vertically.}
@@ -68,7 +68,7 @@ Comparing DS20 and DS30 at the same pressure values, DS20 has a lower bending an
 
 After testing with gravity assisting the bending behavior, we attempted once again to photograph the bending angle vertically. This time, we raised the actuator using standoffs to reduce the restrictions on curvature from previous experiments in this orientation. Additionally, the test script was modified to both increase and decrease the pressure inside the actuator so that we could capture the hysteresis of the bending angle. Unfortunately, now that the table was not there to support the actuator, gravity not only pulled the actuator so that it touched the table at low $\psi$ but added an incredible hysteresis to the bending behavior. Fig \ref{fig:ds20sver} contains photographs of a DS20 actuator against a blue and black checkerboard background. The images on the left are increasing the pressure, and those on the right are decreasing the pressure. While decreasing the pressure, the actuator maintained significantly lower $\psi$ than previously observed when increasing the pressure. 
 
-\begin{figure}[h]
+\begin{figure}[ht]
     \centering
      \includegraphics[width=6.5 in]{images7/ds20sver.jpg}
     \caption{Photos taken of a DS20 actuator vertically but offset from the table with standoffs. The left group was increasing the pressure, and the right group was from decreasing the pressure.}
@@ -82,7 +82,7 @@ In yet another attempt at finding an orientation where we could measure the bend
 
 From here on, kPa will be the unit of pressure in this work. (1.0 psi = 6.89 kPa). For DS20 actuators tested in this orientation, we took more photos around 70-90 kPa, as the actuator's bending was unstable, similar to an inverted pendulum. We still found a large hysteresis in this orientation, and the unstable-inverted-pendulum-against-gravity behavior would not align with the model we developed for the bending angle. Additionally the non-constant curvature near the fixed end of the actuator made this testing orientation not ideal. Fig. \ref{fig:d20againstgravity} contains photographs of a DS20 actuator displaying its full range of bending motion against gravity. The instability and large hysteresis between 70-90 kPa led us to not continue with this testing orientation. 
 
-\begin{figure}[h]
+\begin{figure}[ht]
     \centering
      \includegraphics[width=6.5 in]{images7/d20againstgravity.jpg}
     \caption{Photographs of a DS20 actuator across its entire bending range of motion. The left group was increasing pressure, and the right group was from decreasing pressure. NOTE: Pressure values are in kPa.}
@@ -108,7 +108,7 @@ Given three points in cartesian space, we can calculate the curvature of the cir
 
 Before we automated the curvature calculation, we wanted to compare the model to the experimental results from the photographs. The quickest way we could think of was to import the photographs into OnShape and measure the circle's radius formed by the actuator since the software has built-in functionality for calculating the circle's radius defined by 3 points. This method can be compared to using a ruler instead of a micrometer. However, despite considerable uncertainty, we got useful data to compare to the analytical model. Fig. \ref{fig:onshapecircles} contains four samples of sketches of circles created in OnShape. Note that as $\psi$ approaches $0^\circ$, the circle's radius approaches infinity. 
 
-\begin{figure}[h]
+\begin{figure}[ht]
     \centering
      \includegraphics[width=6 in]{images7/onshapecircles.jpg}
     \caption{Four screenshots from OnShape showing one method of measuring the bending angle of the circular actuators at different pressures.}
@@ -128,7 +128,7 @@ To convert pixels to centimeters, we photographed a ruler at several positions w
 Using OpenCV, we first converted the image to grayscale. Then, we applied a binary mask to isolate the line we drew on the actuator. Using the masked image, we found the contour line(s). Each contour is a list of $x$ and $y$ coordinates that compose the line. We add the coordinates to an array for curvature calculations for each detected contour. To calculate the average curvature, we first split the length of the contour into three sections. For each section, we used a random coordinate. For 100 iterations, we used the coordinates from each section to calculate the curvature. We averaged the 100 values to determine the mean curvature of the line drawn on the actuator. For each actuator, we measured the length of the fiberglass layer and converted curvature, $\kappa$, to bending angle using $\psi = l_{0}\kappa$. Fig. \ref{fig:opencvbendingangle} showcases the procedure for an SS40 actuator at 160~kPa; using coordinates along the contour line, we measured a bending angle of 102$^\circ$. 
 
 \clearpage
-\begin{figure}[h]
+\begin{figure}[ht]
     \centering
      \includegraphics[width=6 in]{images7/opencvbendingangle.jpg}
     \caption{Samples from the OpenCV script used to measure bending angle of the circular actuators. A. Original image of a SS40 actuator at 160kPa. B. Grayscale. C. Color mask. D. Random coordinates chosen from the contour line split into three sections and the calculated bending angle of 102$^\circ$.}
