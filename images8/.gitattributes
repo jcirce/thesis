@@ -1,0 +1,5 @@
+horizontalblockedforce.jpg filter=lfs diff=lfs merge=lfs -text
+justblockedforce.jpg filter=lfs diff=lfs merge=lfs -text
+pushingdown.jpg filter=lfs diff=lfs merge=lfs -text
+verticalstring.jpg filter=lfs diff=lfs merge=lfs -text
+verticalstringangle.jpg filter=lfs diff=lfs merge=lfs -text
