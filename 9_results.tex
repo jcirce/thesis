@@ -73,20 +73,22 @@ Note the same non-constant curvature phenomenon as DS20. Although slightly less 
     \label{fig:d30samples}
 \end{figure}
 
-\subsection{DS30 and the "Seahorse Effect"}
+\clearpage
+\subsection{DS30 and the ``Seahorse Effect''}
 
-The "Seahorse Effect" is not necessarily unique to DS30; we believe it could occur for any circular actuator. However, since the most dramatic victim of this effect was a DS30 actuator, we include it here. This effect was an unexpected discovery, and it could lead to future exploration of varying the cross-section of circular actuators and how that variation induces non-constant curvature. 
+The ``Seahorse Effect'' is not necessarily unique to DS30; we believe it could occur for any circular actuator. However, since the most dramatic victim of this effect was a DS30 actuator, we include it here. This effect was an unexpected discovery, and it could lead to future exploration of varying the cross-section of circular actuators and how that variation induces non-constant curvature. 
 
-Suppose the circular actuator is fabricated with a non-constant cross-section; either there was a misshaped insert, or the silicone was damaged somehow. In that case, areas with thinner semi-circular walls have larger circumferential expansion with increasing pressure. The uneven circumferential deformation, if significantly more than a circular actuator with a uniform cross-section, induces non-constant curvature along the actuator, which leads to the "Seahorse Effect": an actuator shaped like a seahorse. 
+Suppose the circular actuator is fabricated with a non-constant cross-section; either there was a misshaped insert, or the silicone was damaged somehow. In that case, areas with thinner semi-circular walls have larger circumferential expansion with increasing pressure. The uneven circumferential deformation, if significantly more than a circular actuator with a uniform cross-section, induces non-constant curvature along the actuator, which leads to the ``Seahorse Effect'': an actuator shaped like a seahorse. 
 
 Based on the analytical model's use of bending moments from pressure, we had assumed that the axial stress in response to the moment from pressure would cause the most axial strain, but with this DS30 actuator, excessive circumferential expansion induced more axial deformation in the center of the actuator (which then has a concavity aligning with a negative bending angle)than the ends, which maintained the concavity of a positive bending angle.  
 
-Another way of visualizing the effect is by moving the point of maximum circumferential expansion away from the center of the actuator as shown in Fig.~\ref{fig:seahorseeffect}, at pressures where we would expect $\psi=0^\circ$ (84-112~kPa). Instead, the actuator exhibits both positive and negative concavity. The average curvature measured using OpenCV was close to $\psi=0^\circ$, but the actual shape of the actuator was not straight, a flaw in our method of measuring bending angle. 
+Another way of visualizing the effect is by moving the point of maximum circumferential expansion away from the center of the actuator as shown in Fig.~\ref{fig:seahorseeffect}, at pressures where we would expect $\psi=0^\circ$ (84-112~kPa). Instead, the actuator exhibits both positive and negative concavity. The average curvature measured using OpenCV was close to $\psi=0^\circ$, but the actual shape of the actuator was not straight, a flaw in our method of measuring bending angle. This effect exacerbates non-constant curvature at higher pressures (133-146~kPa), when the ends of the actuator have lower curvature than the middle section. We included these results in Fig. \ref{fig:allmaterialvsmodel}, which increases uncertainty of bending angle for DS30 for a single direction of pressure compared to DS20.
 
 \begin{figure}[ht]
     \centering
      \includegraphics[width=6.5 in]{images9/seahorseeffect.jpg}
-    \caption{Photographs of a DS30 actuator experiencing the "Seahorse Effect", non-uniform circumferential expansion caused more than one concavity in a single circular actuator. The left group is increasing pressure, the right group is decreasing pressure.}
+    \caption{Photographs of a DS30 actuator experiencing the ``Seahorse Effect'', non-uniform circumferential expansion caused more than one concavity in a single circular actuator. The left group is increasing pressure, the right group is decreasing pressure.}
     \label{fig:seahorseeffect}
 \end{figure}
+
 
