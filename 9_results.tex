@@ -34,7 +34,7 @@ DS20 actuators had significant hysteresis in bending angle between increasing an
 DS20, the softest of the four materials, displayed the largest hysteresis between the $\psi=0$ cross-over point. With increasing pressure, on average, the DS20 actuator reached $\psi=0$ between 67-75~kPa. With decreasing pressure, the actuator only required between 58-62~kPa for $\psi=0$. Compared to the model, which predicted $\psi=0$ at 55~kPa, the actuators required more pressure no matter the direction of pressure approaching $\psi=0$. 
 
 Looking at 70~kPa (10 psi), the model predicts $\psi=-70^\circ$. The experimental data suggests that the actuator could be anywhere between 89$^\circ$ and -152$^\circ$, a wide range. Fig.~\ref{fig:d20at70kpa} contains photographs of two DS20 actuators at 70~kPa. Fig.~\ref{fig:d20at70kpa}A and C are from approaching 70~kPa with increasing pressure, and Fig.~\ref{fig:d20at70kpa}B and D are from approaching 70~kPa with decreasing pressure. Looking at Fig.~\ref{fig:d20at70kpa}A, the DS20 actuator has a smaller negative bending angle than Fig.~\ref{fig:d20at70kpa}B. The second DS20 actuator, shown in Fig.~\ref{fig:d20at70kpa}C, has a slight but positive bending angle. Fig.~\ref{fig:d20at70kpa}D shows a smaller negative bending angle than Fig.~\ref{fig:d20at70kpa}B. 
-
+\\
 \begin{figure}[ht]
     \centering
      \includegraphics[width=5.5 in]{images9/d20at70kpa.jpg}
@@ -43,7 +43,7 @@ Looking at 70~kPa (10 psi), the model predicts $\psi=-70^\circ$. The experimenta
 \end{figure}
 
 For DS20 (and DS30), the softer silicones, we associate part of the uncertainty and inconsistency in bending angle with the non-uniform axial expansion, leading to non-constant curvature of the actuator. The silicone closer to the end caps had less circumferential expansion than the silicone in the center. The non-uniform circumferential deformation induced a non-uniform axial deformation, causing non-constant curvature. The way we measured the bending angle took the average curvature from 300 points along the line marked on the actuator, so we were not measuring or accounting for the non-linear curvature of the softer silicones. Fig.~\ref{d20at70kpa} contains photographs of the non-uniform curvature for DS20 actuators at 70~kPa, but it is more evident at higher pressures, where more circumferential expansion occurs. Fig.~\ref{fig:d20at103kpa} contains photographs of DS20 actuators at 103~kPa for increasing and decreasing pressure. One standard deviation of experimental data recorded a bending angle between -193$^\circ$ and -235$^\circ$, whereas the model predicted -160$^\circ$. Near the ends, the actuator has less curvature than near the middle. Also, note the larger circumferential expansion in the center and how it decreases approaching the ends. Also, unexpected twisting of the actuator, which is likely from misalignment of the fiberglass in the actuator, can cause the marked blue or black line to appear to the camera as though the ends of the actuator curve out slightly, further adding to the non-constant curvature and uncertainty in measuring the bending angle.
-
+\\
 \begin{figure}[ht]
     \centering
      \includegraphics[width=5.5 in]{images9/d20at103kpa.jpg}
@@ -51,9 +51,20 @@ For DS20 (and DS30), the softer silicones, we associate part of the uncertainty 
     \label{fig:d20at103kpa}
 \end{figure}
 
-We pressurized DS20 actuators up to 112~kPa, increasing the pressure beyond that caused plastic deformation in the silicone. To avoid adding more uncertainty in the bending angle from the material properties altering due to the plastic deformation, we did not use higher pressures in DS20 actuators. During one experiment, which we would not like to reproduce, we accidentally put $>200$~kPa in a DS20 actuator. To our surprise, the silicone did not tear or pop, but the semi-circular wall became incredibly thin, and the actuator formed a coil shape like a spring. We quickly depressurized the actuator, fearing it would pop, and found significant plastic deformation. After removing pressure, the actuator returned to a bending angle of around $120^\circ$, deeming it unusable for further testing. 
-
 The analytical model for bending behavior for DS20 actuators has an RMS error of 74$^\circ$ between the experimental data using both increasing and decreasing pressure. Of the four materials, DS20 has the highest error. There are several reasons for this. The model assumes constant curvature (axial deformation) and constant circumferential deformation. The DS20 actuators did not display constant curvature or circumferential expansion; they displayed non-constant curvature due to the additional circumferential expansion in the center of the actuator. Additionally, assuming incompressibility when modeling the stress leads to underestimating the pressure required to achieve low positive bending angles and overestimating pressure at negative bending angles. 
+
+\subsection{DS20 at Higher Pressure}
+
+During experimentation included in \ref{fig:allmaterialvsmodel}, we pressurized DS20 actuators up to 112~kPa. We found increasing the pressure beyond that caused plastic deformation in the silicone. To avoid adding more uncertainty in the bending angle from the material properties altering due to the plastic deformation, we did not use higher pressures in DS20 actuators. During one experiment, which we would not like to reproduce, we accidentally put $>200$~kPa in a DS20 actuator. To our surprise, the silicone did not tear or pop, but the semi-circular wall became incredibly thin, and the actuator formed a coil shape like a spring. We quickly depressurized the actuator, fearing it would pop, and found significant plastic deformation. After removing pressure, the actuator returned to a bending angle of around $120^\circ$, deeming it unusable for further testing. 
+
+When we were still fabricating actuators with a 2-part insert split in the middle, and before we had fully developed the OpenCV used to detect curvature, during testing, we pressurized DS20 actuators up to 137 kPa. At this high pressure, the actuator approached a bending angle of $-360^\circ$. The substantial circumferential expansion highlights the problem of splitting the insert in the center of the actuator, and the DS20 actuators had significantly more hysteresis during early testing because of over-pressurization. Fig. \ref{fig:toomuchpressure} contains photographs of early DS20 actuators at 137~kPa. 
+\\
+\begin{figure}[ht]
+    \centering
+     \includegraphics[width=5.5 in]{images9/toomuchpressure.jpg}
+    \caption{Photographs of early DS20 actuators at 137 kPa.}
+    \label{fig:toomuchpressure}
+\end{figure}
 
 \clearpage
 \subsection{DS30}
@@ -118,3 +129,4 @@ The stiffest of the four materials, in 256~kPa, the SS50 actuators displayed a b
     \caption{Photographs of a SS50 actuator with input pressures from 21-256~kPa. The left group is increasing pressure, the right group is decreasing pressure.}
     \label{fig:ss50samples}
 \end{figure}
+
