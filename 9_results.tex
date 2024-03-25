@@ -4,7 +4,7 @@ This chapter presents the results of bending angle experiments defined in chapte
 
 \section{Bending Angle}
 
-We measured the bending angle of circular actuators made from four soft materials with both increasing and decreasing pressure. We photographed and calculated the bending angle at each pressure increment using OpenCV (as discussed in section \ref{section:opencv}). We ran six tests for each actuator and took the average value of the bending angle for all of the actuators for each material (2-3, depending on the material). This work discusses each material separately, but comparing the bending angle of all materials within the pressures we could create with the pressure rig is valuable. Fig. \ref{fig:allmaterialvsmodel} contains bending angle data for actuators of all four materials. We present results for each material in a different color, and the shaded region represents one standard deviation of bending angle for increasing and decreasing pressure, using darker and lighter shading, respectively. Additionally, we added the bending angle predicted by the analytical model for the bending angle for each material. The purpose of the rest of this section is to explain this figure. 
+We measured the bending angle of circular actuators made from four soft materials with both increasing and decreasing pressure. We photographed and calculated the bending angle at each pressure increment using OpenCV (as discussed in section \ref{section:opencv}). We ran six tests for each actuator and took the average value of the bending angle for all of the actuators for each material (2-3, depending on the material). This work discusses each material separately, but comparing the bending angle of all materials within the pressures we could create with the pressure rig is valuable. Fig. \ref{fig:allmaterialvsmodel} contains bending angle results for actuators of all four materials. We present results for each material in a different color, and the shaded region represents one standard deviation of bending angle for increasing and decreasing pressure, using darker and lighter shading, respectively. Additionally, we added the bending angle predicted by the analytical model for the bending angle for each material. The purpose of the rest of this section is to explain this figure. 
 
 \begin{figure}[ht]
     \centering
@@ -54,3 +54,39 @@ For DS20 (and DS30), the softer silicones, we associate part of the uncertainty 
 We pressurized DS20 actuators up to 112~kPa, increasing the pressure beyond that caused plastic deformation in the silicone. To avoid adding more uncertainty in the bending angle from the material properties altering due to the plastic deformation, we did not use higher pressures in DS20 actuators. During one experiment, which we would not like to reproduce, we accidentally put $>200$~kPa in a DS20 actuator. To our surprise, the silicone did not tear or pop, but the semi-circular wall became incredibly thin, and the actuator formed a coil shape like a spring. We quickly depressurized the actuator, fearing it would pop, and found significant plastic deformation. After removing pressure, the actuator returned to a bending angle of around $120^\circ$, deeming it unusable for further testing. 
 
 The analytical model for bending behavior for DS20 actuators has an RMS error of 74$^\circ$ between the experimental data using both increasing and decreasing pressure. Of the four materials, DS20 has the highest error. There are several reasons for this. The model assumes constant curvature (axial deformation) and constant circumferential deformation. The DS20 actuators did not display constant curvature or circumferential expansion; they displayed non-constant curvature due to the additional circumferential expansion in the center of the actuator. Additionally, assuming incompressibility when modeling the stress leads to underestimating the pressure required to achieve low positive bending angles and overestimating pressure at negative bending angles. 
+
+\clearpage
+\subsection{DS30}
+
+DS30 actuators had a bending range of 424$^\circ$ in 175~kPa. On average, the DS30 actuators had a initial bending angle, $\psi_0$ of 214$^\circ$, and a maximum negative bending angle of $\psi=-210^\circ$. With increasing pressure, the DS30 actuators crossed $\psi=0^\circ$ between 100-114~kPa and between 104-87~kPa with decreasing pressure. The overall shape and concavity of the experimental results match those from DS20, but extended to cross $\psi=0^\circ$ at a higher pressure. 
+
+Similar to DS20, the model for DS30 underestimates the pressure required for a given bending angle for large positive values of $\psi$ and overestimates the pressure required for large negative values of $\psi$. Differently from DS20, the DS30 model overestimates the $\psi=0^\circ$ crossing pressure, predicting 112~kPa. 
+
+Because DS30 is stiffer than DS20, we assumed that there would be less uncertainty and hysteresis when comparing the two materials. Looking at Fig.~\ref{fig:allmaterialvsmodel}, the analytical model is closer to the experimental values, with a RMS error of 68$^\circ$, compared to DS20. But the experimental results have more uncertainty in bending angle for a given pressure. Fig. \ref{fig:d30samples} contains photographs used to calculate bending angle for a DS30 actuator. Note that because DS30 is stiffer than DS20, the 7~kPa increment allowed us to capture more images near $\psi=0^\circ$ and because the switch to negative bending angles happens at a higher pressure (between 84 and 105~kPa), we did not include all the photos for smaller pressure increments. The DS30 actuators did experience hysteresis between negative and positive pressures, but slightly less than DS20. 
+
+Note the same non-constant curvature phenomenon as DS20. Although slightly less than DS20, the circumferential expansion still induces non-constant curvature which more significantly effects the bending angle for decreasing pressure compared to increasing pressure due to the hyperelastic properties of the silicone material. 
+
+\begin{figure}[ht]
+    \centering
+     \includegraphics[width=6.5 in]{images9/d30samples.jpg}
+    \caption{Photographs of a DS30 actuator across its entire bending range from 7-168~kPa. The left group is increasing pressure, the right group is decreasing pressure.}
+    \label{fig:d30samples}
+\end{figure}
+
+\subsection{DS30 and the "Seahorse Effect"}
+
+The "Seahorse Effect" is not necessarily unique to DS30, we believe it could occur for any circular actuator, but since the most dramatic victim of this effect was a DS30 actuator, we include it here. This effect was an unexpected discovery, but could lead to future exploration of varying the cross section of circular actuators and how that variation induces non-constant curvature. 
+
+If the circular actuator is fabricated with non-constant cross section, either there was a misshaped insert, or the silicone was damaged in some way, areas with thinner semi-circular walls have larger circumferential expansion with increasing pressure. The uneven circumferential deformation, if significantly more than a circular actuator with a uniform cross section, induces non-constant curvature along the actuator, which leads to the "Seahorse Effect": an actuator shaped like a seahorse. 
+
+Based on the analytical model's use of bending moments from pressure, we had assumed that the axial stress in response to the moment from pressure would cause the most axial strain, but with this DS30 actuator, excessive circumferential expansion induced more axial deformation in the center of the actuator (which then has a concavity aligning with a negative bending angle)than the ends, which maintained the concavity of a positive bending angle.  
+
+Another way of visualizing the effect is moving the point of maximum circumferential expansion away from the center of the actuator. As shown in Fig.~\ref{fig:seahorseeffect}, at pressures where we would expect $\psi=0^\circ$, instead the actuator exhibits both positive and negative concavity. The average curvature measured using OpenCV was close to $\psi=0^\circ$, but the actual shape of the actuator was not straight, a flaw in our method of measuring bending angle. 
+
+\begin{figure}[ht]
+    \centering
+     \includegraphics[width=6.5 in]{images9/seahorseeffect.jpg}
+    \caption{Photographs of a DS30 actuator experiencing the "Seahorse Effect", non-uniform circumferential expansion caused more than one concavity in a single circular actuator. The left group is increasing pressure, the right group is decreasing pressure.}
+    \label{fig:seahorseeffect}
+\end{figure}
+
