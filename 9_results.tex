@@ -21,7 +21,7 @@ DS20 actuators, the softest of the silicones we used in this work, were capable 
 At lower pressures (between 0-50~kPa), the bending angle decreases slowly and relatively linearly with increasing pressure. Between 50-80~kPa, as the DS20 actuators switch from positive to negative bending angles, the same 7~kPa increment causes a much larger reduction in bending angle. At higher pressures (between 90-112~kPa), the bending angle asymptotically approaches the maximum negative bending angle (between $-207^\circ$ and $-237^\circ$). 
 
 Fig \ref{fig:d20samples} contains photographs of the bending angle for a DS20 circular actuator for both increasing (left) and decreasing (right) pressure increments. The DS20 actuator passed $\psi=0^\circ$ between 70-77~kPa when increasing pressure for this particular test. With decreasing pressure, the actuator required less pressure for very small positive $\psi$; $\psi$ passed $0^\circ$ between 64-57~kPa. 
-
+\\
 \begin{figure}[ht]
     \centering
      \includegraphics[width=6.5 in]{images9/d20samples.jpg}
@@ -76,7 +76,7 @@ Similar to DS20, the model for DS30 underestimates the pressure required for a g
 Because DS30 is stiffer than DS20, we assumed there would be less uncertainty and hysteresis when comparing the two materials. Looking at Fig.~\ref{fig:allmaterialvsmodel}, the analytical model is closer to the experimental values, with an RMS error of 68$^\circ$, compared to DS20. However, the experimental results have more uncertainty in the bending angle for a given pressure. Fig. \ref{fig:d30samples} contains photographs used to calculate the bending angle for a DS30 actuator. Note that because DS30 is stiffer than DS20, the 7~kPa increment allowed us to capture more images near $\psi=0^\circ$ and because the switch to negative bending angles happens at a higher pressure (between 84 and 105~kPa), we did not include all the photos for smaller pressure increments. The DS30 actuators experienced hysteresis between negative and positive pressures, but slightly less than DS20. 
 
 Note the same non-constant curvature phenomenon as DS20. Although slightly less than DS20, the circumferential expansion still induces non-constant curvature, which more significantly affects the bending angle for decreasing pressure than for increasing pressure due to the hyperelastic properties of the silicone material. 
-
+\\
 \begin{figure}[ht]
     \centering
      \includegraphics[width=6.5 in]{images9/d30samples.jpg}
@@ -94,7 +94,7 @@ Suppose the circular actuator is fabricated with a non-constant cross-section; e
 Based on the analytical model's use of bending moments from pressure, we had assumed that the axial stress in response to the moment from pressure would cause the most axial strain, but with this DS30 actuator, excessive circumferential expansion induced more axial deformation in the center of the actuator (which then has a concavity aligning with a negative bending angle)than the ends, which maintained the concavity of a positive bending angle.  
 
 Another way of visualizing the effect is by moving the point of maximum circumferential expansion away from the center of the actuator as shown in Fig.~\ref{fig:seahorseeffect}, at pressures where we would expect $\psi=0^\circ$ (84-112~kPa). Instead, the actuator exhibits both positive and negative concavity. The average curvature measured using OpenCV was close to $\psi=0^\circ$, but the actual shape of the actuator was not straight, a flaw in our method of measuring bending angle. This effect exacerbates non-constant curvature at higher pressures (133-146~kPa), when the ends of the actuator have lower curvature than the middle section. We included these results in Fig. \ref{fig:allmaterialvsmodel}, which increases uncertainty of bending angle for DS30 for a single direction of pressure compared to DS20.
-
+\\
 \begin{figure}[ht]
     \centering
      \includegraphics[width=6.5 in]{images9/seahorseeffect.jpg}
@@ -110,7 +110,7 @@ Within the limitations of the pressure rig (a max pressure of 256~kPa), circular
 Similar to DS20 and DS30, the analytical model for SS40 underestimates the pressure required to achieve a bending angle for positive $\psi$ values. The model begins overestimating the bending angle around 160~kPa. As expected from a stiffer material, the SS40 actuators display less hysteresis and uncertainty in bending angle. Using increasing pressure, we recorded $\psi=0^\circ$ between 207 and 242~kPa. With decreasing pressure, the actuator returns to positive bending angles between 223 and 193~kPa. The model predicts $\psi=0^\circ$ at 235 kPa and $\psi~=~-\psi_0$ at 378~kPa. For SS40, the model has an RMS error of 32$^\circ$, significantly less than the softer silicones. 
 
 SS40 actuators maintained constant curvature near $\psi=0^\circ$, a substantial improvement compared to DS20 and DS30 actuators. Because the material is stiffer, less circumferential deformation leads to a more constant curvature. Since there is less circumferential expansion, the primary source of axial deformation (causing the change in curvature of the actuator) is the input pressure, not axial stress. The SS40 actuators still display hysteresis in bending angle. Fig. \ref{fig:ss40samples} contains photographs used to measure the bending angle for an SS40 actuator between 21-256~kPa. This actuator crosses $\psi=0^\circ$ between 189 and 217~kPa. The lowest bending angle achieved is around -37$^\circ$. 
-
+\\
 \begin{figure}[ht]
     \centering
      \includegraphics[width=6.5 in]{images9/ss40samples.jpg}
@@ -122,7 +122,7 @@ SS40 actuators maintained constant curvature near $\psi=0^\circ$, a substantial 
 \subsection{SS50}
 
 The stiffest of the four materials, in 256~kPa, the SS50 actuators displayed a bending range of just 64$^\circ$. Due to the small bending range and hysteresis of the stiff material, the RMS error of the analytical model compared to experimental data was 4.5$^\circ$. Once again, we expect a significant increase in $\psi=0^\circ$ compared to the jump between DS30 and SS40; the model predicts $\psi=-\psi_0$ at 378~kPa. Fig \ref{fig:ss50samples} contains photographs of an SS50 actuator from 21-256~kPa. 
-
+\\
 \begin{figure}[ht]
     \centering
      \includegraphics[width=6.5 in]{images9/ss50samples.jpg}
