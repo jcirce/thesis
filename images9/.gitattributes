@@ -4,3 +4,4 @@ d20at103kpa.jpg filter=lfs diff=lfs merge=lfs -text
 d20samples.jpg filter=lfs diff=lfs merge=lfs -text
 d30samples.jpg filter=lfs diff=lfs merge=lfs -text
 seahorseeffect.jpg filter=lfs diff=lfs merge=lfs -text
+ss40samples.jpg filter=lfs diff=lfs merge=lfs -text
