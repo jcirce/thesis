@@ -6,6 +6,9 @@
 *.pdf
 *.toc
 *.lof
+*.ilg
+*.nlo
+*.nls
 
 #mac
 .DS_Store
