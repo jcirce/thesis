@@ -21,7 +21,7 @@ DS20 actuators, the softest of the silicones we used in this work, were capable 
 At lower pressures (between 0-50~kPa), the bending angle decreases slowly and relatively linearly with increasing pressure. Between 50-80~kPa, as the DS20 actuators switch from positive to negative bending angles, the same 7~kPa increment causes a much larger reduction in bending angle. At higher pressures (between 90-112~kPa), the bending angle asymptotically approaches the maximum negative bending angle (between $-207^\circ$ and $-237^\circ$). 
 
 Fig \ref{fig:d20samples} contains photographs of the bending angle for a DS20 circular actuator for both increasing (left) and decreasing (right) pressure increments. The DS20 actuator passed $\psi=0^\circ$ between 70-77~kPa when increasing pressure for this particular test. With decreasing pressure, the actuator required less pressure for very small positive $\psi$; $\psi$ passed $0^\circ$ between 64-57~kPa. 
-\\
+
 \begin{figure}[ht]
     \centering
      \includegraphics[width=6.5 in]{images9/d20samples.jpg}
@@ -43,6 +43,8 @@ Looking at 70~kPa (10 psi), the model predicts $\psi=-70^\circ$. The experimenta
 \end{figure}
 
 For DS20 (and DS30), the softer silicones, we associate part of the uncertainty and inconsistency in bending angle with the non-uniform axial expansion, leading to non-constant curvature of the actuator. The silicone closer to the end caps had less circumferential expansion than the silicone in the center. The non-uniform circumferential deformation induced a non-uniform axial deformation, causing non-constant curvature. The way we measured the bending angle took the average curvature from 300 points along the line marked on the actuator, so we were not measuring or accounting for the non-linear curvature of the softer silicones. Fig.~\ref{d20at70kpa} contains photographs of the non-uniform curvature for DS20 actuators at 70~kPa, but it is more evident at higher pressures, where more circumferential expansion occurs. Fig.~\ref{fig:d20at103kpa} contains photographs of DS20 actuators at 103~kPa for increasing and decreasing pressure. One standard deviation of experimental data recorded a bending angle between -193$^\circ$ and -235$^\circ$, whereas the model predicted -160$^\circ$. Near the ends, the actuator has less curvature than near the middle. Also, note the larger circumferential expansion in the center and how it decreases approaching the ends. Also, unexpected twisting of the actuator, which is likely from misalignment of the fiberglass in the actuator, can cause the marked blue or black line to appear to the camera as though the ends of the actuator curve out slightly, further adding to the non-constant curvature and uncertainty in measuring the bending angle.
+
+The analytical model for bending behavior for DS20 actuators has an RMS error of 74$^\circ$ between the experimental data using both increasing and decreasing pressure. Of the four materials, DS20 has the highest error. There are several reasons for this. The model assumes constant curvature (axial deformation) and constant circumferential deformation. The DS20 actuators did not display constant curvature or circumferential expansion; they displayed non-constant curvature due to the additional circumferential expansion in the center of the actuator. Additionally, assuming incompressibility when modeling the stress leads to underestimating the pressure required to achieve low positive bending angles and overestimating pressure at negative bending angles. 
 \\
 \begin{figure}[ht]
     \centering
@@ -51,13 +53,11 @@ For DS20 (and DS30), the softer silicones, we associate part of the uncertainty 
     \label{fig:d20at103kpa}
 \end{figure}
 
-The analytical model for bending behavior for DS20 actuators has an RMS error of 74$^\circ$ between the experimental data using both increasing and decreasing pressure. Of the four materials, DS20 has the highest error. There are several reasons for this. The model assumes constant curvature (axial deformation) and constant circumferential deformation. The DS20 actuators did not display constant curvature or circumferential expansion; they displayed non-constant curvature due to the additional circumferential expansion in the center of the actuator. Additionally, assuming incompressibility when modeling the stress leads to underestimating the pressure required to achieve low positive bending angles and overestimating pressure at negative bending angles. 
-
 \subsection{DS20 at Higher Pressure}
 
 During experimentation included in \ref{fig:allmaterialvsmodel}, we pressurized DS20 actuators up to 112~kPa. We found increasing the pressure beyond that caused plastic deformation in the silicone. To avoid adding more uncertainty in the bending angle from the material properties altering due to the plastic deformation, we did not use higher pressures in DS20 actuators. During one experiment, which we would not like to reproduce, we accidentally put $>200$~kPa in a DS20 actuator. To our surprise, the silicone did not tear or pop, but the semi-circular wall became incredibly thin, and the actuator formed a coil shape like a spring. We quickly depressurized the actuator, fearing it would pop, and found significant plastic deformation. After removing pressure, the actuator returned to a bending angle of around $120^\circ$, deeming it unusable for further testing. 
 
-When we were still fabricating actuators with a 2-part insert split in the middle, and before we had fully developed the OpenCV used to detect curvature, during testing, we pressurized DS20 actuators up to 137 kPa. At this high pressure, the actuator approached a bending angle of $-360^\circ$. The substantial circumferential expansion highlights the problem of splitting the insert in the center of the actuator, and the DS20 actuators had significantly more hysteresis during early testing because of over-pressurization. Fig. \ref{fig:toomuchpressure} contains photographs of early DS20 actuators at 137~kPa. 
+When we were still fabricating actuators with a 2-part insert split in the middle, and before we had fully developed the OpenCV used to detect curvature, during testing, we pressurized DS20 actuators up to 137 kPa. At this high pressure, the actuator approached a bending angle of $-360^\circ$. The substantial circumferential expansion highlights the problem of splitting the insert in the center of the actuator, the white markings highlight damage to the inner silicone wall from the Teflon tape we used during fabrication. The DS20 actuators had significantly more hysteresis during early testing because of over-pressurization. Fig. \ref{fig:toomuchpressure} contains photographs of early DS20 actuators at 137~kPa. 
 \\
 \begin{figure}[ht]
     \centering
@@ -132,3 +132,34 @@ The stiffest of the four materials, in 256~kPa, the SS50 actuators displayed a b
 
 \section{Blocked Force}
 
+We measured the blocked force of the circular actuators using a method we developed, outlined in chapter \ref{chapter:blockedforce}. We measured the force created when restricting the bending angle for actuators made from DS20, DS30, SS40, and SS40 silicones. The range of pressures we used to measure the force was as high as the actuator could take before the string fell off the pulley. On average, at this maximum pressure, the DS20 actuators achieved 2.7~N of blocked force at 105~kPa. DS30 achieved 2.1~N at 112~kPa. At 210~kPa, SS40 and SS50 achieved 5.1 and 1.6~N, respectively. While stiffer actuators could generate higher forces at higher pressures, stiffer actuators require more input pressure for a particular force. DS20 actuators could generate 2.0~N of force at $92\pm3$~kPa. DS30 and SS40 required $110\pm2$ kPa and $142\pm2$ kPa, respectively. Fig \ref{fig:blockedforce} contains one standard deviation of blocked force measured for all four actuators. 
+
+Theoretically, if the material properties of the silicone are restricted such that no deformation occurs, the moment from the blocked force would be equal to the moment from pressure, as defined with Eq.~\ref{eq:moment-p}. The actuators show a somewhat linear relationship between blocked force and pressure for low input pressures until about 40~kPa. At this pressure, material properties increase the blocked force reading for DS20, and it breaks away from the three stiffer materials. Both DS30 and SS40 break away from the stiff SS50 at around 60~kPa. Softer silicones experiencing non-linear blocked force readings at lower pressures lead us to conclude that the non-linear force readings are due to the material properties of the circular actuator.
+\\
+\begin{figure}[ht]
+    \centering
+     \includegraphics[width=6 in]{images9/blockedforce.jpg}
+    \caption{Blocked force measured between 0-210~kPa. The shaded region represents one standard deviation of blocked force for circular actuators of four materials.}
+    \label{fig:blockedforce}
+\end{figure}
+
+\clearpage
+\subsection{Causes of Non-Linearity}
+
+Not only is there a highly non-linear relationship between stress and strain for the hyperelastic silicones, but for the circular actuators, input pressure causes strain in all three directions: axial, circumferential, and radial. The inextensible thread attached to the load cell restricts axial deformation but does not restrict circumferential or radial. The circumferential expansion of the actuators from input pressure induces a proportional axial stress. Because we are restricting axial deformation, the silicone is in compression in the axial direction, increasing the load cell reading. Circumferential expansion at higher pressures induces even more stress in the axial direction. 
+
+When comparing the shape of the actuator at different pressures for blocked force and bending angle experiments, we can compare the blocked force reading to the unconstrained bending angle to see how the non-linear axial strain and corresponding stress required to achieve that bending angle contributes to the non-linear force readings. Fig. \ref{fig:d20force} contains photographs of a DS20 actuator at increasing input pressure (0-105~kPa) during blocked force and bending angle experiments. The orange dashed line is parallel to the inextensible thread connected between the free end of the actuator and the bearing. At 28~kPa, we measured an average of 0.14~N of force; at 70~kPa: 1.17~N, and 105~kPa: 2.70~N. At these pressures, the actuator exhibited a positive bending angle, a bending angle close to $0^\circ$, and a large negative $\psi$. We made similar comparisons for the other materials; the blocked force reading increases at pressures where the actuator would have exhibited negative bending angles. The non-linear axial stress required to induce the bending angle during unconstrained deformation contributes to the non-linear force readings when axial deformation is constrained. 
+
+\begin{figure}[ht]
+    \centering
+     \includegraphics[width=6 in]{images9/d20force.jpg}
+    \caption{Photographs of a DS20 actuator during blocked force experiments from 0-105~kPa. For comparison, photos taken during bending angle experiments for 28, 70, and 105~kPa are included.}
+    \label{fig:d20force}
+\end{figure}
+
+\clearpage
+\subsection{Developed Eccentricity}
+
+In future attempts to characterize the relationship between pressure and blocked force for an axially-constrained circular actuator, we believe the eccentricity developed provides useful information on the axial stress the actuator experiences with input pressure. 
+
+The analytical model, and in most bending angle experiments, the circular actuators maintain uniform axial deformation (constant curvature), a circular shape throughout the range of positive and negative $\psi$. During blocked force experiments, however, the actuator loses constant curvature and develops an increasing eccentricity with increasing pressure in an attempt to reduce the overall stress on itself. The reduction of axial stress from the developed eccentricity reduces the force reading, further increasing the non-linear relationship measured between blocked force and pressure. 
