@@ -3,7 +3,9 @@
 \usepackage{titlesec}
 \usepackage{graphicx}
 \usepackage{amsmath,amssymb,amsfonts}
+\usepackage{nomencl}
 \usepackage[margin=1in]{geometry} 
+\makenomenclature
 \linespread{2.0}
  
 \begin{document}
@@ -13,9 +15,55 @@
 
 \tableofcontents
 \listoffigures
+
+\nomenclature{$\psi_0$}{Initial bending angle}
+\nomenclature{$\psi$}{Bending angle}
+\nomenclature{$r_0$}{Initial bending radius}
+\nomenclature{$r$}{Bending radius}
+\nomenclature{$l_0$}{Length of inextensible layer}
+\nomenclature{$P$}{Input pressure}
+\nomenclature{$\lambda_1$}{Axial stretch ratio}
+\nomenclature{$\lambda_2$}{Circumferential stretch ratio}
+\nomenclature{$\lambda_3$}{Radial stretch ratio}
+\nomenclature{$\beta$}{Coordiante in base layer away from inextensible layer}
+\nomenclature{$\varphi$}{Swept angle of semi circular region}
+\nomenclature{$\tau$}{Coordinate in the semi-circular region in the $\varphi$ direction}
+\nomenclature{$b$}{Thickness of base region}
+\nomenclature{$a_0$}{Undeformed radius of semi-circular region}
+\nomenclature{$t_0$}{Undeformed thickness of semi-circular region}
+\nomenclature{$a$}{Deformed radius of semi-circular region}
+\nomenclature{$t$}{Deformed thickness of semi-circular region}
+\nomenclature{$q$}{Vertical offset of $a$ in deformed cross-section}
+\nomenclature{$\varphi_m$}{Maximum $\varphi$ for deformed cross-section}
+\nomenclature{$\varphi'$}{Scaled $\varphi$ for deformed cross-section}
+\nomenclature{$\tau'$}{Scaled in the $\varphi'$ direction for deformed cross-section}
+\nomenclature{$\lambda_\beta$}{Axial stretch ratio for base region}
+\nomenclature{$\lambda_\phi,\tau$}{Axial stretch ratio for semi-circlar region}
+\nomenclature{$\lambda_c$}{Circumferential stretch ratio}
+\nomenclature{$\lambda_r$}{Radial stretch ratio}
+\nomenclature{$k_t$}{Experimentally deturmined scale factor for thickness}
+\nomenclature{$A_0$}{Area of cross-section}
+\nomenclature{$W$}{Strain-energy density}
+\nomenclature{$\mu_p$, $\alpha_p$}{Coefficients for Ogden material model, $p$ = 1,2,3}
+\nomenclature{$\mu$}{Coefficient for Neohookean material model}
+\nomenclature{$\sigma$}{Cauchy stress}
+\nomenclature{$p$}{Lagrange multipler for Cauchy stress}
+\nomenclature{$\sigma_1$}{Axial stress}
+\nomenclature{$\sigma_2$}{Circumferential stress}
+\nomenclature{$\sigma_3$}{Radial stress}
+\nomenclature{$M_P$}{Moment from pressure}
+\nomenclature{$M_\sigma$}{Moment from axial stress}
+\nomenclature{$O$}{Neutral axis}
+\nomenclature{$\sigma_\beta$}{Axial stress in base region}
+\nomenclature{$\sigma_\beta$}{Axial stress in deformed circular region}
+\nomenclature{$k_p$}{Experimentally deturmined scale factor for pressure}
+\nomenclature{$\kappa$}{Curvature}
+\nomenclature{$x_1$, $x_2$, $x_3$, $y_1$, $y_2$, $y_3$}{Coordinates used to calculate curvature}
+\nomenclature{$F$}{Blocked Force}
+
+\printnomenclature
 \clearpage
 \pagenumbering{arabic}
-
 \include{1_introduction}
 \include{2_background}
 \include{3_design}
