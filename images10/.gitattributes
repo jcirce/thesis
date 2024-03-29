@@ -2,3 +2,6 @@
 aroundvolleyball.jpg filter=lfs diff=lfs merge=lfs -text
 boxofgloves.jpg filter=lfs diff=lfs merge=lfs -text
 ds30roundobjects.jpg filter=lfs diff=lfs merge=lfs -text
+comparingeccentricity.jpg filter=lfs diff=lfs merge=lfs -text
+coopercupdata.jpg filter=lfs diff=lfs merge=lfs -text
+coopercupphotos.jpg filter=lfs diff=lfs merge=lfs -text
