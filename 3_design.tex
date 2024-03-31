@@ -1,18 +1,19 @@
 \chapter{Design}
 
 \section{Defining Uncoiling}
-When we started this project, the idea was to create a soft robot with \emph{reverse} the typical actuation. Inspired by the uncurling motion of a butterfly proboscis or a party horn, we designed the actuator to extend with the application of internal pressure. This behavior would be the opposite of a standard soft pneumatic actuator, which is fabricated straight and bends or curls with actuation. 
+
+When we started this project, the idea was to create a soft robot with \emph{reverse} the typical actuation seen in single-chambered actuators. Inspired by the uncurling motion of a butterfly proboscis or a party horn, we designed the actuator to extend with the application of internal pressure. This behavior would be the opposite of a standard soft pneumatic actuator, which is fabricated straight and bends or curls with actuation. 
 
 Starting with this goal, we looked into how to define bending behavior for a soft robot. If the robot is to start coiled onto itself and lose curvature with actuation, we need a way to measure said curvature. First, we created a drawing for an actuator with linearly increasing curvature along its length. Using $\kappa = zl$, where $\kappa$ is the curvature, $l$ is the length along the actuator (which will later range from 0 to $l_0$), and $z$ is a function of pressure. Increasing the pressure causes the curvature to decrease until, eventually, the line becomes flat. Figure \ref{fig:smythmodel} contains samples from the first drawing of an actuator with varying curvature. 
 
 \begin{figure}[ht]
     \centering
     \includegraphics[width=4 in]{images3/smythmodel.jpg}
-    \caption{A drawing of decreasing curvature for a line of linearly changing curvature.}
+    \caption{A drawing of a line of linearly increasing curvature and how curvature could change with pressure.}
     \label{fig:smythmodel}
 \end{figure}
 
-Next, we began modeling spiral shapes to understand the parameters available, such as length, cross-section, initial curvature, and how the curvature varies over length. To maximize the final length of the coil, it should wrap around itself as many times as possible, and the cross-section can be reduced along the length to prevent self-intersection. For simplicity, we first modeled a 50\% decrease in a rectangular cross-section over the length of a coil with linearly increasing curvature. Figure \ref{fig:butterflycoil} contains one of our initial models of the coil shape. 
+Next, we began modeling spiral shapes to understand the parameters available, such as length, cross-section, initial curvature, and how the curvature varies over length. To maximize the final length of the coil, it should wrap around itself as many times as possible, and the cross-section can be reduced along the length to prevent self-intersection. For simplicity, we first modeled a 50\% decrease in a rectangular cross-section over the length of a coil with linearly increasing curvature (a spiral). Figure \ref{fig:butterflycoil} contains one of our initial models of the coil shape. 
 
 \begin{figure}[ht]
     \centering
@@ -21,33 +22,19 @@ Next, we began modeling spiral shapes to understand the parameters available, su
     \label{fig:butterflycoil}
 \end{figure}
 
-The parameters involved with creating such an actuator and defining its bending behavior would require a well-defined and feasible to fabricate cross-section, the cross-section reduction over length, the total length, and the number of turns the coil would make. Having all these parameters simultaneously to iterate would make characterization difficult, if not impossible. We decided that maintaining a constant cross-section, wall thickness, and curvature along the length would be ideal for fabrication. 
+Fully defining the parameters involved with creating such an actuator and its bending behavior requires a well-defined and feasible to fabricate cross-section, the cross-section reduction over length, the total length, and the number of turns the coil would make. Having all these parameters simultaneously to iterate would make characterization difficult, if not impossible. We decided that maintaining a constant cross-section, wall thickness, and curvature along the length (a circle) would be ideal for fabrication and characterization. 
 
-\section{Design for Fabrication}
+\section{Design for Bending Behavior}
 
-The design of a soft pneumatic actuator is heavily tied to the fabrication process. There are several problems with creating a robot where the bending behavior is highly sensitive to fabrication tolerances. In this work, we were inspired by the fiber-reinforced actuators designed by Harvard \cite{galloway_mechanically_2013}. These robots have a semi-circular cross-section for its small bending resistance \cite{polygerinos_modeling_2015}. These initially-straight robots are cast around a metal D-shaped rod within 3D-printed molds. We chose the same cross-section dimensions and wall thickness for the circular actuators as we felt comfortable with this size robot; we could make it airtight and use the same design for interfacing with the pressurized air supply. 
+When designing a soft pneumatic actuator with a desired bending behavior, we must consider the fabrication process. The wall thickness, cross-section area, and strain-limiting materials' location and orientation directly influence the bending behavior. 
 
-\begin{figure}[ht]
-    \centering
-    \includegraphics[width=5 in]{images4/fabricationprocess_0.png}
-    \caption{Fabrication process from the Soft Robotics Toolkit \cite{galloway_mechanically_2013}.}
-    \label{fig:toolkitfab}
-\end{figure}
-% https://softroboticstoolkit.com/book/fr-fabrication
+For any soft pneumatic actuator, upon actuation, there are three principle strains in the material that the fabrication method must keep in mind so that the strains create the desired bending motion. The largest strain is the axial strain, the strain along the length of the actuator. In this work, we were inspired by the fiber-reinforced actuators designed by Harvard \cite{galloway_mechanically_2013}. These robots have a semi-circular cross-section for its small bending resistance \cite{polygerinos_modeling_2015} and attach fiberglass fabric to the flat side to limit axial strain. The silicone in the cross-section away from the strain-limiting fabric has axial strain based on the distance from the fabric so that the entire actuator maintains the length of the fiberglass fabric: the highest axial strain is at the top of the semi-circular region.  
 
-As shown in Fig. \ref{fig:toolkitfab}, Harvard's robot is a hollow tube cast from silicone, where strain-limiting materials such as fiberglass and kevlar thread are added to \emph{program} or restrict the strain of the silicone in particular ways with pressurization. After adding the strain-limiting materials, we seal the actuator on both ends to create an airtight chamber. Once airtight, we puncture one side to interface with the pressurization equipment that controls the air pressure within the actuator. 
-
-Upon actuation, there are three principle strains in the material that the fabrication method must keep in mind so that the strains create the desired bending motion. The largest strain is the axial strain, the strain along the length of the actuator. Following the same principles as the standard fiber-reinforced soft pneumatic actuator, we use a semi-circular cross-section and attach the fiberglass fabric to the flat side to limit axial strain. The silicone in the cross-section away from the strain-limiting fabric has axial strain based on the distance from the fabric; the highest strain is at the top of the semi-circular region.  
-
-Strains in the other axes that influence the actuator's bending behavior are considered losses. Since the axial strain primarily defines the bending behavior, any air pressure converted into circumferential or radial strain is a loss. Wrapping kevlar thread around the actuator limits circumferential and radial strains. Different types of circumferential strains are created based on the angle and amount of times we wrap the actuator with the thread. Fiber wrapping allows the actuators to bend and coil in different directions upon actuation. The standard actuator uses silicone cast around a metal rod, and the 3D-printed mold has indents to mark where to wrap the thread. After wrapping, another layer of silicone is cast over the threads and the fiberglass fabric to ensure their connection with the actuator, as shown in Fig. \ref{fig:toolkitfab}.
-
-We made the actuator circular since we wanted to create an actuator with inverted bending behavior. The semi-circular cross-section faces the inside; the flat side is longer and on the exterior. With actuation, the semi-circular portion of the cross-section can axially strain around the neutral bending axis of the fiberglass fabric to achieve the unbending behavior. 
-
-Any variations in the cross-section along the length would create variations in strain, so the first goal was to fabricate an actuator with a uniform cross-section. Fig. \ref{fig:crosssection} contains the dimensions of the desired cross-section and the initial radius of the circular actuator.
+We made the actuator circular to give it the highest initial bending angle. The circular actuator's semi-circular cross-section faces the inside; the flat side is longer and on the exterior. With actuation, the semi-circular portion of the cross-section can axially strain around the neutral bending axis of the fiberglass fabric to achieve the unbending behavior. Any variations in the cross-section along the length would create variations in strain, leading to variations in bending behavior, so we designed an actuator with a uniform cross-section. Fig. \ref{fig:crosssection} contains the desired cross-section dimensions and the circular actuator's initial bending radius.
 
 \begin{figure}[ht]
     \centering
     \includegraphics[width=5 in]{images4/cross-section-drawing.jpg}
-    \caption{Drawing of the cross section and circular shape of the actuator.}
+    \caption{Drawing of the cross-section and initial bending radius of the circular actuator.}
     \label{fig:crosssection}
 \end{figure}
