@@ -1,11 +1,47 @@
 \chapter{Introduction}
+
+Soft robotics is an area of research to create robots made from soft, compliant materials. Instead of rigid links creating degrees of freedom, soft robots use continuous, elastic deformation to achieve different types of useful motion. Materials used to construct soft robots can comply and deform to interact with their environment; soft robots are made to perform in unstructured environments \cite{lee_soft_2017}. Soft robots can achieve typical robot functionality of grasping and locomotion; they are also capable of squeezing, stretching, climbing, and growing \cite{laschi_soft_2016}. Soft pneumatic actuators, also known as elastic inflatable actuators, use a pressurized fluid (air or another fluid) and strategically placed strain-limiting, inextensible materials around the soft body to control its deformation \cite{zaidi_actuation_2021}. These actuators can create motions such as expanding, contracting, twisting, or bending \cite{gorissen_elastic_2017, al-ibadi_circular_2018}. 
+
+Soft pneumatic actuators achieve bending using strain-limiting materials to vary the longitudinal or axial strains across the cross-section upon actuation. For single-chamber actuators, positive pressurization induces a single-direction of bending \cite{galloway_mechanically_2013,  mccandless_soft_2022, alici_modeling_2018, sundaram_dragonclaw_2023}. This bending behavior is used to grasp objects as shown in Fig. \ref{fig:singlechamber}, containing photographs of an actuator bending with increasing pressure, a much smaller actuator attached to a bronchoscope, a group of 3 actuators picking up a pepper, and actuators composing a three-finger hand. \\
+
+\begin{figure}[!ht]
+    \centering
+    \includegraphics[width=6 in]{images1/singlechamber.jpg}
+    \caption{Samples of single chamber soft pneumatic actuators. A. Bending motion \cite{galloway_mechanically_2013}. B. Attached to the end of a bronchoscope \cite{mccandless_soft_2022}. C. Three actuators around a pepper \cite{alici_modeling_2018}. D. Three finger hand with a thumb \cite{sundaram_dragonclaw_2023}.}
+    \label{fig:singlechamber}
+\end{figure}
+
+Multi-directional bending for actuators that are fabricated straight (without an initial bending angle) has been achieved by increasing the number of chambers \cite{bilodeau_design_2018, cappello_exploiting_2018, fei_novel_2019, pang_novel_2019, pagoli_soft_2021}, or with combinations of positive and negative pressure \cite{wakimoto_miniature_2011, ariyanto_three-fingered_2019, fatahillah_novel_2020, terrile_comparison_2021}. Multi-chambered actuators can generate many types of complex locomotion in addition to grasping objects, inspired by a fish \cite{feng_body_2020, zhou_modeling_2020}, octopus \cite{fras_bio-inspired_2018, xie_octopus_2020}, eel \cite{nguyen_anguilliform_2022}, or snake \cite{arachchige_wheelless_2023}. Fig. \ref{fig:multichamber} contains drawings and images of multi-chambered soft actuators, including a tapered octopus arm, a two-chambered actuator, a set of three-chambered actuators solving a Rubix cube, and a side view of a 20 chamber wrist and finger actuator picking up different objects. \\
+
+\begin{figure}[!ht]
+    \centering
+    \includegraphics[width=6 in]{images1/multichamber.jpg}
+    \caption{Samples of multi chamber soft pneumatic actuators. A. Octopus arm \cite{xie_octopus_2020}. B. Three-chambered actuators solving a Rubix cube \cite{pagoli_soft_2021}. C. Two-chambered actuator \cite{bilodeau_design_2018}. D. 20-chambered wrist and finger actuator \cite{fei_novel_2019}.}
+    \label{fig:multichamber}
+\end{figure}
+
+Increasing the number of independently actuated chambers enables a wider range of motion but requires more complex control, especially if both positive and negative pressures are required. Advancing the field requires developing soft robots with more types of achievable motion from each control input, simplifying possible applications by reducing the number of control inputs per robot \cite{gorissen_elastic_2017}. For a single-chamber, positive-pressure actuator, using multiple soft materials enables bi-directional bending \cite{ellis_generative_2022}. 
+
+\clearpage
+Another way of generating bending in a single-chamber soft pneumatic actuator is to fabricate the actuator with an initial bending angle or curvature, which allows for more efficient motion and a greater range of bending angles by reducing the material strain \cite{perez-guagnelli_deflected_2022}. Previous actuators fabricated with curvature used two soft materials to create bending with positive pressure \cite{hu_precurved_2022}. These pre-curved actuators were fabricated with an initial bending angle and could generate opening or closing motions with increasing pressure based on the placement of the stiffer silicone, as shown in Fig. \ref{fig:precurved}. \\
+
+\begin{figure}[!ht]
+    \centering
+    \includegraphics[width=6.5 in]{images1/precurved.jpg}
+    \caption{Two types of a pre-curved actuator \cite{hu_precurved_2022}, starting with an initial bending angle, flexing actuators close with pressure and counter-flexing actuators open with pressure.}
+    \label{fig:precurved}
+\end{figure}
+
+\clearpage
 \section{Statement of Problem}
-Soft robots are safer for human interaction than traditional robots and are often used in grasping applications due to their inherent compliance and adaptability \cite{laschi_soft_2016, hotoda_octopus-like_2023}. Soft pneumatic actuators are a subset of soft robots that generate motions such as bending, twisting, and extending with changes in internal pressure. These behaviors rely on pre-programmed asymmetries in material stiffness or geometry \cite{galloway_mechanically_2013, mccandless_soft_2022, ellis_generative_2022}. Simple bending pneumatic actuators generally consist of an inflatable chamber constrained in one or more directions by inextensible materials, resulting in motion along a single degree of freedom. Multiple simple chambers can be connected in parallel and actuated independently to achieve multi-directional bending \cite{bilodeau_design_2018, pagoli_soft_2021}. Placing several of these multi-chambered actuators in series allows for an extensive range of motion with multiple degrees of freedom \cite{feng_body_2020, nguyen_anguilliform_2022, arachchige_wheelless_2023}. Many soft pneumatic actuators are capable of grasping objects in multiple orientations by using the additional degrees of freedom from multiple chambers \cite{fei_novel_2019} or combinations of positive and negative pressure \cite{ariyanto_three-fingered_2019}. 
 
-Increasing the number of independently actuated chambers enables a wider range of motion but requires more complex control. Increasing the bending capabilities with fewer chambers can require two regulators to generate both positive and negative pressure \cite{fatahillah_novel_2020}. Advancing the field requires developing soft robots with more types of achievable motion from each control input, simplifying possible applications by reducing the number of control inputs per robot \cite{gorissen_elastic_2017}.
+The purpose of this work is to create and characterize a single-chambered soft pneumatic actuator made from a single soft material that can generate both uncurling and curling bending behavior using a positive pressure source. With increasing pressure, the circular soft pneumatic actuator fully uncurls and then curls back on itself, as shown in Fig. \ref{fig:intro}. 
 
-Initially-straight actuators are generally easy to fabricate but are limited in their useful range of motion. Fabricating actuators with curvature or an initial bending angle allows for more efficient motion and a greater range of bending angles by reducing the material strain \cite{perez-guagnelli_deflected_2022}. Previous examples of circular pneumatic actuators had a closed circle configuration and could grasp objects but could not bend \cite{al-ibadi_circular_2018}. Other pre-curved actuators consisting of a single chamber composed of two silicones could only uncurl or curl further based on which side has stiffer silicone \cite{hu_precurved_2022}. These actuators generate either curling or uncurling motion with a single control input; however, they require advanced fabrication techniques. No single-chamber soft pneumatic actuator made of a uniform soft material has demonstrated both uncurling and curling bending behavior only with positive pressure input. 
+\begin{figure}[!ht]
+    \centering
+    \includegraphics[width=3.5 in]{images1/intro.jpg}
+    \caption{A circular soft pneumatic actuator made of DragonSkin 20 silicone.}
+    \label{fig:intro}
+\end{figure}
 
-% We present a circular soft pneumatic actuator with bi-directional bending from a single positive pressure source. As shown in Fig. \ref{figure:photo-range}, with increasing pressure, the circular soft pneumatic actuator fully uncurls and then curls back on itself. Our actuator achieves this large workspace by pressurizing just one chamber using a single control signal. This allows for grasping both by uncurling inside the object and by curling around the outside of the object if the actuator is supported from its center.
-
-% In this paper, we describe the fabrication process and present an analytical model for all bending angles as a function of input pressure, including circumferential and radial deformation. Additionally, we present an experimental procedure for characterizing the bending behavior and blocked force of actuators made from four materials. We also demonstrate force-based grasping from both the inside and outside of objects. 
+This thesis includes the circular soft pneumatic actuator's design, fabrication, and characterization. We discuss early designs and iterations of the fabrication process and equipment used to pressurize the actuator. We present an analytical model and experimentation procedures for bending angle and analysis of the blocked force generated by the actuator. Additionally, we include samples of holding objects of various sizes, showing the versatility of the circular actuator. 
