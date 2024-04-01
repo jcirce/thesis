@@ -13,6 +13,12 @@ Characterizing the blocked force for a soft pneumatic actuator is essential to u
 
 The standard fiber-reinforced actuator's blocked force can be measured by placing the load cell underneath the end of the actuator, and with pressure, the actuator begins bending, but since the load cell restricts its motion, the force reading on the load cell is the blocked force of the actuator. Additional materials are placed on the actuator for a \emph{more accurate} reading to ensure no axial strain. This method of measuring and characterizing the blocked force is acceptable for the standard actuator. However, the circular actuator's shape and bending behavior create several challenges when measuring the blocked force. 
 
+\section{Testing Protocols}
+
+To determine the size of the load cell required to characterize the blocked force of the circular actuators, we used the scale used to weigh the silicone during casting. We determined that a 2~kg load cell would not saturate while measuring the blocked force when we blocked the actuator from unbending. 
+
+We used a 2~kg load cell (a14071900ux0069, Uxcell) connected to an amplifier (CJMCU-711 HX711, Cylewet). This amplifier has digital communications using the DATA and CLK pins. Instead of using the microcontroller to take the force readings, we used the computer and a USB to GPIO converter (CJMCU FT232H, Koobook). We took the average of 100 load cell readings for each force reading. Using the computer was advantageous because we could switch microcontrollers without changing how we recorded force data. Chapter \ref{chapter:blockedforce} fully details the blocked force characterization for the circular actuator. 
+
 \section{Iterations on Orientation}
 
 The load cells we purchased measure a force in a single direction (a 1-axis load cell). To calibrate the sensor, we used objects of known weight (often the clamps used for holding the molds together during fabrication). First, we took readings with no load on the load cell to know the initial value, then we added the object of known weight and used a string to hang it from the load cell. We took several readings at different weights to generate a linear map of the digital reading from the load cell's amplifier to the force applied from the object using gravity. Calibrating the load cell in this way meant that the load cell must remain pointing in the direction of gravity (towards the lab bench). 

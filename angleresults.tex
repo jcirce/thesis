@@ -2,9 +2,7 @@
 \label{chapter:results}
 
 \section*{Overview}
-This chapter presents the results of bending angle experiments defined in chapter~\ref{chapter:bendingangle} compared to the analytical model defined in chapter~\ref{chapter:model} and blocked force experiments defined in chapter~\ref{chapter:blockedforce}. We tested actuators made from four soft materials using the fabrication method defined in chapter~\ref{chapter:fabrication}.
-
-\section{Bending Angle}
+This chapter presents the results of bending angle experiments defined in chapter~\ref{chapter:bendingangle} compared to the analytical model defined in chapter~\ref{chapter:model}. We tested actuators made from four soft materials using the fabrication method defined in chapter~\ref{chapter:fabrication}.
 
 We measured the bending angle of circular actuators made from four soft materials with both increasing and decreasing pressure. We photographed and calculated the bending angle at each pressure increment using OpenCV (as discussed in section \ref{section:opencv}). We ran six tests for each actuator and took the average value of the bending angle for all of the actuators for each material (2-3, depending on the material). This work discusses each material separately, but comparing the bending angle of all materials within the pressures we could create with the pressure rig is valuable. Fig. \ref{fig:allmaterialvsmodel} contains bending angle results for actuators of all four materials. We present results for each material in a different color, and the shaded region represents one standard deviation of bending angle for increasing and decreasing pressure, using darker and lighter shading, respectively. Additionally, we added the bending angle predicted by the analytical model for the bending angle for each material. The purpose of the rest of this section is to explain this figure. 
 
@@ -16,7 +14,7 @@ We measured the bending angle of circular actuators made from four soft material
 \end{figure}
 
 \clearpage  
-\subsection{DS20}
+\section{DS20}
 
 DS20 actuators, the softest of the silicones we used in this work, were capable of 436$^\circ$ in 112~kPa (16.2 PSI). Starting at an initial bending angle, $\psi_0>210^\circ$, with increasing pressure, the DS20 actuators reached $\psi=0^\circ$ and continued into bending with a negative bending angle, ultimately reaching past $\psi<-\psi_0$. 
 
@@ -69,7 +67,7 @@ When we were still fabricating actuators with a 2-part insert split in the middl
 \end{figure}
 
 \clearpage
-\subsection{DS30}
+\section{DS30}
 
 DS30 actuators had a bending range of 424$^\circ$ in 175~kPa. On average, the DS30 actuators had an initial bending angle, $\psi_0$ of 214$^\circ$, and a maximum negative bending angle of $\psi=-210^\circ$. With increasing pressure, the DS30 actuators crossed $\psi=0^\circ$ between 100-114~kPa and 104-87~kPa with decreasing pressure. The overall shape and concavity of the experimental results match those from DS20 but extend along the pressure axis to cross $\psi=0^\circ$ at a higher pressure. 
 
@@ -105,7 +103,7 @@ Another way of visualizing the effect is by moving the point of maximum circumfe
 \end{figure}
 
 \clearpage
-\subsection{SS40}
+\section{SS40}
 
 Within the limitations of the pressure rig (a max pressure of 256~kPa), circular actuators fabricated from SS40 silicone reached $\psi=0^\circ$ and can display small negative bending angles, a total range of 265$^\circ$. The SS40 and SS50 bending angle results demonstrate the non-linearity of the shore hardness scale in relation to the behavior of the circular actuators. Between DS20 and DS30, the $\psi=0^\circ$ cross-over point increased by about 40~kPa. From DS30 to SS40, we see an increase of about 120~kPa. On average, the SS40 actuators reached $\psi=0^\circ$ at 215~kPa. 
 
@@ -121,7 +119,7 @@ SS40 actuators maintained constant curvature near $\psi=0^\circ$, a substantial 
 \end{figure}
 
 \clearpage
-\subsection{SS50}
+\section{SS50}
 
 The stiffest of the four materials, in 256~kPa, the SS50 actuators displayed a bending range of just 64$^\circ$. Due to the small bending range and hysteresis of the stiff material, the RMS error of the analytical model compared to experimental data was 4.5$^\circ$. Once again, we expect a significant increase in $\psi=0^\circ$ compared to the jump between DS30 and SS40; the model predicts $\psi=-\psi_0$ at 378~kPa. Fig \ref{fig:ss50samples} contains photographs of an SS50 actuator from 21-256~kPa. 
 \\

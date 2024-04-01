@@ -93,7 +93,18 @@ For DS20 actuators tested in this orientation, we took more photos around 70-90 
 \clearpage
 \section{Photographing Bending Angle}
 
+To experimentally measure the bending angle of the circular actuators, we used a camera to take photos of the actuator at each pressure. We entertained using a flexible resistor (SEN-08606, SparkFun), but this would not provide insight into variations in curvature or non-axial expansion along the length of the actuator. A photograph, although requiring post-processing, provides infinite insight into the actuator's bending behavior. 
+
 In order to remove the influence of gravity and friction on the bending angle as we both increased and decreased the pressure in the circular actuator, we chose to photograph the actuator horizontally. The actuator was allowed to rest on the table. If the fiberglass fabric was placed perpendicular to the table, using a camera mounted above the table pointing down, we could capture the bending angle at any pressure. Although laborious, we held the actuator above the table when changing the internal pressure to eliminate the effects of friction. Once the pressure and strain of the actuator reached a steady state, we would place the actuator on the table before taking the photograph. The bending behavior maintained hysteresis between increasing and decreasing pressure, but it can be associated with the non-linear nature of the hyperelastic material, not friction or gravity. Additionally, this orientation provided the closest behavior to the constant curvature we expected from the model. 
+
+\clearpage
+\section{Testing Protocols}
+
+We used a web camera (C920 Hd Pro, Logitech) to take photographs of the actuator at each pressure. Our testing script used OpenCV \cite{opencv_library} to interface with the web camera and save the photographs in the appropriately named directory for later post-processing. 
+
+For each test, the person running the test would input the \emph{name} of the actuator and the number of the test. For example, DS20K3\textunderscore4 meant the actuator was made of DragonSkin 20 silicone, it was fabricated with the K method (the insert split in the center of the actuator), it was the third actuator made with this material and fabrication method, and this is the fourth time running the bending angle experiment. 
+
+Using the terminal output and keyboard of the computer, the person running the test would see the pressure about to be sent to the actuator and then press the space bar to confirm the pressure should be changed. Once the actuator had reached a steady state at that pressure, pressing the ``m" key would take a photograph, name it with the name of the actuator and the current pressure, and save it to a directory with the name of the test. The script would continue through the list of pressures we wanted to test the actuator at until the peak pressure was reached. After documenting the bending angle at the maximum pressure, the pressure would reverse to capture hysteresis in the bending behavior. Each test took 5-10 minutes to take 30-35 photographs, depending on the achievable peak pressure in the actuator.
 
 \section{Calculating Bending Angle}
 
