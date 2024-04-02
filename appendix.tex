@@ -1,11 +1,108 @@
 \appendix
 
-\chapter{Non-linear Pressure From Using Digital Potentiometer}
-\label{appendix:A}
+\chapter{PCL Inserts}
+\label{appendix:pcl}
 
-\begin{figure}[ht]
+PCL (polycaprolactone) is a plastic with a low melting temperature and is moldable in warm water. Using the same silicone mold made for the wax inserts, we used warm water to melt the PCL pellets into blobs, which we pressed into the silicone mold. The DS20 mold was far too flexible to shape the PCL accurately. Also, as the pieces of PCL cooled and solidified, they would not fully bond with the other pieces, leaving air gaps in the insert. After tuning the timing between the cooling down and adding more PCL pieces, we successfully created an insert and cast a DS20 actuator around the PCL insert. Unfortunately, the silicone walls were uneven, and the PCL insert had the same single-use problem as the wax inserts. Fig. \ref{fig:pclinsert} contains photographs of experimenting with PCL as an insert and the DS20 actuator we cast using the PCL insert.
+
+\begin{figure}[!ht]
+    \centering
+    \includegraphics[width=6 in]{images4/pclinsert.jpg}
+    \caption{Experimentation with PCL inserts. A. Silicone mold. B. An attempt. C. Melting PCL in warm water. D. PCL insert inside PLA mold. E. Casted around PCL insert. F. Removed from mold. G. Extra silicone removed. H. Final actuator.}
+    \label{fig:pclinsert}
+\end{figure}
+
+\chapter{Non-linear Pressure From Using Digital Potentiometer}
+\label{appendix:bitmap}
+
+\begin{figure}[!ht]
     \centering
     \includegraphics[width=6.5 in]{images6/bitpressuremap.jpg}
     \caption{Relationship between the range set on the pressure regulator, the command sent to the digital potentiometer and the output pressure in the actuator for four pressure ranges.}
+\end{figure}
+
+\chapter{Orientations for Measuring Bending Angle}
+\label{appendix:ao}
+
+\section{First Testing Orientation}
+
+Before we developed the brass barbs, which provided a part of the actuator we could easily clamp to, we needed to figure out how to fix the actuator in front of the camera to capture the bending behavior. For the first test, the materials available were a scrap piece of matte black acrylic, a metal triangle we fastened to the lab table, and an aluminum extrusion to hold the acrylic upright against the triangle. We placed the 10-32 female standoff used to inflate the actuator inside a hole on one side of the triangle, and we ran the air supply tube through the triangle to hold the actuator in place. We placed the camera far enough away from the actuator so that the pressure reading (in psi) on the regulator was visible in the photograph. The photographs in Fig. \ref{fig:firstdataset} are of a DS20 actuator tested with $1.0~\pm~0.1$ increments from 2.0 to 12.0 psi. 
+
+\begin{figure}[!ht]
+    \centering
+     \includegraphics[width=6 in]{images7/firstdataset.jpg}
+    \caption{First photos taken to observe the bending angle of the circular actuator. Pressure increments are $1.0~\pm~0.1$ from 2.0 to 12.0 psi.}
+    \label{fig:firstdataset}
+\end{figure}
+
+\clearpage
+We identified several problems with capturing the bending angle using this orientation. Based on the model, we expected the actuator to have constant curvature at each pressure, and having the fiberglass side rest on the flat table introduced reductions in curvature; the portion of the silicone touching the table was flatter than the rest of the actuator. Additionally, the end of the actuator was pulled down by gravity, increasing the curvature and inducing a larger bending angle, $\psi$. 
+
+The effects of gravity in this testing orientation were worse on the stiffer silicones. Fig. \ref{fig:ss45fallsover} contains 3 sample images at 2.0, 9.2, and 12.8 psi of an SS45 actuator photographed in the first testing configuration. Note that the actuator fell over while taking the middle photograph. Even though we did not fully model the SS45 silicone actuators, primarily due to lack of material properties for this material, we were able to capture the difference in bending angle at 12 psi for a DS20 compared to SS45. 
+
+\begin{figure}[!ht]
+    \centering
+     \includegraphics[width=6 in]{images7/ss45fallsover.jpg}
+    \caption{Photos of a SS45 actuator at 2.0, 9.2, and 12.8 psi.}
+    \label{fig:ss45fallsover}
+\end{figure}
+
+\clearpage
+\section{First Horizontal Testing}
+
+In an attempt to remove the effects of gravity on the curvature of the actuator, we placed the camera pointing down at the table. This testing orientation did remove the inconsistencies created by having the actuator rest flat on the table and gravity pulling the end. However, friction now significantly impacts bending behavior. The bending angle varied significantly compared to vertical testing. Fig. \ref{fig:ds20h} contains images of a DS20 actuator with increasing psi. 
+
+\begin{figure}[!ht]
+    \centering
+     \includegraphics[width=6 in]{images7/ds20h.jpg}
+    \caption{Photos taken of a DS20 actuator at various psi pressures when placed horizontally on the lab bench.}
+    \label{fig:ds20h}
+\end{figure}
+
+\clearpage
+\section{Unbending with Gravity}
+
+In an attempt to remove friction from restricting the decrease in bending angle with increasing pressure, we entertained adding the effects of gravity to the model as an additional bending moment affecting the curvature of the actuator. After testing in this configuration, we quickly determined that gravity-induced non-trivial variations in the curvature along the length of the actuator. Especially at lower pressures, the actuator lost its circular shape due to the effects of gravity. At higher pressures, the actuator was able to hold the straight position. During these tests, we were still not going above 14.6 psi when $\psi=0$ because we had yet to discover the negative bending angle capabilities of the circular actuator. Fig \ref{fig:withgravity} contains photographs of a DS20 actuator held at the top so it could unbend with the help of gravity. This test removed friction's effects because nothing touched the actuator except the clamp on the brass barb. 
+
+Comparing DS20 and DS30 at the same pressure values, DS20 has a lower bending angle, which we expected because the silicone requires more stress to achieve the same strain. Fig \ref{fig:d30withgravity} contains photographs of a DS30 actuator at the same pressure increments. This DS30 actuator displayed some twisting motion as the pressure increased. The twisting is likely due to the fibers of the fiberglass fabric not being aligned with the actuator, or the insert could have been slightly misaligned in the mold, causing uneven wall thickness, which would cause uneven strains, inducing the twisting behavior.
+
+\begin{figure}[!ht]
+    \centering
+     \includegraphics[width=6 in]{images7/withgravity.jpg}
+    \caption{Photos taken of a DS20 actuator at various psi pressures when held vertically.}
+    \label{fig:withgravity}
+\end{figure}
+
+\begin{figure}[!ht]
+    \centering
+     \includegraphics[width=6 in]{images7/d30withgravity.jpg}
+    \caption{Photos taken of a DS30 actuator at various psi pressures when held vertically.}
+    \label{fig:d30withgravity}
+\end{figure}
+
+\clearpage
+\section{Vertical but Above Table}
+
+After testing with gravity assisting the bending behavior, we attempted once again to photograph the bending angle vertically. This time, we raised the actuator using standoffs to reduce the restrictions on curvature from previous experiments in this orientation. Additionally, the test script was modified to both increase and decrease the pressure inside the actuator so that we could capture the hysteresis of the bending angle. Unfortunately, now that the table was not there to support the actuator, gravity not only pulled the actuator so that it touched the table at low $\psi$ but added an incredible hysteresis to the bending behavior. Fig \ref{fig:ds20sver} contains photographs of a DS20 actuator against a blue and black checkerboard background. The images on the left are increasing the pressure, and those on the right are decreasing the pressure. While decreasing the pressure, the actuator maintained significantly lower $\psi$ than previously observed when increasing the pressure. 
+
+\begin{figure}[!ht]
+    \centering
+     \includegraphics[width=6.5 in]{images7/ds20sver.jpg}
+    \caption{Photos taken of a DS20 actuator vertically but offset from the table with standoffs. The left group was increasing the pressure, and the right group was from decreasing the pressure.}
+    \label{fig:ds20sver}
+\end{figure}
+
+\clearpage
+\section{Unbending Against Gravity}
+
+In yet another attempt at finding an orientation where we could measure the bending angle of the circular actuator without the effects of friction or restrictions from the table, we tested actuators unbending against gravity. We accidentally put 25 psi into a DS20 actuator during testing. We feared that the actuator would explode, but it did not! The actuator continued bending past $\psi=0^\circ$ and continued what we defined as the negative $\psi$ bending range. As novel as this discovery was, this testing configuration still induced incredible hysteresis from the effects of gravity, so we could not compare the now positive and negative bending angles to the model. 
+
+For DS20 actuators tested in this orientation, we took more photos around 70-90 kPa (1.0 psi = 6.89 kPa), as the actuator's bending was unstable at these pressures, similar to an inverted pendulum. We still found a large hysteresis in this orientation, and the unstable-inverted-pendulum-against-gravity behavior would not align with the model we developed for the bending angle. Additionally the non-constant curvature near the fixed end of the actuator made this testing orientation not ideal. Fig. \ref{fig:d20againstgravity} contains photographs of a DS20 actuator displaying its full range of bending motion against gravity. The instability and large hysteresis between 70-90 kPa led us to not continue with this testing orientation. 
+
+\begin{figure}[!ht]
+    \centering
+     \includegraphics[width=6.5 in]{images7/d20againstgravity.jpg}
+    \caption{Photographs of a DS20 actuator across its entire bending range of motion. The left group was increasing pressure, and the right group was from decreasing pressure. NOTE: Pressure values are in kPa.}
+    \label{fig:d20againstgravity}
 \end{figure}
 
