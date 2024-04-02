@@ -83,9 +83,7 @@ After confirming that the silicone could cure around this material, we printed t
 
 \subsection{Flexible Inserts}
 
-To create an insert that could be used multiple times and easily removed from the silicone after casting, we fabricated inserts by 3D-printing with TPU (thermoplastic polyurethane), a flexible filament. The stiffness of the TPU insert could be tuned based on the infill percentage. At first, the inserts were printed on the bed horizontally with no support material. In this orientation, the semi-circular cross-section's overhang created inconsistencies in the 3D-printed cross-section. We began printing the inserts with TPU as support material to ensure an even cross-section. 
-
-The drawback of TPU inserts was that even though they could be used to cast multiple actuators, the inherent flexibility of TPU led the inserts to lose their circular shape over time. To continue using TPU and combat its flexibility, we used pins to hold the insert within the mold. Photos of the TPU insert fabrication process are in Fig. \ref{fig:tpuprocess}. Using three sets of pins evenly spaced along the length of the actuator (Fig. \ref{fig:tpuprocess}B), we could ensure the TPU insert would remain in the center of the mold during silicone casting. The pins created a new problem of needing to patch the holes left behind in the silicone. After casting the actuator with the TPU insert and pins, we would insert a different, solid TPU insert into the hollow silicone (Fig. \ref{fig:tpuprocess}F) to patch the holes with additional silicone and maintain the desired cross-section. Mixing and casting more silicone to patch the holes was not ideal because of the additional time required for the silicone to cure. 
+To create an insert that could be used multiple times and easily removed from the silicone after casting, we fabricated inserts by 3D-printing with TPU (thermoplastic polyurethane), a flexible filament. The stiffness of the TPU insert could be tuned based on the infill percentage. At first, the inserts were printed on the bed horizontally with no support material. In this orientation, the semi-circular cross-section's overhang created inconsistencies in the 3D-printed cross-section. We began printing the inserts with TPU as support material to ensure an even cross-section. Photographs of the TPU insert fabrication process are in Fig. \ref{fig:tpuprocess}. \\
 
 \begin{figure}[!ht]
     \centering
@@ -94,20 +92,26 @@ The drawback of TPU inserts was that even though they could be used to cast mult
     \label{fig:tpuprocess}
 \end{figure}
 
+The drawback of TPU inserts was that even though they could be used to cast multiple actuators, the inherent flexibility of TPU led the inserts to lose their circular shape over time. To continue using TPU and combat its flexibility, we used pins to hold the insert within the mold. Using three sets of pins evenly spaced along the length of the actuator (Fig. \ref{fig:tpuprocess}B), we could ensure the TPU insert would remain in the center of the mold during silicone casting. The pins created a new problem of needing to patch the holes left behind in the silicone. After casting the actuator with the TPU insert and pins, we would insert a different, solid TPU insert into the hollow silicone (Fig. \ref{fig:tpuprocess}F) to patch the holes with additional silicone and maintain the desired cross-section. Mixing and casting more silicone to patch the holes was not ideal because of the additional time required for the silicone to cure. 
+
+\subsubsection{SS45 Silicone}
+
 The TPU insert with pins method successfully created an airtight actuator for the soft DS20 silicone. To test if the fabrication procedure would work for stiffer silicones, we cast an actuator out of SS45 silicone. SS45 is much stiffer and has a much higher viscosity than DS20. Despite tapping the mold on the lab bench to remove the trapped air bubbles, after the silicone cured, large bubbles at the top of the mold remained, and after inspection, we found air pockets throughout the actuator. A more significant issue was that we could not remove the TPU insert. The silicone was too stiff for the end caps of the insert to slide through. We had to cut the silicone to remove the insert. Upon further inspection, a few air pockets remained inside of the silicone. Fig. \ref{fig:ss45mess} contains photos of testing the TPU insert and pins fabrication method for SS45 silicone. 
 
 We also attempted to degas the mold after casting the SS45 actuator to combat the air holes that remained in the silicone. The small air pockets expanded, leaving the actuator with a significant amount of voids within the cross-section. Additionally, the pins left large holes, and since the solid TPU insert could not be slid in to patch the holes, we had to look into alternate methods of restricting the flexible insert. 
 
-\begin{figure}[ht]
+\begin{figure}[!ht]
     \centering
     \includegraphics[width=5.5 in]{images4/ss45mess.jpg}
     \caption{Images of failed SS45 actuator casting attempts. A. Overflow of mold during degassing. B. Samples of gaps created by air bubbles stuck in the mold. C. Un-patchable hole left from pin. D. Holes present in the actuator from over degassing}
     \label{fig:ss45mess}
 \end{figure}
 
+\subsubsection{Alternate Spacers with DS20}
+
 For DS20 silicone, patching the holes left behind by the pins created an airtight seal. To remove the need to patch the holes, we attempted casting actuators using rings of DS20 silicone to hold the TPU insert in place. We printed a mold to cast small semi-circular rings of DS20 silicone, then cut a piece away so that the silicone would flow past the spacers and reach the ends while casting the actuator's body. The placement of the spacers was somewhat arbitrary as we were still determining if this method would create an airtight seal. After casting the actuator and removing it from the molds, simply pulling on it would break the seal between the silicone pieces cast at different times. Fig. \ref{fig:ds20spacer} contains images of this attempt centering the TPU insert inside the mold. 
 
-\begin{figure}[ht]
+\begin{figure}[ht!]
     \centering
     \includegraphics[width=5.5 in]{images4/ds20spacer.jpg}
     \caption{Images of failed attempts at using a spacer made from DS20 silicone to center the TPU insert. A. 3D printed mold for the spacers. B. Casted spacers. C. Arbitrary placement of spacers. D. Casted actuators right after removing from the mold. E. After removing excess silicone. F. Failed attempt at creating a seal.}
@@ -121,7 +125,7 @@ Overall, iterating with a flexible insert reaffirmed the need to cast the actuat
 
 We fabricated wax inserts to create an insert that is more rigid than TPU but not as wasteful as PVA. We found three waxes compatible with curing silicone: beeswax, paraffin wax, and microcrystalline wax. We decided to cast the wax in a silicone mold for easy removal. To cast the silicone used as a mold, we 3D-printed a mold and insert out of PLA. Fig. \ref{fig:waxinserts} contains images from experimenting with wax inserts. 
 
-\begin{figure}[ht]
+\begin{figure}[ht!]
     \centering
     \includegraphics[width=5.5 in]{images4/waxinserts.jpg}
     \caption{Experimentation with wax inserts. A. 3D printed mold and insert for casting silicone mold for wax. B. Casting silicone mold. C. Paraffin wax casting. D. Paraffin insert removed from mold. E. Beeswax and microcrystalline wax casting. F. Beeswax and microcrystalline wax inserts.}
