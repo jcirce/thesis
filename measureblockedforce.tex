@@ -4,20 +4,21 @@
 \section{Overview}
 Characterizing the blocked force for a soft pneumatic actuator is essential to understanding the behavior. The force the actuator generates when constrained provides insight into possible grasping applications of the robot. During unrestricted bending, the moment from the input pressure is equal to the moment from axial strain along the length of the actuator. If we prohibit axial strain, the internal stress is resolved by an external or blocked force, $F$. Fig.~\ref{fig:justblockedforce} contains Fig.~\ref{fig:modelall}C, in this chapter, we define $F$, the blocked force bending moment generated in response to input pressure, $P$, if we restrict axial strain ($\lambda_{\varphi,\tau}$ and $\lambda_\beta$). 
 
-\begin{figure}[ht]
+The standard fiber-reinforced actuator's blocked force can be measured by placing the load cell underneath the end of the actuator. With pressure, the actuator begins bending, but since the load cell restricts its motion, the force reading on the load cell is the blocked force of the actuator. Additional materials are placed on the actuator for a more accurate reading to ensure no axial strain \cite{polygerinos_modeling_2015}. This method of measuring and characterizing the blocked force is acceptable for the standard actuator. However, the circular actuator's shape and bending behavior create several challenges when measuring the blocked force. 
+
+\begin{figure}[!ht]
     \centering
-     \includegraphics[width=3 in]{images8/justblockedforce.jpg}
+     \includegraphics[width=2.5 in]{images8/justblockedforce.jpg}
     \caption{Defining blocked force, $F$, in relation to the analytical model.}
     \label{fig:justblockedforce}
 \end{figure}
 
-The standard fiber-reinforced actuator's blocked force can be measured by placing the load cell underneath the end of the actuator. With pressure, the actuator begins bending, but since the load cell restricts its motion, the force reading on the load cell is the blocked force of the actuator. Additional materials are placed on the actuator for a more accurate reading to ensure no axial strain \cite{polygerinos_modeling_2015}. This method of measuring and characterizing the blocked force is acceptable for the standard actuator. However, the circular actuator's shape and bending behavior create several challenges when measuring the blocked force. 
+This chapter details the equipment, protocols, and orientation we chose to measure the blocked force at one end of the circular actuator when restricting axial deformation. Due to the uniqueness of the circular actuator's shape and behavior, this chapter also includes how we define and measure the eccentricity of the circular actuator when restricting axial deformation using the load cell and pressurizing the actuator inside a cup. Additionally, to characterize the force at lower and negative bending angles, we used large round objects. 
 
-This chapter details the equipment, protocols, and the orientation we chose to measure the blocked force at one end of the circular actuator when restricting axial deformation. 
-
+\clearpage
 \section{Testing Equipment and Protocols}
 
-We determined that a 2~kg load cell would not saturate while measuring the blocked force when we blocked the actuator from unbending using a small food scale. We used a 2~kg load cell (a14071900ux0069, Uxcell) connected to an amplifier (CJMCU-711 HX711, Cylewet). This amplifier has a digital communication protocol. To communicate between the amplifier and the computer storing the force readings, we used a USB to GPIO converter (CJMCU FT232H, Koobook) and a Python script. At each pressure increment, we took the average of 100 load cell readings to reduce noise. \\
+We determined that a 2~kg load cell would not saturate while measuring the blocked force when we blocked the actuator from unbending using a small food scale. We used a 2~kg load cell (a14071900ux0069, Uxcell) connected to an amplifier (CJMCU-711 HX711, Cylewet). This amplifier has a digital communication protocol. To communicate between the amplifier and the computer storing the force readings, we used a USB to GPIO converter (CJMCU FT232H, Koobook) and a Python script. At each pressure increment, we took the average of 100 load cell readings to reduce noise. 
 
 The 1-axis load cell measures a force in a single direction. To calibrate the sensor, we used objects of known weight (often the clamps used for holding the molds together during fabrication). To calibrate the reading from the amplifier and convert it to units of kg, we first took readings with no load to know the bias, then we added objects of known weight using a string to hang it from the load cell. We took several readings at different weights to generate a linear map of the digital reading from the load cell's amplifier to the force applied from the object using gravity. Calibrating the load cell using gravity meant that the load cell must remain pointing in the direction of gravity to ensure accurate readings. 
 
@@ -25,7 +26,7 @@ The 1-axis load cell measures a force in a single direction. To calibrate the se
 
 \subsection{Pushing Down on the Load Cell}
 
-For the first attempt at using the load cell to measure the blocked force at the end of the actuator, we fixed the load cell so that it would measure a force normal to the table (in the same direction as gravity). We wanted the flat side of the actuator to touch the load cell before we added pressure. We assumed we could calibrate out the weight of the actuator itself. Fig. \ref{fig:pushingdown} contains photographs taken while we measured blocked force. Because each actuator had a slightly different length from fabrication inconsistencies, the ideal angle of the end with the barb was slightly different for each actuator. We tried holding the fixed end of the actuator at 45 degrees using a metal triangle; the free end could connect with the load cell but not quite in parallel. We also tried holding the barb end perpendicular to the table (in parallel with the direction of the force on the load cell) but faced the same problem. 
+For the first attempt at using the load cell to measure the blocked force at the end of the actuator, we fixed the load cell so that it would measure a force normal to the table (in the same direction as gravity). We wanted the flat side of the actuator to touch the load cell before we added pressure so that when pressurized, the developed blocked force would push into the load cell. We assumed we could calibrate out the weight of the actuator itself. Fig. \ref{fig:pushingdown} contains photographs taken while we measured blocked force. Because each actuator had a slightly different length from fabrication inconsistencies, the ideal angle of the end with the barb was slightly different for each actuator. We tried fixing the barb end of the actuator at 45 degrees using a metal triangle; the free end could connect with the load cell but not quite in parallel. We also tried holding the barb end perpendicular to the table (in parallel with the direction of the force on the load cell) but faced the same problem. 
 
 \begin{figure}[!ht]
     \centering
@@ -38,6 +39,7 @@ Using this method, we could capture force readings, but several factors led to c
 
 We attempted a few methods of fixing the end of the actuator to the load cell: electric tape, Kevlar thread, and even a 3D-printed jig. Despite helping to maintain the contact between the end of the actuator and the load cell, since the actuator wanted to pull away from the load cell, these additions would also cause a vertical force on the load cell, further complicating the reading. 
 
+\clearpage
 \subsection{Pulling Up on the Load Cell}
 
 To ensure the load cell could read the entire blocked force on the end of the circular actuator, we used Kevlar thread to resolve the force into a single axis, the axis of the load cell. By tying the thread around the free end of the actuator and tying the other end to the load cell, we could block some axial deformation and record the force. To align one side of the thread with the axis of the load cell, we used a small bearing mounted to a 3D-printed block. We fixed this block at a suitable height above the load cell. The flange on the bearing helped keep the thread aligned with the actuator and the load cell. This orientation suffered the same problems as measuring the bending angle against gravity. The actuator could bend and twist out of the plane containing the bearing and the load cell. The thread then had the freedom to move in three axes, which could cause the thread to move off of the bearing. Fig \ref{fig:verticalstring} contains photographs of this testing setup. We determined the optimal length of the string by checking if the load cell reading was close to zero at 0.0 psi (the string was not pulling on the actuator). 
@@ -45,17 +47,17 @@ To ensure the load cell could read the entire blocked force on the end of the ci
 \begin{figure}[ht]
     \centering
      \includegraphics[width=4.5 in]{images8/verticalstring.jpg}
-    \caption{Photographs of the circular actuator connected to the load cell over a bearing acting as a pulley to resolve the multi-directional force on the end of the actuator into a single axis for the load cell reading. The orange dashed lines are parallel to the inextensible thread (added for emphasis).}
+    \caption{Photographs of the circular actuator connected to the load cell over a bearing acting as a pulley to resolve the multi-directional force on the end of the actuator into a single axis for the load cell reading. The orange dashed lines are parallel to the inextensible thread.}
     \label{fig:verticalstring}
 \end{figure}
 
-Using an inextensible thread free to rotate around the bearing did not entirely block the actuator from unbending. However, it did restrict some axial deformation, inducing a non-constant curvature shape of the fiberglass layer. With increasing pressure, the angle of the thread with respect to the axis of the load cell decreased until both halves of the thread were parallel, and the thread would lift off the pulley. Fig \ref{fig:verticalstringangle} contains samples from various pressures of a DS20 actuator blocked with an inextensible thread attached to the load cell over a bearing acting as a pulley. Note how the shape of the actuator becomes less circular with increasing pressure, and the angle between the two pieces of thread reduces until the thread lifts off the pulley. 
+Using an inextensible thread free to rotate around the bearing did not entirely block the actuator from unbending. However, it did restrict some axial deformation, inducing a non-constant curvature shape of the fiberglass layer. With increasing pressure, the angle of the thread with respect to the axis of the load cell decreased until both halves of the thread were parallel, and the thread would lift off the pulley. Fig \ref{fig:verticalstringanglefewer} contains samples of a DS20 actuator blocked with an inextensible thread attached to the load cell over a bearing acting as a pulley. Note how the shape of the actuator becomes less circular with increasing pressure, and the angle between the two pieces of thread reduces until the thread lifts off the pulley. Photographs at smaller pressure increments for this actuator are in Appendix \ref{appendix:pullinguploadcell}. 
 
 \begin{figure}[ht]
     \centering
-     \includegraphics[width=5 in]{images8/verticalstringangle.jpg}
-    \caption{Photographs of a DS20 actuator at pressures ranging between 0.2 and 15.2 psi. The bending angle of the actuator is blocked by an inextensible thread attached to a load cell over a pulley. The orange line indicates the angle of the thread connected to the free end of the actuator.}
-    \label{fig:verticalstringangle}
+     \includegraphics[width=5.5 in]{images8/pullingupfewer.pdf}
+    \caption{Photographs of a DS20 actuator at 0.2, 8.1, and 15.2 psi. The orange line indicates the angle of the thread connecting the free end of the actuator to the load cell.}
+    \label{fig:verticalstringanglefewer}
 \end{figure}
 
 \clearpage
@@ -71,3 +73,32 @@ In this testing orientation, the inextensible thread still runs over the pulley.
     \caption{Measuring blocked force with the actuator resting on a horizontal surface. A. Drawing of how the shape of the actuator changes with pressure, showing how the angle of the thread changes. B. Photographs of a DS20 actuator with an orange line showing the angle of the string with increasing pressure.}
     \label{fig:horizontalblockedforce}
 \end{figure}
+
+\clearpage
+\section{Measuring Eccentricity}
+\label{section:eccentricity}
+
+In the analytical model, the circular actuators maintain uniform axial deformation (constant curvature) throughout positive and negative $\psi$. In practice, as seen in chapter \label{chapter:angleresults}, uneven circumferential expansion induces non-constant curvature along the length of the actuator. During blocked force experiments, we restrict axial deformation by constraining the motion of the ends of the actuator, and we characterize the induced non-constant curvature with the eccentricity formed by the fiberglass layer. 
+
+The eccentricity, $e$, of an ellipse with semi-major axis $a_e$ and semi-minor axis $b_e$, is calculated using Eq. \ref{eq:eccentricity}. Note that the eccentricity is 0 for a circle and 1 for a parabola. For an ellipse, eccentricity ranges between 0 and 1. 
+
+\begin{equation}
+    e = \sqrt{1-\frac{b_e^2}{a_e^2}}
+    \label{eq:eccentricity}
+\end{equation} 
+
+So, while we can measure the eccentricity formed by completing the ellipse, a single $e$ value does not fully characterize the actuator's shape. The eccentricity developed is a function of how we constrained the bending behavior, inducing non-uniform curvature and non-uniform axial deformation. To fully define the actuator's elliptical arc and calculate the curvature changes over the actuator's length, we define $\gamma$ and $\theta$ instead of $\psi$. We define $\gamma$ as the angle from the semi-major axis to one end and $\theta$ as the angle from $\gamma$ to the other end of the actuator. Including $a_e$ and $b_e$, we can fully define the elliptical arc formed by the actuator. Using this information to break away from the constant curvature assumption, we believe we could create a model for blocked force for the circular actuator. 
+
+Fig. \ref{fig:comparingeccentricity} contains photographs of the actuator's eccentricity during blocked force testing compared to when placed inside a  9~cm inner diameter cup. For clarity, we aligned the semi-major axis with the horizontal axis. For a blocked force experiment with an eccentricity of 0.55, (Fig. \ref{fig:comparingeccentricity}A), we fixed one end of the actuator on the semi-minor axis, so the \emph{free} end exists in the second quadrant ($\gamma\thickapprox90^\circ$ and $180^\circ<\theta<270^\circ$). When placed inside the cup at an eccentricity of 0.7 (Fig. \ref{fig:comparingeccentricity}B), the ends of the actuator are in the second and third quadrants ($90^\circ<\gamma<180^\circ$ and $270^\circ<\theta<360^\circ$). \\
+
+\begin{figure}[!ht]
+    \centering
+     \includegraphics[width=5 in]{images8/definingeccentricity.pdf}
+    \caption{Photographs of circular actuators during blocked force testing compared to applications testing, defining variables for tracking the elliptical arc. A. Eccentricity with the load cell. B. Eccentricity inside the cup.}
+    \label{fig:comparingeccentricity}
+\end{figure}
+
+\clearpage
+\section{Blocking at Lower Bending Angles}
+
+To estimate the force generated with increasing pressure when blocking the actuator with a lower or negative $\psi$, we used objects larger than the initial bending radius of the circular actuator. To model the force generated at the $\psi$ corresponding with the object, we assume the side of the actuator with the fiberglass embedded makes contact with the object. In this case, the lower limit of pressure would be the input pressure to generate the bending angle corresponding to the diameter of the round object. We know the force generated on each end of the actuator is related to the moment from pressure on the end cap, provided the object restricts axial deformation and increasing pressure increases the blocked force, $F$. However, since the object is not restricting circumferential deformation for the semi-circular region of the cross-section, the circumferential expansion also generates additional axial stress, which further helps the actuator grab the object. While analytically modeling the blocked force for the circular actuator when restricted at a given $\psi$ is theoretically possible, we did not include it in this work due to time constraints. Additionally, we did not calculate the required force the actuator would need to hold round objects, knowing their weight and the friction between the contact surface of the painted DS10 silicone on the exterior of the actuator and the object. 
