@@ -2,35 +2,49 @@
 
 \section*{Overview}
 
-We measured the blocked force of the circular actuators using a method we developed, outlined in chapter \ref{chapter:blockedforce}. We measured the force created when restricting the bending angle for actuators made from DS20, DS30, SS40, and SS40 silicones. The range of pressures we used to measure the force was as high as the actuator could take before the string fell off the pulley. On average, at this maximum pressure, the DS20 actuators achieved 2.7~N of blocked force at 105~kPa. DS30 achieved 2.1~N at 112~kPa. At 210~kPa, SS40 and SS50 achieved 5.1 and 1.6~N, respectively. While stiffer actuators could generate higher forces at higher pressures, stiffer actuators require more input pressure for a particular force. DS20 actuators could generate 2.0~N of force at $92\pm3$~kPa. DS30 and SS40 required $110\pm2$ kPa and $142\pm2$ kPa, respectively. Fig \ref{fig:blockedforce} contains one standard deviation of blocked force measured for all four actuators. 
+This chapter contains the results of blocked force experiments using a load cell and using the actuator to grasp various objects that block the actuator's axial deformation in different ways, as described in chapter \ref{chapter:blockedforce}. 
 
-Theoretically, if the material properties of the silicone are restricted such that no deformation occurs, the moment from the blocked force would be equal to the moment from pressure, as defined with Eq.~\ref{eq:moment-p}. The actuators show a somewhat linear relationship between blocked force and pressure for low input pressures until about 40~kPa. At this pressure, material properties increase the blocked force reading for DS20, and it breaks away from the three stiffer materials. Both DS30 and SS40 break away from the stiff SS50 at around 60~kPa. Softer silicones experiencing non-linear blocked force readings at lower pressures lead us to conclude that the non-linear force readings are due to the material properties of the circular actuator.
-\\
-\begin{figure}[ht]
+\section{Load Cell Results}
+
+We measured the blocked force of the circular actuators using a method we developed, outlined in chapter \ref{chapter:blockedforce}. We measured the force created when restricting the bending angle near $\psi_0$. The range of pressures we used to measure the force was as high as the actuator could take before the developed eccentricity was high enough such that the experimental setup could no longer measure the force, the angle of the thread with respect to the load cell became large enough such that the thread would fall off the pulley. Since this maximum pressure was above the pressure expected for $\psi$ to reach $0^\circ$, we decided not to continue iterating the experimental setup. 
+
+On average, at the maximum pressure used, the DS20 actuators achieved $2.7\pm0.2$~N of blocked force at 105~kPa. DS30 achieved $2.2\pm0.2$~N at 112~kPa. At 210~kPa, SS40 and SS50 achieved $5.1\pm0.2$ and $1.63\pm0.06$~N, respectively. While stiffer actuators could generate higher forces at higher pressures, stiffer actuators require more input pressure for a particular force. Fig \ref{fig:blockedforce} contains one standard deviation of blocked force measured for all four actuators. 
+
+\begin{figure}[!ht]
     \centering
-     \includegraphics[width=6 in]{images9/blockedforce.jpg}
+     \includegraphics[width=5.5 in]{images9/blockedforce.jpg}
     \caption{Blocked force measured between 0-210~kPa. The shaded region represents one standard deviation of blocked force for circular actuators of four materials.}
     \label{fig:blockedforce}
 \end{figure}
 
-\clearpage
-\section{Causes of Non-Linearity}
+Theoretically, if the material properties of the silicone are restricted such that no deformation occurs, the moment from the blocked force would be equal to the moment from pressure, as defined with Eq.~\ref{eq:moment-p}, a linear relationship \cite{polygerinos_modeling_2015}. The actuators show a almost linear relationship between blocked force and pressure for low input pressures until about 40~kPa. At this pressure, material properties increase the blocked force reading for DS20, and it breaks away from the three stiffer materials. Both DS30 and SS40 break away from the stiff SS50 at around 60~kPa. Softer silicones experiencing non-linear blocked force readings at lower pressures lead us to conclude that the non-linear force readings must be due to the material properties of the circular actuator.
 
-Not only is there a highly non-linear relationship between stress and strain for the hyperelastic silicones, but for the circular actuators, input pressure causes strain in all three directions: axial, circumferential, and radial. The inextensible thread attached to the load cell restricts axial deformation but does not restrict circumferential or radial. The circumferential expansion of the actuators from input pressure induces a proportional axial stress. Because we are restricting axial deformation, the silicone is in compression in the axial direction, increasing the load cell reading. Circumferential expansion at higher pressures induces even more stress in the axial direction. 
+Not only is there a highly non-linear relationship between stress and strain for the hyperelastic silicones, but for the circular actuators, input pressure causes strain in all three directions: axial, circumferential, and radial. The inextensible thread attached to the load cell restricts axial deformation but does not restrict circumferential or radial deformation. The circumferential expansion of the actuators from input pressure induces a proportional axial and radial deformation. But, because we are restricting axial deformation, the silicone is in compression in the axial direction, increasing the load cell reading. Increasing pressure further increases these effects, further increasing the load cell readings. Fig. \ref{fig:compressionfbd} labels the compression in the circular actuator and the force reading on the load cell. 
 
-When comparing the shape of the actuator at different pressures for blocked force and bending angle experiments, we can compare the blocked force reading to the unconstrained bending angle to see how the non-linear axial strain and corresponding stress required to achieve that bending angle contributes to the non-linear force readings. Fig. \ref{fig:d20force} contains photographs of a DS20 actuator at increasing input pressure (0-105~kPa) during blocked force and bending angle experiments. The orange dashed line is parallel to the inextensible thread connected between the free end of the actuator and the bearing. At 28~kPa, we measured an average of 0.14~N of force; at 70~kPa: 1.17~N, and 105~kPa: 2.70~N. At these pressures, the actuator exhibited a positive bending angle, a bending angle close to $0^\circ$, and a large negative $\psi$. We made similar comparisons for the other materials; the blocked force reading increases at pressures where the actuator would have exhibited negative bending angles. The non-linear axial stress required to induce the bending angle during unconstrained deformation contributes to the non-linear force readings when axial deformation is constrained. 
-
-\begin{figure}[ht]
+\begin{figure}[!ht]
     \centering
-     \includegraphics[width=6.5 in]{images9/d20force.jpg}
-    \caption{Photographs of a DS20 actuator during blocked force experiments from 0-105~kPa. For comparison, photos taken during bending angle experiments for 28, 70, and 105~kPa are included.}
+     \includegraphics[width=2 in]{images9/compressionfbd.pdf}
+    \caption{DS20 actuator during blocked force testing with the load cell, $\sigma$ is the axial compression and $F$ is the force on the load cell.}
+    \label{fig:compressionfbd}
+\end{figure}
+
+When comparing the shape of the actuator at different pressures for blocked force and bending angle experiments, we can compare the blocked force reading to the unconstrained bending angle to see how pressures past $\psi=0$ that would have generated a negative $\psi$ have a higher $dF/dP$ compared to pressures for more positive bending angles.  
+
+Fig. \ref{fig:d20force} contains photographs of a DS20 actuator at increasing input pressure (0-105~kPa) during blocked force and bending angle experiments. The orange dashed line is parallel to the inextensible thread connected between the free end of the actuator and the bearing. At 28~kPa, we measured an average of $0.2\pm0.1$~N of force and local $dF/dP=0.006$~N/kPa. At 70~kPa: $1.2\pm0.2$~N and $dF/dP=0.04$~N/kPa, and 105~kPa: $2.7\pm0.2$~N and $dF/dP=0.05$~N/kPa. At these pressures, the actuator exhibited a positive bending angle, a bending angle close to $0^\circ$, and a large negative $\psi$. 
+
+\begin{figure}[!ht]
+    \centering
+     \includegraphics[width=5 in]{images9/d20forcesamples.pdf}
+    \caption{Photographs of a DS20 actuator during blocked force experiments and during bending angle experiments for 28, 70, and 105~kPa.}
     \label{fig:d20force}
 \end{figure}
 
+Despite not reaching $\psi=0^\circ$ until over 200~kPa during bending angle experiments, SS40 still had a non-linear relationship between pressure and blocked force. At 63~kPa, we measured SS40 $0.44\pm0.6$~N and $dF/dP=0.01$~N/kPa. At 139 kPa, $1.95\pm0.07$~N and $dF/dP=0.04$~N/kPa, and at 210 kPa $5.1\pm0.2$~N and $dF/dP=0.05$~N/kPa. 
 
-During blocked force testing, we photographed the circular actuators and measured the eccentricity of the elliptical shape formed at the maximum pressure. Fig. \ref{fig:eccentricity} contains photographs of circular actuators of each material at 0~kPa and the maximum pressure used during blocked force testing. The yellow dashed line represents the ellipse we used to calculate the eccentricity of the actuator. At the maximum pressure of 105~kPa, the DS20 actuator displayed an eccentricity of 0.6, while at the higher pressure of 120~kPa, the DS30 actuator displayed a lower eccentricity of 0.5. At an even higher pressure of 210~kPa, the SS40 and SS50 actuators displayed 0.55 and 0.4, respectively. 
+\clearpage
+During blocked force testing, we photographed the circular actuators to measure the eccentricity of the elliptical arc formed at the maximum pressure. Fig. \ref{fig:eccentricity} contains photographs of circular actuators of each material at 0~kPa and the maximum pressure used during blocked force testing. The yellow dashed line represents the ellipse we used to calculate the eccentricity of the actuator. At the maximum pressure of 105~kPa, the DS20 actuator displayed an eccentricity of 0.6, while at the higher pressure of 120~kPa, the DS30 actuator displayed a lower eccentricity of 0.5. At an even higher pressure of 210~kPa, the SS40 and SS50 actuators displayed 0.55 and 0.4, respectively. 
 \\
-\begin{figure}[ht]
+\begin{figure}[!ht]
     \centering
      \includegraphics[width=6.5 in]{images9/eccentricity.jpg}
     \caption{Photographs of circular actuators during blocked force testing, at 0~kPa and the maximum pressure for each material. The yellow dashed line represents the ellipse used to measure eccentricity, $e$.}
