@@ -2,7 +2,7 @@
 
 \section*{Overview}
 
-This chapter contains the results of blocked force experiments using a load cell and using the actuator to grasp various objects that block the actuator's axial deformation in different ways, as described in chapter \ref{chapter:blockedforce}. 
+This chapter contains the results of blocked force experiments with a load cell and using the actuator to grasp various objects that block the actuator's axial deformation in different ways, as described in chapter \ref{chapter:blockedforce}. Additionally, we demonstrate how the circular actuator's silicone exterior conforms to an object and can grab and hold objects without causing damage.
 
 \section{Load Cell Results}
 
@@ -35,7 +35,7 @@ Fig. \ref{fig:d20force} contains photographs of a DS20 actuator at increasing in
 \begin{figure}[!ht]
     \centering
      \includegraphics[width=5 in]{images9/d20forcesamples.pdf}
-    \caption{Photographs of a DS20 actuator during blocked force experiments and during bending angle experiments for 28, 70, and 105~kPa.}
+    \caption{Photographs of a DS20 actuator during blocked force experiments and bending angle experiments for 28, 70, and 105~kPa.}
     \label{fig:d20force}
 \end{figure}
 
@@ -47,6 +47,68 @@ During blocked force testing, we photographed the circular actuators to measure 
 \begin{figure}[!ht]
     \centering
      \includegraphics[width=6.5 in]{images9/eccentricity.jpg}
-    \caption{Photographs of circular actuators during blocked force testing, at 0~kPa and the maximum pressure for each material. The yellow dashed line represents the ellipse used to measure eccentricity, $e$.}
+    \caption{Photographs of circular actuators during blocked force testing at 0~kPa and the maximum pressure for each material. The yellow dashed line represents the ellipse used to measure eccentricity, $e$.}
     \label{fig:eccentricity}
+\end{figure}
+
+\section{Picking up a Cup}
+
+Using an object with an internal diameter of 9~cm, smaller than the $\psi_0$ bending radius, we placed circular actuators inside the object. With increasing pressure, we measured the maximum weight the actuators could hold for an object of this size. This experiment explores how adding internal pressure to the actuator increases the blocked force generated when constrained at a certain eccentricity ( $\approx0.7$). For each material, at each pressure increment, we added more weight (using 50~g increments) inside the object until the actuator slipped out of the object when picked up from the center of the actuator. Fig. \ref{fig:coopercupphotos} contains samples of actuators of each material holding increasing weight at different pressures inside a cup. For objects with an inner diameter requiring us to compress the actuator so that it can make contact with both walls of the object, the compression of the actuator itself generates a blocking force on the wall of the object. For the stiffness SS50 actuators, at just 20~kPa, the actuator could pick up 1000~g of weight inside the cup, a significant increase compared to the other materials. 
+\\
+\begin{figure}[!ht]
+    \centering
+     \includegraphics[width=6.5 in]{images10/coopercupphotos.jpg}
+    \caption{Photographs of circular actuators with internal pressure to pick up a cup with increasing weight.}
+    \label{fig:coopercupphotos}
+\end{figure}
+
+DS20, DS30, and SS40 actuators held 700~g within a pressure range of 0-60~kPa when placed inside the cup. Increasing material stiffness could hold about 50~g more weight for a given input pressure. Fig. \ref{fig:coopercupdata} contains the weight actuators could hold inside the cup for pressures between 20-90~kPa. At pressures higher than 60~kPa, the DS20 actuator buckled in the center and could not maintain contact with the inner walls of the object. The DS30 and SS40 actuators at 80~kPa held 750~g and 800~g, respectively. \\ 
+
+\begin{figure}[!ht]
+    \centering
+     \includegraphics[width=5 in]{images10/coopercupdata.jpg}
+    \caption{Maximum weight inside an object of 9~cm inner diameter actuators of three materials could hold without slipping.}
+    \label{fig:coopercupdata}
+\end{figure}
+
+\clearpage
+\section{Round Objects}
+
+For a volleyball, as shown in Fig. \ref{fig:aroundvolleyball}, a DS20 circular actuator, when held against the volleyball, can conform to the size of the ball and, with enough pressure, generate enough force on each end to be able to pick up the ball when held in the center. The second photograph is mid-pressurization before the volleyball restricts the actuator's bending behavior.
+
+\begin{figure}[!ht]
+    \centering
+     \includegraphics[width=6 in]{images10/aroundvolleyball.jpg}
+    \caption{Photographs of a DS20 circular actuator with increasing pressure picking up a volleyball.}
+    \label{fig:aroundvolleyball}
+\end{figure}
+
+We used a DS30 actuator and a round container with a 15~cm diameter to show one of the unique properties of circular actuators: they can grasp objects from both the inside and the outside. When placed inside the container, we pressurized the DS30 actuator to 110~kPa, which generated a low enough $\psi$ so that the container walls blocked the actuator. We added weights (clamps and fasteners) to the inside of the container to showcase the actuator's strength. At 110~kPa, the DS30 actuator could hold 380~g inside the container. To hold the container from the outside, we used an input pressure of 165~kPa, the minimum required pressure to grasp this sized object with a negative $\psi$. We found that the DS30 actuator could hold 420~g inside the container at this pressure. The DS30 actuator also could pick up a volleyball (270~g, outer diameter of 20~cm) at 150 kPa. Fig. \ref{fig:ds30roundobjects} contains photographs of a DS30 actuator holding the container and the volleyball. We used Kevlar thread placed around the center of the actuator to pick up the objects so as not to add external forces to the ends of the actuator.
+\\
+\begin{figure}[!ht]
+    \centering
+     \includegraphics[width=6.5 in]{images10/ds30roundobjects.jpg}
+    \caption{Photographs of a DS30 circular actuator picking up a container with 15~cm diameter and a volleyball of 20~cm diameter. The input pressures and weight of the objects are labeled.}
+    \label{fig:ds30roundobjects}
+\end{figure}
+
+\clearpage
+\section{Interacting with Objects}
+
+The circular actuator can interact with objects of any shape without causing damage to the object, demonstrating its viability as a soft robot. For a hollow 3D-printed dodecahedron, the circular actuator, once placed inside, conforms to the object's walls when pressurized. With increasing pressure, the actuator's curvature and circumferential expansion conform to the object, and with pressures inducing a negative $\psi$, the actuator can hold the object above itself. Fig. \ref{fig:3dprintedonend} contains photographs of a DS20 circular actuator with increasing pressure conforming to and picking up a 3D-printed hollow dodecahedron. 
+
+\begin{figure}[!ht]
+    \centering
+    \includegraphics[width=6.5 in]{images10/3dprintedonend.jpg}
+    \caption{Photographs of a DS20 circular actuator with increasing pressure picking up a hollow 3D-printed dodecahedron.}
+    \label{fig:3dprintedonend}
+\end{figure}
+
+For objects smaller than the initial bending radius of the circular actuator, simply placing the unpressurized actuator on one side of the object is enough to grab the object. For a box of gloves, a DS20 actuator can self-align with the object with increasing pressure. Fig. \ref{fig:boxofgloves} contains photographs of a DS20 actuator picking up a box of gloves. For this object, we stepped from 0 kPa to a pressure high enough to induce a negative $\psi$ based on the size of the box. The first photograph is of the actuator resting on the box. The second and third photographs are of the actuator mid-pressurization flipping its orientation. The fourth is once the actuator reaches the desired input pressure. Holding the actuator from the center can easily pick up the box. Generating sufficient $\psi$ to conform around the object from rest with increasing pressure without human input showcases the versatility of the circular actuator. 
+
+\begin{figure}[!ht]
+    \centering
+     \includegraphics[width=6.5 in]{images10/boxofgloves.jpg}
+    \caption{Photographs of a DS20 circular actuator with increasing pressure picking up a box of gloves.}
+    \label{fig:boxofgloves}
 \end{figure}
