@@ -1,5 +1,6 @@
 \documentclass[12pt]{report}
-\usepackage{cite}
+\usepackage[numbers,sort&compress]{natbib}
+\usepackage{notoccite}
 \usepackage{titlesec}
 \usepackage{graphicx}
 \usepackage{amsmath,amssymb,amsfonts}
@@ -11,6 +12,16 @@
 
 \usepackage{caption}
 \captionsetup{margin=10pt,font=sl,labelfont=bf,labelsep=period}
+
+\makeatletter
+\newcommand\appendix@chapter[1]{%
+  \refstepcounter{chapter}%
+  \orig@chapter*{Appendix \@Alph\c@chapter: #1}%
+  \addcontentsline{toc}{chapter}{Appendix \@Alph\c@chapter: #1}%
+}
+\let\orig@chapter\chapter
+\g@addto@macro\appendix{\let\chapter\appendix@chapter}
+\makeatother
 
 \begin{document}
 \pagenumbering{roman}
