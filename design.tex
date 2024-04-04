@@ -1,10 +1,13 @@
 \chapter{Design}
 
-\section{Defining Uncoiling}
+\section{Overview}
+This chapter provides initial designs that led us to the circular actuator's unique shape. Additionally, we define curvature and bending angle for characterization of the circular actuator. 
 
-When we started this project, the idea was to create a soft robot with \emph{reverse} the typical actuation seen in single-chambered actuators. Inspired by the uncurling motion of a butterfly proboscis or a party horn, we designed the actuator to extend with the application of internal pressure. This behavior would be the opposite of a standard soft pneumatic actuator, which is fabricated straight and bends or curls with actuation. 
+\section{Initial Designs}
 
-Starting with this goal, we looked into how to define bending behavior for a soft robot. If the robot is to start coiled onto itself and lose curvature with actuation, we need a way to measure said curvature. First, we created a drawing for an actuator with linearly increasing curvature along its length. Using $\kappa = zl$, where $\kappa$ is the curvature, $l$ is the length along the actuator (which will later range from 0 to $l_0$), and $z$ is a function of pressure. Increasing the pressure causes the curvature to decrease until, eventually, the line becomes flat. Figure \ref{fig:smythmodel} contains samples from the first drawing of an actuator with varying curvature. 
+The goal of this work is to develop a soft robot with \emph{reverse} the typical actuation seen in single-chambered actuators which are fabricated straight and bend or curl with actuation. Inspired by the uncurling motion of a butterfly proboscis or a party horn, initial designs the for actuator were a robot that is fabricated in a spiral or coil shape and would extend with the application of internal pressure. 
+
+If the robot is to start coiled onto itself and lose curvature with actuation, we need a way to define and measure the curvature. First, we created a drawing for an actuator with linearly increasing curvature along its length. Using $\kappa = zl$, where $\kappa$ is the curvature, $l$ is the coordinate of length along the actuator (which will later range from 0 to $l_0$), and $z$ is a function of pressure. Increasing the pressure causes the non-uniform curvature to decrease until, eventually, the line becomes flat. Figure \ref{fig:smythmodel} contains samples from the first drawing of an actuator with varying curvature. 
 
 \begin{figure}[ht]
     \centering
@@ -13,69 +16,43 @@ Starting with this goal, we looked into how to define bending behavior for a sof
     \label{fig:smythmodel}
 \end{figure}
 
-Next, we began modeling spiral shapes to understand the parameters available, such as length, cross-section, initial curvature, and how the curvature varies over length. To maximize the final length of the coil, it should wrap around itself as many times as possible, and the cross-section can be reduced along the length to prevent self-intersection. For simplicity, we first modeled a 50\% decrease in a rectangular cross-section over the length of a coil with linearly increasing curvature (a spiral). Figure \ref{fig:butterflycoil} contains one of our initial models of the coil shape. 
+The parameters available are length, cross-section, initial curvature, and how the curvature varies over length. To maximize the final length of the coil, it should wrap around itself as many times as possible, and the cross-section can be reduced along the length to prevent self-intersection. For simplicity, we first modeled a 50\% decrease in a rectangular cross-section over the length of a coil with linearly increasing curvature (a linear spiral). Figure \ref{fig:butterflycoil} contains one of our initial models of the coil shape. 
 
 \begin{figure}[ht]
     \centering
     \includegraphics[width=4.5 in]{images3/butterflycoil.png}
-    \caption{A sketch and 3D sweep of a coil of constant curvature with cross section reduction of 50\% over its length.}
+    \caption{A sketch and 3D sweep of a coil with cross section reduction of 50\% over its length.}
     \label{fig:butterflycoil}
 \end{figure}
 
-Fully defining the parameters involved with creating such an actuator and its bending behavior requires a well-defined and feasible to fabricate cross-section, the cross-section reduction over length, the total length, and the number of turns the coil would make. Having all these parameters simultaneously to iterate would make characterization difficult, if not impossible. We decided that maintaining a constant cross-section, wall thickness, and curvature along the length (a circle) would be ideal for fabrication and characterization. 
+To create a coil-shaped actuator and determine its bending behavior, we must fully define various parameters such as the cross-sectional shape, its reduction over length, the total length, and the number of turns in the coil. However, simultaneously iterating all these parameters would make it difficult, if not impossible, to characterize the actuator. So, we decided to maintain a constant cross-section, wall thickness, and curvature along the length. This simplification would allow us to characterize the circular actuator; in the future, we could add more complexity. 
 
-\section{Circular Design}
+\section{Bending Angle}
 
-First, we must define \emph{bending} to model the actuators' bending behavior with varying input pressure. We define the bending angle of the actuator at any pressure based on the bending angle formed by the strain-limiting layer, the fiberglass fabric. For each bending angle, we calculate the strain throughout the actuator to maintain the angle formed by the fiberglass layer. We calculate the stress within the actuator based on the material model for the hyperelastic silicone. Once we know the stress in the material, we can calculate the pressure required to induce the stress. 
+First, we must define \emph{bending} to model the actuators' bending behavior with varying input pressure. For a circular arc of radius $r$ and arc length $l$, we define the bending angle $\psi$ as $l/r$. The bending behavior of a soft-pneumatic actuator is defined by the inextensible materials within the actuator that restrict $l$. For the circular actuator, we define $l_{0}$ as the length of the inextensible layer and $\psi_0$ as the initial bending angle. So, if $l=l_0$ and $\psi_0>0$, as the bending angle decreases, the bending radius will increase and the curvature, $\kappa=1/r$, of the actuator will approach infinity as the bending radius approaches 0. 
 
-In preliminary models, we focused on shapes the fiberglass fabric could form, assuming it maintains a constant curvature. The final model included the circumferential and radial strains within the actuator to calculate the pressure required for a bending angle assuming constant curvature along the length of the actuator. 
-
-\subsection{Preliminary Model \& Visualization}
-
-Starting with the length of the fiberglass fabric, the circular shape of the actuator, and the largest open angle we could fabricate, we developed a simple method of plotting the shape of the actuator and determining the maximum axial strain. While first attempting to model the circular actuator's bending behavior, we had yet to realize that the actuator was capable of bi-directional bending. Nor did we know that the actuator was unstable at the infinite curvature position. All we knew then was the length of the fiberglass fabric and that the actuator was a circle. 
-
-\begin{figure}[ht]
-    \centering
-    \includegraphics[width=3 in]{images5/lnot.jpg}
-    \caption{Drawing containing the initial bending angle, and length of the fiberglass fabric highlighting the length lost to the fabrication process.}
-    \label{fig:lnot}
-\end{figure}
-
-During fabrication, we lose a non-significant amount of the actuator's length to seal the ends. Fig. \ref{fig:lnot} contains the variables and shows the length of the actuator lost to fabrication. The initial bending angle, $\psi_{0}$, ranged between 215-230$^\circ$. The circle formed by the fiberglass layer has a radius, $r_{0}$, of 2.4~in or 6.1~cm. We can calculate the length of the fiberglass fabric, $l_{0}$, using $l_{0} = r_{0}*\psi_{0}$, the arc length equation for a circle. 
-
-For a given $l_{0}$, we can visualize how reducing $\psi$ increases the bending radius, $r$. As $\psi$ approaches $0^\circ$, the bending radius approaches infinity. Fig. \ref{fig:unbending} displays the first visualization of the actuator's bending behavior as $\psi$ approaches $0^\circ$. This model assumes that the actuator maintains a circular shape. 
+Fig. \ref{fig:unbending} displays the first visualization of the actuator's bending behavior as $\psi$ approaches $0$ assuming that the actuator maintains a constant curvature circular shape. 
 \\
 \begin{figure}[ht]
     \centering
-    \includegraphics[width=3.5 in]{images5/unbending.jpg}
-    \caption{First visualization of the unbending behavior of the circular actuator assuming constant curvature of the fiberglass fabric.}
+    \includegraphics[width=3.5 in]{images2/unbending.pdf}
+    \caption{First visualization of the unbending behavior of the circular actuator assuming constant curvature at each bending angle.}
     \label{fig:unbending}
 \end{figure}
 
-Assuming the actuator undergoes no circumferential or radial strain is a bold assumption, considering we add no strain-limiting materials around the cross section during fabrication. However, it is helpful to consider each line of silicone undergoing axial strain. If we assume the semi-circular cross-section does not change during pressurization, we can visualize the strain of the innermost line of silicone. We plotted a few samples: the black lines represent the fiberglass layer, and the colored lines represent the strained, innermost silicone layer. Fig. \ref{fig:innermoststrain} contains samples to visualize each line of silicone and the axial strain it must undergo to maintain the constant cross-section, length, and bending angle set by the fiberglass layer. 
-\\
-\begin{figure}[ht]
-    \centering
-    \includegraphics[width=3.5 in]{images5/innermoststrain.jpg}
-    \caption{First visualization of the axial strain the innermost line of silicone must undergo to maintain the cross section and curvature set by the fiberglass layer.}
-    \label{fig:innermoststrain}
-\end{figure}
-
-% \subsection{A Discovery}
-
-While inflating the actuators during initial testing, we discovered that adding more air pressure past the limit where $\psi$ approaches 0$^\circ$ caused the actuator to continue bending. The silicone of the semi-circular section continued expanding, and the additional axial strain added curvature back to the fiberglass fabric. In an accident where we added too much pressure to the actuator, we discovered the circular actuator's bi-directional bending capabilities. We accidentally created a fiber-reinforced actuator capable of two bending directions with a single positive pressure source. After making this discovery, we had to alter the definition of a bending angle to build a continuous model over the entire range of motion. Introducing negative bending angles to define the curling behavior did the trick. The following section will fully define the analytical model for the circular actuators' entire range of bending behavior. 
+Since the circular actuators are able to bend past $\psi=0$, to have a continuous model of bending angle versus pressure, we introduced negative bending angles to represent when the actuator regains curvature at higher pressures. 
 
 \section{Cross-Section Design}
 
 When designing a soft pneumatic actuator with a desired bending behavior, we must consider the fabrication process. The wall thickness, cross-section area, and strain-limiting materials' location and orientation directly influence the bending behavior. 
 
-For any soft pneumatic actuator, upon actuation, there are three principle strains in the material that the fabrication method must keep in mind so that the strains create the desired bending motion. The largest strain is the axial strain, the strain along the length of the actuator. In this work, we were inspired by the fiber-reinforced actuators designed by Harvard \cite{galloway_mechanically_2013}. These robots have a semi-circular cross-section for its small bending resistance \cite{polygerinos_modeling_2015} and attach fiberglass fabric to the flat side to limit axial strain. The silicone in the cross-section away from the strain-limiting fabric has axial strain based on the distance from the fabric so that the entire actuator maintains the length of the fiberglass fabric: the highest axial strain is at the top of the semi-circular region.  
+For any soft pneumatic actuator, upon actuation, there are three principle strains in the material that the design must keep in mind so that the strains create the desired bending motion. The largest strain is the axial strain, the strain along the length of the actuator. We chose the cross-section dimensions and strain limiting materials based on the simplest fiber-reinforced actuator~\cite{galloway_mechanically_2013}. These robots are cast from silicone and have a semi-circular cross-section for its small bending resistance~\cite{polygerinos_modeling_2015} and attach fiberglass fabric to the flat side to limit axial strain. The silicone in the cross-section away from the strain-limiting fabric has axial strain based on the distance from the fabric so that the entire actuator maintains the length of the fiberglass fabric: the highest axial strain is at the top of the semi-circular region.  
 
-We made the actuator circular to give it the highest initial bending angle. The circular actuator's semi-circular cross-section faces the inside; the flat side is longer and on the exterior. With actuation, the semi-circular portion of the cross-section can axially strain around the neutral bending axis of the fiberglass fabric to achieve the unbending behavior. Any variations in the cross-section along the length would create variations in strain, leading to variations in bending behavior, so we designed an actuator with a uniform cross-section. Fig. \ref{fig:crosssection} contains the desired cross-section dimensions and the circular actuator's initial bending radius.
+The circular actuator's semi-circular cross-section faces the inside; the flat side is longer and on the exterior. With actuation, the semi-circular portion of the cross-section can axially strain around the neutral bending axis of the fiberglass fabric to achieve the unbending behavior. Any variations in the cross-section along the length would create variations in strain, leading to variations in bending behavior, so we designed an actuator with a uniform cross-section. Fig. \ref{fig:crosssection} contains the desired cross-section dimensions and the circular actuator's initial bending radius. 
 
-\begin{figure}[ht]
+\begin{figure}[!ht]
     \centering
-    \includegraphics[width=5 in]{images4/cross-section-drawing.jpg}
+    \includegraphics[width=4.5 in]{images4/cross-section-drawing.jpg}
     \caption{Drawing of the cross-section and initial bending radius of the circular actuator.}
     \label{fig:crosssection}
 \end{figure}
