@@ -7,7 +7,7 @@ This chapter provides initial designs that led us to the circular actuator's uni
 
 The goal of this work is to develop a soft robot with \emph{reverse} the typical actuation seen in single-chambered actuators which are fabricated straight and bend or curl with actuation. Inspired by the uncurling motion of a butterfly proboscis or a party horn, initial designs the for actuator were a robot that is fabricated in a spiral or coil shape and would extend with the application of internal pressure. 
 
-If the robot is to start coiled onto itself and lose curvature with actuation, we need a way to define and measure the curvature. First, we created a drawing for an actuator with linearly increasing curvature along its length. Using $\kappa = zl$, where $\kappa$ is the curvature, $l$ is the coordinate of length along the actuator (which will later range from 0 to $l_0$), and $z$ is a function of pressure. Increasing the pressure causes the non-uniform curvature to decrease until, eventually, the line becomes flat. Figure \ref{fig:smythmodel} contains samples from the first drawing of an actuator with varying curvature. 
+If the robot is to start coiled onto itself and lose curvature with actuation, we need a way to define and measure the curvature. First, we created a drawing for an actuator with linearly increasing curvature along its length. Using $\kappa = zl$, where $\kappa$ is the curvature, $l$ is the coordinate of length along the actuator (which will later range from 0 to $l_0$), and $z$ is a function of pressure. Increasing the pressure causes the non-uniform curvature to decrease until, eventually, the line becomes flat. Figure~\ref{fig:smythmodel} contains samples from the first drawing of an actuator with varying curvature. 
 
 \begin{figure}[ht]
     \centering
@@ -16,7 +16,7 @@ If the robot is to start coiled onto itself and lose curvature with actuation, w
     \label{fig:smythmodel}
 \end{figure}
 
-The parameters available are length, cross-section, initial curvature, and how the curvature varies over length. To maximize the final length of the coil, it should wrap around itself as many times as possible, and the cross-section can be reduced along the length to prevent self-intersection. For simplicity, we first modeled a 50\% decrease in a rectangular cross-section over the length of a coil with linearly increasing curvature (a linear spiral). Figure \ref{fig:butterflycoil} contains one of our initial models of the coil shape. 
+The parameters available are length, cross-section, initial curvature, and how the curvature varies over length. To maximize the final length of the coil, it should wrap around itself as many times as possible, and the cross-section can be reduced along the length to prevent self-intersection. For simplicity, we first modeled a 50\% decrease in a rectangular cross-section over the length of a coil with linearly increasing curvature (a linear spiral). Figure~\ref{fig:butterflycoil} contains one of our initial models of the coil shape. 
 
 \begin{figure}[ht]
     \centering
@@ -31,7 +31,7 @@ To create a coil-shaped actuator and determine its bending behavior, we must ful
 
 First, we must define \emph{bending} to model the actuators' bending behavior with varying input pressure. For a circular arc of radius $r$ and arc length $l$, we define the bending angle $\psi$ as $l/r$. The bending behavior of a soft-pneumatic actuator is defined by the inextensible materials within the actuator that restrict $l$. For the circular actuator, we define $l_{0}$ as the length of the inextensible layer and $\psi_0$ as the initial bending angle. So, if $l=l_0$ and $\psi_0>0$, as the bending angle decreases, the bending radius will increase and the curvature, $\kappa=1/r$, of the actuator will approach infinity as the bending radius approaches 0. 
 
-Fig. \ref{fig:unbending} displays the first visualization of the actuator's bending behavior as $\psi$ approaches $0$ assuming that the actuator maintains a constant curvature circular shape. 
+Fig.~\ref{fig:unbending} displays the first visualization of the actuator's bending behavior as $\psi$ approaches $0$ assuming that the actuator maintains a constant curvature circular shape. 
 \\
 \begin{figure}[ht]
     \centering
@@ -48,7 +48,7 @@ When designing a soft pneumatic actuator with a desired bending behavior, we mus
 
 For any soft pneumatic actuator, upon actuation, there are three principle strains in the material that the design must keep in mind so that the strains create the desired bending motion. The largest strain is the axial strain, the strain along the length of the actuator. We chose the cross-section dimensions and strain limiting materials based on the simplest fiber-reinforced actuator~\cite{galloway_mechanically_2013}. These robots are cast from silicone and have a semi-circular cross-section for its small bending resistance~\cite{polygerinos_modeling_2015} and attach fiberglass fabric to the flat side to limit axial strain. The silicone in the cross-section away from the strain-limiting fabric has axial strain based on the distance from the fabric so that the entire actuator maintains the length of the fiberglass fabric: the highest axial strain is at the top of the semi-circular region.  
 
-The circular actuator's semi-circular cross-section faces the inside; the flat side is longer and on the exterior. With actuation, the semi-circular portion of the cross-section can axially strain around the neutral bending axis of the fiberglass fabric to achieve the unbending behavior. Any variations in the cross-section along the length would create variations in strain, leading to variations in bending behavior, so we designed an actuator with a uniform cross-section. Fig. \ref{fig:crosssection} contains the desired cross-section dimensions and the circular actuator's initial bending radius. 
+The circular actuator's semi-circular cross-section faces the inside; the flat side is longer and on the exterior. With actuation, the semi-circular portion of the cross-section can axially strain around the neutral bending axis of the fiberglass fabric to achieve the unbending behavior. Any variations in the cross-section along the length would create variations in strain, leading to variations in bending behavior, so we designed an actuator with a uniform cross-section. Fig.~\ref{fig:crosssection} contains the desired cross-section dimensions and the circular actuator's initial bending radius. 
 
 \begin{figure}[!ht]
     \centering
