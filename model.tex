@@ -1,7 +1,7 @@
 \chapter{Analytical Model For Bending Angle}
 \label{chapter:model}
 
-To characterize the actuator's bending behavior as a function of input pressure and material properties, we developed an analytical model for curling and uncurling based on those found in \cite{polygerinos_modeling_2015, connolly_automatic_2017, hu_precurved_2022}. We calculate the input pressure $P$ required to reach a given bending angle $\psi$ using the geometry of the actuator, the length of the inextensible layer $l_0$, and the non-linear hyperelastic material properties of each silicone, including non-axial deformation. To account for circumferential deformation, we transform the cross-section at each pressure based on material stretches. As the pressure increases, the actuator uncurls (decreasing $\psi$) from its initial bending angle $\psi_0$ to an angle $\psi=0$, where the actuator is straight. Further increasing pressure causes $\psi$ to become negative, corresponding to curling behavior, thus generating a bi-directional range of motion. Fig. \ref{fig:modelall} contains all of the variables used in the analytical model. 
+To characterize the actuator's bending behavior as a function of input pressure and material properties, we developed an analytical model for curling and uncurling based on those found in \cite{polygerinos_modeling_2015, connolly_automatic_2017, hu_precurved_2022}. We calculate the input pressure $P$ required to reach a given bending angle $\psi$ using the geometry of the actuator, the length of the inextensible layer $l_0$, and the non-linear hyperelastic material properties of each silicone, including non-axial deformation. To account for circumferential deformation, we transform the cross-section at each pressure based on material stretches. As the pressure increases, the actuator uncurls (decreasing $\psi$) from its initial bending angle $\psi_0$ to an angle $\psi=0$, where the actuator is straight. Further increasing pressure causes $\psi$ to become negative, corresponding to curling behavior, thus generating a bi-directional range of motion. Fig.~\ref{fig:modelall} contains all of the variables used in the analytical model. 
 
 \begin{figure}[ht]
     \centering
@@ -13,7 +13,7 @@ To characterize the actuator's bending behavior as a function of input pressure 
 \clearpage
 \section{Stretch Ratios}
 
-As the actuator bends, the silicone stretches in the axial direction to maintain the length $l_0$ of the inextensible layer. The model assumes that the actuator maintains a single, constant bending radius along its length at all pressures and that the cross-section remains orthogonal to the inextensible layer. We also assume incompressibility in the hyperelastic material, such that $\lambda_{1}\lambda_{2}\lambda_{3} = 1$ where $\lambda_i$ is the stretch ratio in each direction (axial, circumferential, and radial, respectively). This assumption requires that the cross-sectional area of the silicone remains constant, even as the shape deforms. Increasing pressure causes the semi-circular region to expand outwards into a circular shape, resulting in thinning of the actuator's walls to maintain a constant cross-sectional area (Fig. \ref{fig:modelall}D). We assume no geometric changes in the base layer because of the proximity to the inextensible layer.
+As the actuator bends, the silicone stretches in the axial direction to maintain the length $l_0$ of the inextensible layer. The model assumes that the actuator maintains a single, constant bending radius along its length at all pressures and that the cross-section remains orthogonal to the inextensible layer. We also assume incompressibility in the hyperelastic material, such that $\lambda_{1}\lambda_{2}\lambda_{3} = 1$ where $\lambda_i$ is the stretch ratio in each direction (axial, circumferential, and radial, respectively). This assumption requires that the cross-sectional area of the silicone remains constant, even as the shape deforms. Increasing pressure causes the semi-circular region to expand outwards into a circular shape, resulting in thinning of the actuator's walls to maintain a constant cross-sectional area (Fig.~\ref{fig:modelall}D). We assume no geometric changes in the base layer because of the proximity to the inextensible layer.
 
 For the undeformed cross section, as shown in Fig.~\ref{fig:modelall}B, $\beta$ is the coordinate in the base layer away from the inextensible layer, and $\tau$ is the distance from the inner wall in the $\varphi$ direction. The base region has thickness $b$~=~0.38~cm, and the undeformed semi-circular cross-section wall has radius $a_0$~=~0.64~cm and thickness $t_0$~=~0.38~cm. In the deformed cross-section (Fig.~\ref{fig:modelall}D), we assume that the silicone forms a circular arc with offset from the base $q$, inner radius $a$, wall thickness $t$ and angle range $-\varphi_m$ to $\varphi_m$. $\tau'$ and $\varphi'$ are scaled coordinates with reference to the undeformed shape such that $\tau'=\tau\frac{t}{t_0}$ and $\varphi'=\varphi\frac{2\varphi_m}{\pi}$.
 
@@ -60,11 +60,11 @@ To transform the cross-section from the original semi-circle to the circular arc
     \label{eq:q_aug}
 \end{equation}
 
-The axial and circumferential stretch ratios are then recalculated using the deformed cross section and Equations \ref{eq:stretchbeta}--\ref{eq:stretchc} before calculating stress with the material models.
+The axial and circumferential stretch ratios are then recalculated using the deformed cross section and Equations~\ref{eq:stretchbeta}--\ref{eq:stretchc} before calculating stress with the material models.
 
 \section{Converting Strain to Stress}
 
-To describe the stress-strain relationship for each of the soft materials, multiple material models are available; they can vary significantly in accuracy depending on the amount of strain \cite{paterno_hybrid_2018}. We choose the Ogden hyperelastic material model because it is more accurate at higher stretches and for softer materials \cite{marechal_toward_2021}. The strain energy density function $W$ for the Ogden model is given by Eq. \ref{eq:strain-ogden}, where $\mu_{p}$ and $\alpha_{p}$ are experimentally determined material coefficients. We can use a given Neo-Hookean material model coefficient ($\mu$) in the Ogden model by setting $N=1$ and $\alpha_1=2$. 
+To describe the stress-strain relationship for each of the soft materials, multiple material models are available; they can vary significantly in accuracy depending on the amount of strain \cite{paterno_hybrid_2018}. We choose the Ogden hyperelastic material model because it is more accurate at higher stretches and for softer materials \cite{marechal_toward_2021}. The strain energy density function $W$ for the Ogden model is given by Eq.~\ref{eq:strain-ogden}, where $\mu_{p}$ and $\alpha_{p}$ are experimentally determined material coefficients. We can use a given Neo-Hookean material model coefficient ($\mu$) in the Ogden model by setting $N=1$ and $\alpha_1=2$. 
 
 \begin{equation}
     W=\sum_{p=1}^N \frac{\mu_p}{\alpha_p}(\lambda_1^{\alpha_p}+\lambda_2^{\alpha_p}+\lambda_3^{\alpha_p}-3)
@@ -72,7 +72,7 @@ To describe the stress-strain relationship for each of the soft materials, multi
 \end{equation}
 
 \clearpage
-The Cauchy stresses in all three directions are given by $\sigma_j=-p+\lambda_j\frac{\partial W}{\partial\lambda_j}$, where $p$ is a Lagrange multiplier. The stresses in the radial direction are significantly smaller than those in the other directions, so we assume $\sigma_3=0$. We calculate the axial and circumferential stresses using Equations \ref{eq:s_1} - \ref{eq:multiplier-p} and the material properties found in Table \ref{table}. 
+The Cauchy stresses in all three directions are given by $\sigma_j=-p+\lambda_j\frac{\partial W}{\partial\lambda_j}$, where $p$ is a Lagrange multiplier. The stresses in the radial direction are significantly smaller than those in the other directions, so we assume $\sigma_3=0$. We calculate the axial and circumferential stresses using Equations~\ref{eq:s_1} -~\ref{eq:multiplier-p} and the material properties found in Table~\ref{table}. 
 
 \begin{equation}
     \sigma_1 =-p+\mu_1\lambda_1^{\alpha_1}+\mu_2\lambda_1^{\alpha_2}+\mu_3\lambda_1^{\alpha_3}
@@ -134,7 +134,7 @@ The bending moment $M_P$ resulting from a given input pressure \(P\) acting on t
 We equate (\ref{eq:moment-axial}) and (\ref{eq:moment-p}) and solve for the required input pressure $P$ to induce the axial stresses for a given bending angle $\psi$. To account for the underestimation of $P$ due to uncertainty in the material models and non-uniformity in the actuator, we scale the calculated pressure by a constant $k_P$, determined by a best fit for each material. $k_P$ is 3.8 for DS20, 1.8 for DS30, and 2.2 for SS40 and SS50. 
 
 \clearpage
-For each material's initial bending angle, $\psi_0$, we chose the average value from all actuators fabricated with that material (between 214-228$^\circ$). Fig. \ref{fig:modelresults} contains the bending angle at each pressure calculated with the analytical model for DS20, DS30, SS40, and SS50 materials. 
+For each material's initial bending angle, $\psi_0$, we chose the average value from all actuators fabricated with that material (between 214-228$^\circ$). Fig.~\ref{fig:modelresults} contains the bending angle at each pressure calculated with the analytical model for DS20, DS30, SS40, and SS50 materials. 
 
 \begin{figure}[!ht]
     \centering
