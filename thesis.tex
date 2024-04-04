@@ -1,11 +1,16 @@
 \documentclass[12pt]{report}
+\usepackage[margin=1in]{geometry} 
 \usepackage[numbers,sort&compress]{natbib}
 \usepackage{notoccite}
 \usepackage{titlesec}
+\usepackage{appendix, apptools}
+\AtAppendix{%
+\titleformat{\chapter}[display]{\vspace*{-30pt}\bfseries\huge}{\chaptername~\thechapter}{1em}{}
+\titlespacing*{\chapter}{0pt}{0pt}{10pt}}%
 \usepackage{graphicx}
 \usepackage{amsmath,amssymb,amsfonts}
 \usepackage{nomencl}
-\usepackage[margin=1in]{geometry} 
+
 \makenomenclature
 \linespread{2.0}
 \usepackage{times}
@@ -22,6 +27,11 @@
 \let\orig@chapter\chapter
 \g@addto@macro\appendix{\let\chapter\appendix@chapter}
 \makeatother
+
+\tolerance=1
+\emergencystretch=\maxdimen
+\hyphenpenalty=10000
+\hbadness=10000
 
 \begin{document}
 \pagenumbering{roman}
@@ -53,7 +63,7 @@
 \nomenclature{$\varphi'$}{Scaled $\varphi$ for deformed cross-section}
 \nomenclature{$\tau'$}{Scaled $\tau$ for deformed cross-section}
 \nomenclature{$\lambda_\beta$}{Axial stretch ratio for base region}
-\nomenclature{$\lambda_\phi,\tau$}{Axial stretch ratio for semi-circlar region}
+\nomenclature{$\lambda_{\varphi,\tau}$}{Axial stretch ratio for semi-circular region}
 \nomenclature{$\lambda_c$}{Circumferential stretch ratio}
 \nomenclature{$\lambda_r$}{Radial stretch ratio}
 \nomenclature{$k_t$}{Experimentally deturmined scale factor for thickness}
@@ -70,7 +80,7 @@
 \nomenclature{$M_\sigma$}{Moment from axial stress}
 \nomenclature{$O$}{Neutral axis}
 \nomenclature{$\sigma_\beta$}{Axial stress in base region}
-\nomenclature{$\sigma_\varphi,\tau$}{Axial stress in deformed semi-circular region}
+\nomenclature{$\sigma_{\varphi,\tau}$}{Axial stress in deformed semi-circular region}
 \nomenclature{$k_p$}{Experimentally deturmined scale factor for pressure}
 \nomenclature{$\kappa$}{Curvature}
 \nomenclature{$x_1$, $x_2$, $x_3$, $y_1$, $y_2$, $y_3$}{Coordinates used to calculate curvature}
@@ -78,7 +88,7 @@
 \nomenclature{$e$}{Eccentricity}
 \nomenclature{$a_e$}{Semi-major axis length for ellipse}
 \nomenclature{$b_e$}{Semi-minor axis length for ellipse}
-
+\nomenclature{$\gamma$, $\theta$}{Angles used to track elliptical arc length}
 
 \printnomenclature
 
