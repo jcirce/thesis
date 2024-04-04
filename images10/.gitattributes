@@ -5,3 +5,7 @@ ds30roundobjects.jpg filter=lfs diff=lfs merge=lfs -text
 comparingeccentricity.jpg filter=lfs diff=lfs merge=lfs -text
 coopercupdata.jpg filter=lfs diff=lfs merge=lfs -text
 coopercupphotos.jpg filter=lfs diff=lfs merge=lfs -text
+d20eccentricity.pdf filter=lfs diff=lfs merge=lfs -text
+d30eccentricity.pdf filter=lfs diff=lfs merge=lfs -text
+s40eccentricity.pdf filter=lfs diff=lfs merge=lfs -text
+s50eccentricity.pdf filter=lfs diff=lfs merge=lfs -text
