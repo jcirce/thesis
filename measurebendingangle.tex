@@ -1,8 +1,8 @@
 \chapter{Measuring Bending Angle}
-\label{chapter:bendingangle}
+\label{chapter:measurebendingangle}
 
-\section*{Overview}
-This chapter contains how we measured the bending angle of the circular actuators at different pressures, the equipment used, the various orientations we used to photograph the actuator, testing protocols, how we processed the images, and how we calculated the bending angle.
+\section{Overview}
+This Chapter contains how we measured the bending angle of the circular actuators at different pressures, the equipment used, the various orientations we used to photograph the actuator, testing protocols, how we processed the images, and how we calculated the bending angle.
 
 \section{Photographing Bending Angle}
 
@@ -10,16 +10,24 @@ To experimentally measure the bending angle of the circular actuators, we used a
 
 \section{Iterations on Orientation}
 
-As with everything related to this project of designing and characterizing a new type of soft robotic actuator, discovering how to measure the bending angle at different pressures repeatably took several iterations. We needed to develop a way to hold the actuator in front of the camera so we could measure the bending angle and compare it to the model. Since the fiberglass fabric embedded into the actuator determines the bending angle, the camera must be placed perpendicular to the fabric. We also wanted to capture the actuator's circumferential expansion in the photographs. 
-
-Appendix \ref{appendix:ao} contains the complete process for how we determined the best orientation to photograph bending angle. Samples of the various orientations are contained in Fig.~\ref{fig:orientationsall} which includes testing vertically where the actuator can make contact with the table (Fig.~\ref{fig:orientationsall}A), horizontally where friction impacts the behavior (Fig~\ref{fig:orientationsall}B), vertically with gravity (Fig.~\ref{fig:orientationsall}C), vertically but lifted off the table (Fig.~\ref{fig:orientationsall}D), and finally vertically against gravity (Fig.~\ref{fig:orientationsall}E). Each of these orientations suffered from external influences creating non-constant curvature in the circular actuator. 
+As with everything related to this project of designing and characterizing a new type of soft robotic actuator, discovering how to measure the bending angle at different pressures repeatably took several iterations. We needed to develop a way to hold the actuator in front of the camera so we could measure the bending angle and compare it to the model. Since the fiberglass fabric embedded into the actuator determines the bending angle, the camera must be placed perpendicular to the fabric. We also wanted to capture the actuator's circumferential expansion in the photographs. Samples of the various orientations are contained in Fig.~\ref{fig:orientationsall}. Appendix \ref{appendix:ao} contains photographs at each pressure increment for each orientation. 
 
 \begin{figure}[!ht]
     \centering
     \includegraphics[width=6.5 in]{images7/orientationsall.pdf}
-    \caption{Various orientations initially used to photograph bending angle. Contains photographs of DS20 actuators at 2.0, 6.0, 10.0, and 12.1 psi}
+    \caption{Various orientations initially used to photograph bending angle.  A. Vertical and fixed to table. B. Horizontal and fixed to table. C. Vertical with gravity. D. Vertical and fixed above table. E. Vertical against gravity.}
     \label{fig:orientationsall}
 \end{figure}
+
+We chose the first vertical testing orientation (Fig.~\ref{fig:orientationsall}A) based on the initial models of bending angle, we fixed the end of the actuator connected to the pressurization equipment to the table. We expected the actuator to have constant curvature at each pressure, and having the fiberglass side rest on the flat table introduced reductions in curvature; the portion of the silicone touching the table was flatter than the rest of the actuator. Additionally, the end of the actuator was pulled down by gravity, increasing the curvature and inducing a larger bending angle, $\psi$. 
+
+Horizontal testing with one end fixed to the table (Fig.~\ref{fig:orientationsall}B) did remove the inconsistencies created by having the flat side of the actuator rest flat on the table and gravity pulling the end. However, friction now significantly impacts bending behavior. 
+
+Vertical testing with gravity (Fig.~\ref{fig:orientationsall}C) removed friction's effects because nothing touched the actuator except the clamp on the brass barb. We quickly determined that gravity-induced non-trivial variations in the curvature along the length of the actuator. Especially at lower pressures, the actuator lost its circular shape due to the effects of gravity. 
+
+Vertical testing but fixed when fixed above the table (Fig.~\ref{fig:orientationsall}D) suffered from the same non-trivial effects of gravity on the bending angle. Now that the table was not there to support the actuator, gravity not only pulled the actuator so that it touched the table at low $\psi$ but added an incredible hysteresis to the bending behavior. 
+
+Vertical testing against gravity (Fig.~\ref{fig:orientationsall}E), had the worst hysteresis induced from gravity of all the prior orientations. The actuator's bending was unstable near $\psi=0$, similar to an inverted pendulum. Additionally the non-constant curvature near the fixed end of the actuator made this testing orientation not ideal. 
 
 \clearpage
 \subsection{Chosen Orientation}
@@ -68,14 +76,16 @@ While first developing the line-detection script, we wanted to detect both the a
 
 To convert pixels to centimeters, we photographed a ruler at several positions within the camera frame and concluded that the camera's distortion is tolerable in the center of the frame. If the actuator remained in the center of the camera frame, we could use a linear mapping between pixels and centimeters. 
 
-Using OpenCV, we first converted the image to grayscale. Then, we applied a binary mask to isolate the line we drew on the actuator. Using the masked image, we found the contour line(s). Each contour is a list of $x$ and $y$ coordinates that compose the line. We add the coordinates to an array for curvature calculations for each detected contour. To calculate the average curvature, we decided to split the length of the contour into three sections (one section near each end and one in the middle). These three sections would allow us to calculate the curvature using points along the entire length of the actuator. For each section, we used a random coordinate. For 100 sets of coordinates, we calculate a curvature. We averaged the 100 values to determine the mean curvature of the line drawn on the actuator. For each actuator, we measured the length of the fiberglass layer and converted curvature, $\kappa$, to bending angle using $\psi = l_{0}\kappa$. Fig. \ref{fig:opencvbendingangle} showcases the procedure for an SS40 actuator at 160~kPa; using coordinates along the contour line, we measured a bending angle of 102$^\circ$. 
+Fig. \ref{fig:opencvbendingangle} showcases the procedure for an SS40 actuator at 160~kPa; using coordinates along the contour line, we measured a bending angle of 102$^\circ$. Using OpenCV, we first converted the image to grayscale. Then, we applied a binary mask to isolate the line we drew on the actuator. Using the masked image, we found the contour line(s). Each contour is a list of $x$ and $y$ coordinates that compose the line. We add the coordinates to an array for curvature calculations for each detected contour. To calculate the average curvature, we decided to split the length of the contour into three sections (one section near each end and one in the middle). These three sections would allow us to calculate the curvature using points along the entire length of the actuator. For each section, we used a random coordinate. For 100 sets of coordinates, we calculate a curvature. We averaged the 100 values to determine the mean curvature of the line drawn on the actuator. For each actuator, we measured the length of the fiberglass layer and converted curvature, $\kappa$, to bending angle using $\psi=l_{0}\kappa$. \\
 
-\clearpage
-\begin{figure}[ht]
+\begin{figure}[!ht]
     \centering
      \includegraphics[width=5.5 in]{images7/opencvbendingangle.jpg}
-    \caption{Samples from the OpenCV script used to measure bending angle of the circular actuators. A. Original image of a SS40 actuator at 160kPa. B. Grayscale. C. Color mask. D. Random coordinates chosen from the contour line split into three sections and the calculated bending angle of 102$^\circ$.}
+    \caption{Samples from the OpenCV script used to measure bending angle. A. Original image of a SS40 actuator at 160kPa. B. Grayscale. C. Color mask. D. Random coordinates chosen from the contour line split into three sections and the calculated bending angle of 102$^\circ$.}
     \label{fig:opencvbendingangle}
 \end{figure}
 
+\clearpage
 There are several drawbacks to this method of measuring bending angle. First, maintaining a white background was difficult, and white electric tape was often required to cover any markings created by the dry-erase markers. Also, we had to cover the brass barb and push-to-connect fitting with white electric tape to avoid detecting the brass as part of the contour. Additionally, we wanted to collect data from both sides of the actuator, so the dry-erase marker had to be cleaned off and redrawn on the other side after sufficient testing so as not to mark the white background. The biggest drawback of this method of measuring bending angles is that the OpenCV script only calculated the measured curvature, so we manually indicated if the reported curvature corresponded to a positive or negative bending angle. 
+
+Overall, we were successful in finding an orientation where the effects of gravity and external friction are mitigated and we automated calculating the curvature of circular actuators from photographs at each pressure increment. We believe that using our contour-detection method could allow for measuring variations in curvature over length for the circular actuators, but for now, the testing script sufficiently provided results for characterization of the circular actuators. 
