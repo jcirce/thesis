@@ -10,7 +10,7 @@ To experimentally measure the bending angle of the circular actuators, we used a
 
 \section{Iterations on Orientation}
 
-As with everything related to this project of designing and characterizing a new type of soft robotic actuator, discovering how to measure the bending angle at different pressures repeatably took several iterations. We needed to develop a way to hold the actuator in front of the camera so we could measure the bending angle and compare it to the model. Since the fiberglass fabric embedded into the actuator determines the bending angle, the camera must be placed perpendicular to the fabric. We also wanted to capture the actuator's circumferential expansion in the photographs. Samples of the various orientations are contained in Fig.~\ref{fig:orientationsall}. Appendix \ref{appendix:ao} contains photographs at each pressure increment for each orientation. 
+As with everything related to this project of designing and characterizing a new type of soft robotic actuator, discovering how to measure the bending angle at different pressures repeatably took several iterations. We needed to develop a way to hold the actuator in front of the camera so we could measure the bending angle and compare it to the model. Since the fiberglass fabric embedded into the actuator determines the bending angle, the camera must be placed perpendicular to the fabric. We also wanted to capture the actuator's circumferential expansion in the photographs. Samples of the various orientations are contained in Fig.~\ref{fig:orientationsall}. Appendix~\ref{appendix:ao} contains photographs at each pressure increment for each orientation. 
 
 \begin{figure}[!ht]
     \centering
@@ -32,7 +32,7 @@ Vertical testing against gravity (Fig.~\ref{fig:orientationsall}E), had the wors
 \clearpage
 \subsection{Chosen Orientation}
 
-In order to remove the influence of gravity and friction on the bending angle as we chose to photograph the actuator horizontally. If the fiberglass fabric was placed perpendicular to the table, using a camera mounted above the table pointing down, we could capture the bending angle at any pressure. For simplicity and to not require additional hardware, we held the actuator above the table when changing the internal pressure to eliminate the effects of friction. Once the pressure regulator reached a steady state, we placed the actuator on the table before taking the photograph. Fig. \ref{fig:chosenorientation} contains photographs taken using a DS20 actuator in the chosen testing orientation. 
+In order to remove the influence of gravity and friction on the bending angle as we chose to photograph the actuator horizontally. If the fiberglass fabric was placed perpendicular to the table, using a camera mounted above the table pointing down, we could capture the bending angle at any pressure. For simplicity and to not require additional hardware, we held the actuator above the table when changing the internal pressure to eliminate the effects of friction. Once the pressure regulator reached a steady state, we placed the actuator on the table before taking the photograph. Fig.~\ref{fig:chosenorientation} contains photographs taken using a DS20 actuator in the chosen testing orientation. 
 
 \begin{figure}[!ht]
     \centering
@@ -52,13 +52,13 @@ Now that we have an effective method of photographing the circular actuators, we
 
 \subsection{Curvature from Three Points}
 
-Given three coordinates, $(x_1,y_1)$, $(x_2,y_2)$, $(x_3,y_3)$, in cartesian space, we can calculate the curvature of the circle formed by those three points using Eq. \ref{eq:CurvatureEq} \cite{ratliff_cartesian_2019}. 
+Given three coordinates, $(x_1,y_1)$, $(x_2,y_2)$, $(x_3,y_3)$, in cartesian space, we can calculate the curvature of the circle formed by those three points using Eq.~\ref{eq:CurvatureEq} \cite{ratliff_cartesian_2019}. 
 \begin{align} 
     \kappa = \frac{2\cdot\lvert((x_2-x_1)\cdot(y_3-y_2)) - ((y_2-y_1)\cdot(x_3-x_2))\rvert}{\sqrt{[(x_2-x_1)^2+(y_2-y_1)^2] \cdot [(x_3-x_2)^2+(y_3-y_2)^2] \cdot [(x_1-x_3)^2+(y_1-y_3)^2]}} 
     \label{eq:CurvatureEq} 
 \end{align}
 
-We began by comparing the model to the experimental results using OnShape CAD software. We manually selected three points along the fiberglass layer and used the built-in functionality to measure the radius of a circle defined by three points. The checkerboard grid has 1~cm squares, which we also measured to convert the measured radius to meaningful units. Fig. \ref{fig:onshapecircles} contains two samples of sketches of circles created in OnShape. Note that at 9.1 psi, the actuator has a positive $\psi$, and at 12.9 psi, the actuator has a negative $\psi$. Also note that as $\psi$ approaches $0^\circ$, the circle's radius approaches infinity. 
+We began by comparing the model to the experimental results using OnShape CAD software. We manually selected three points along the fiberglass layer and used the built-in functionality to measure the radius of a circle defined by three points. The checkerboard grid has 1~cm squares, which we also measured to convert the measured radius to meaningful units. Fig.~\ref{fig:onshapecircles} contains two samples of sketches of circles created in OnShape. Note that at 9.1 psi, the actuator has a positive $\psi$, and at 12.9 psi, the actuator has a negative $\psi$. Also note that as $\psi$ approaches $0^\circ$, the circle's radius approaches infinity. 
 
 \begin{figure}[ht]
     \centering
@@ -76,7 +76,7 @@ While first developing the line-detection script, we wanted to detect both the a
 
 To convert pixels to centimeters, we photographed a ruler at several positions within the camera frame and concluded that the camera's distortion is tolerable in the center of the frame. If the actuator remained in the center of the camera frame, we could use a linear mapping between pixels and centimeters. 
 
-Fig. \ref{fig:opencvbendingangle} showcases the procedure for an SS40 actuator at 160~kPa; using coordinates along the contour line, we measured a bending angle of 102$^\circ$. Using OpenCV, we first converted the image to grayscale. Then, we applied a binary mask to isolate the line we drew on the actuator. Using the masked image, we found the contour line(s). Each contour is a list of $x$ and $y$ coordinates that compose the line. We add the coordinates to an array for curvature calculations for each detected contour. To calculate the average curvature, we decided to split the length of the contour into three sections (one section near each end and one in the middle). These three sections would allow us to calculate the curvature using points along the entire length of the actuator. For each section, we used a random coordinate. For 100 sets of coordinates, we calculate a curvature. We averaged the 100 values to determine the mean curvature of the line drawn on the actuator. For each actuator, we measured the length of the fiberglass layer and converted curvature, $\kappa$, to bending angle using $\psi=l_{0}\kappa$. \\
+Fig.~\ref{fig:opencvbendingangle} showcases the procedure for an SS40 actuator at 160~kPa; using coordinates along the contour line, we measured a bending angle of 102$^\circ$. Using OpenCV, we first converted the image to grayscale. Then, we applied a binary mask to isolate the line we drew on the actuator. Using the masked image, we found the contour line(s). Each contour is a list of $x$ and $y$ coordinates that compose the line. We add the coordinates to an array for curvature calculations for each detected contour. To calculate the average curvature, we decided to split the length of the contour into three sections (one section near each end and one in the middle). These three sections would allow us to calculate the curvature using points along the entire length of the actuator. For each section, we used a random coordinate. For 100 sets of coordinates, we calculate a curvature. We averaged the 100 values to determine the mean curvature of the line drawn on the actuator. For each actuator, we measured the length of the fiberglass layer and converted curvature, $\kappa$, to bending angle using $\psi=l_{0}\kappa$. \\
 
 \begin{figure}[!ht]
     \centering
