@@ -1,8 +1,8 @@
 \chapter{Pressurization Equipment}
 
-\section*{Overview}
+\section{Overview}
 
-We designed the pressurization equipment to actuate and control the pressure inside the soft robots presented in this work. Fig \ref{fig:blockdiagram} contains a block diagram of the pressurization equipment used in this work.   The air tank reservoir stores pressurized air generated from a compressor. The pressure regulator controls the input pressure of the actuator. A microcontroller ($\mu$C) controls both the compressor and regulator (actuator pressure). This chapter details the mechanical air supply components, electrical components, firmware on the microcontroller, and two methods of setting the actuator pressure. \\ \\
+We designed the pressurization equipment to actuate and control the pressure inside the soft robots presented in this work. Fig \ref{fig:blockdiagram} contains a block diagram of the pressurization equipment used in this work. We store pressurized air to fill the actuators in an air tank. A compressor fills the air tank based on the pressure inside the tank. The pressure regulator controls the input pressure of the actuator. A microcontroller ($\mu$C) controls both the compressor and regulator (actuator pressure). This chapter details the mechanical air supply components, electrical components, firmware on the microcontroller, and two methods of setting the actuator pressure. \\ \\
 
 \begin{figure}[!ht]
     \centering
@@ -26,13 +26,11 @@ Both the pressure regulator and the compressor are powered by a rechargeable 12V
 
 We used white 1/4" diameter tubing and 1/4" NPT to 1/4" OD tubing push-to-connect fittings (PC-1/4-N2, Tailonz Pneumatic) to connect the manifold block to the pressure regulator and pressure sensor. To ensure no air leaks occurred, we used Teflon Tape to secure the connections between the components. We used laser-cut acrylic pieces and standoffs to lift all of the components off the metal testing table. 
 
-\section{Pressure Sensor}
-
-The differential pressure sensor (MPX2200DP, Freescale Semiconductor) measures the pressure within the air tank to ensure the regulator has sufficient air supply. We used readings from this sensor to turn the compressor on or off. To connect the pressure sensor to the microcontroller, we used an instrumental amplifier (INA125P, Texas Instruments) and a 13-bit analog-to-digital converter with an SPI serial interface (MCP3301, Microchip). Both microcontrollers had SPI communication libraries written to interface with the pressure sensor. 
-
 \section{Compressor Control}
 
-We designed the compressor to be controlled by the microcontroller using a digital pin connected to an NMOS (IRF540N), which connects to a relay to power the compressor with the battery. Using the pressure sensor reading of the air tank, we wrote a state machine that controls the compressor for three main reasons. First, the state machine ensures the tank remains at the desired pressure while testing the actuators. Second, the compressor only stays on if the system has no air leaks. Third, the state machine ensures the compressor does not turn on and off excessively, prolonging its life. Fig \ref{fig:compressorsm} contains a diagram of the state machine that runs on the microcontroller to control the compressor. 
+We designed the compressor to be controlled by the microcontroller using a digital pin connected to an NMOS (IRF540N), which connects to a relay to power the compressor with the battery. The differential pressure sensor (MPX2200DP, Freescale Semiconductor) measures the pressure within the air tank to ensure the regulator has sufficient air supply. We used readings from this sensor to turn the compressor on or off. To connect the pressure sensor to the microcontroller, we used an instrumental amplifier (INA125P, Texas Instruments) and a 13-bit analog-to-digital converter with an SPI serial interface (MCP3301, Microchip). Both microcontrollers had SPI communication libraries written to interface with the pressure sensor. 
+
+Using the pressure sensor reading of the air tank, we wrote a state machine that controls the compressor for three main reasons. First, the state machine ensures the tank remains at the desired pressure while testing the actuators. Second, the compressor only stays on if the system has no air leaks. Third, the state machine ensures the compressor does not turn on and off excessively, prolonging its life. Fig \ref{fig:compressorsm} contains a diagram of the state machine that runs on the microcontroller to control the compressor. 
 
 \begin{figure}[ht]
     \centering
@@ -43,18 +41,18 @@ We designed the compressor to be controlled by the microcontroller using a digit
 
 The state machine has three states: compressor OFF (state 0), compressor ON (state 1), and ESTOP (state 2). While in state 0, we check if the current pressure reading in the tank is less than the desired pressure minus some buffer. If the pressure has dropped below this amount, switch to state 1, and the compressor turns on. In state 1, we check if the change in pressure over time is satisfactory, meaning we know there is no air leak. We use timing functions in firmware to check the current pressure compared to the pressure reading each time increment before. If the change in pressure ($dP/dt$) is less than expected, we can assume there is a leak (the compressor is not filling up the tank). In this case, switch to state 2, the emergency stop state. If the pressure in the tank increases as expected, check if the current pressure is above the desired pressure plus some buffer. If so, switch to state 0 and turn the compressor off. 
 
-We used 36~psi (248~kPa) as the desired tank pressure and 4~psi (28~kPa) as the buffer. With these values, the maximum tank pressure would be 40 psi, and the minimum tank pressure before the compressor turns on would be 32 psi. 
+We used 36~psi (248~kPa) as the desired tank pressure and 4~psi (28~kPa) as the buffer. With these values, the maximum tank pressure would be 40 psi, and the minimum tank pressure before the compressor turns on would be 32 psi. These values were experimentally determined to suit the needs of the circular actuators during characterization. 
 
 \clearpage
 \section{Actuator Pressure Control}
 
 The pressure regulator (ITV1031-21N2N4, SMC) requires an input signal of 0-5V to set the pressure in the actuator. The analog input signal has a linear relationship between voltage and output pressure from the regulator based on the limits set on the regulator. As shown in Fig \ref{fig:blockdiagram}, the microcontroller communicates over SPI with the source of the 5V signal. When using an Arduino (ELEGOO UNO R3) as the microcontroller, we used a digital potentiometer with an SPI serial interface (MCP4251-103E/P, Microchip) to generate the actuator pressure signal. We sent the desired actuator pressure commands to the Arduino using a Python script with a custom serial communications protocol. With a Pico microcontroller (Raspberry Pi), we used a 12-bit digital-to-analog converter with an SPI interface to generate the analog 5V signal. 
 
-\subsection{Serial Communications with Arduino}
+\subsubsection{Serial Communications with Arduino}
 
 During the characterization of the circular actuators, we used a computer running a Python script to collect and store data on the bending angle and blocked force of the actuator at different pressures. For increased automation, we developed a serial communication protocol between the Arduino setting the pressure in the actuator and the Python script collecting the data. The Arduino receives an 8-bit command (0-255) corresponding to the desired output voltage from the digital potentiometer. When we send a new command from the Python script, the Arduino updates the pressure in the actuator. 
 
-\subsection{Difficulties with the Digital Potentiometer}
+\subsubsection{Difficulties with the Digital Potentiometer}
 
 The digital potentiometer was problematic due to the non-linear relationship between commands and output pressure. Ideally, we could create a map between the 0-255 command and the actuator pressure. Defining this relationship would allow us to change the pressure in the actuator in even pressure increments; if the regulator limits were 0-30~psi, with 256 different pressures, we could theoretically achieve 0.12 psi increments. Using the digital potentiometer as a voltage divider to generate the 0-5V analog signal created a non-linear relationship between the 0-255 command and the output pressure. Near the maximum pressure limit, large pressure increments resulted from small changes in the input command. Table \ref{table:bitmap} contains samples of the pressure output when we set the regulator's limits between 0-30 psi. Appendix \ref{appendix:bitmap} contains the output pressure for four pressure ranges using the 0-255 input command. \\
 
@@ -71,11 +69,11 @@ The digital potentiometer was problematic due to the non-linear relationship bet
 
 To gain smaller and more even pressure increments, we needed a way to more easily set the input pressure, ideally with a linear relationship between the commands and the pressure output. 
 
-\subsection{Benefits of Digital to Analog Converter}
+\subsubsection{Benefits of Digital to Analog Converter}
 
 It was critical to have linear control over the output pressure of the pressure regulator to increase or decrease the pressure in the actuator by an even amount. We achieved linear control between the command and the output pressure by implementing a 12-bit digital-to-analog converter(DAC) (MCP4921-E/P, Microchip) using an SPI interface with a Pico microcontroller. Now, we had a linear relationship between the 12-bit command (0-4095) and the output pressure. This upgrade allowed us to measure the circular actuator's bending and blocked force behavior with even pressure increments, critical to minimizing hysteresis during characterization. 
 
-\subsection{Using Multiple Pico Microcontrollers}
+\subsubsection{Using Multiple Pico Microcontrollers}
 
 Switching microcontrollers to the Pico required a complete testing software and firmware overhaul. Due to time constraints, we decided to use two microcontrollers, one for each subsystem labeled in Fig. \ref{fig:blockdiagram}. We used one Pico to run the state machine for compressor control and a second Pico to control the input pressure to the actuator. Instead of using the previously implemented serial protocol, for simplicity, we decided to use a potentiometer as a voltage divider to create a value from 0-4095. The Pico's 12-bit analog-to-digital converter (ADC) would directly map to the DAC's input. 
 
